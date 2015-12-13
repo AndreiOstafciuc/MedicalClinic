@@ -38,8 +38,8 @@ namespace DAO
             _command.CommandType = CommandType.Text;
             _dataReader = _command.ExecuteReader(); 
             _dataReader.Read();
-            p.FirstName = _dataReader["last_name"].ToString();
-            p.LastName = _dataReader["first_name"].ToString();
+            p.FirstName = _dataReader["first_name"].ToString();
+            p.LastName = _dataReader["last_name"].ToString();
 
             return p ;
         }

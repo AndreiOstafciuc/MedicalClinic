@@ -29,7 +29,7 @@ namespace Clinic
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Patient p = pacientService.GetById(100);
-            MessageBox.Show(p.FirstName);
+            textBox.Text = p.FirstName + " " + p.LastName;
         }
     }
 }

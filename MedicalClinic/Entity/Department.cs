@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    class Department
+    public class Department
     {
         int _id;
         String _name;

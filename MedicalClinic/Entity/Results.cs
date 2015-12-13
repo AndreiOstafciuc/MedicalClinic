@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    class Results
+    public class Results
     {
         int _id;
         int _idAppointment;       

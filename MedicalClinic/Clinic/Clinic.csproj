@@ -103,6 +103,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{8434a1e5-2890-4db1-bd1b-efc09860a27b}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBConn\DBConnection.csproj">
+      <Project>{1c9084c7-f7fc-47b5-a911-2c71034183c9}</Project>
+      <Name>DBConnection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{20ac0fc7-d569-4aae-a2ea-cf852dafb016}</Project>
       <Name>Entity</Name>

@@ -8,20 +8,20 @@ namespace Entity
 {
     public class Administrator
     {
-        int _id;
+        int _id_admin;
         String _firstName;
         String _lastName;
         public Administrator() { }
         public Administrator(int id, String firstName, String lastName)
         {
-            this._id = id;
+            this._id_admin = id;
             this._firstName = firstName;
             this._lastName = lastName;
         }
         public int Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _id_admin; }
+            set { _id_admin = value; }
         }
         public String FirstName
         {

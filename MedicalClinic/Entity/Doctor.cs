@@ -13,10 +13,10 @@ namespace Entity
         String _firstName;
         int _idDept;
         String _phoneNumber;
-        Boolean _status;
+        int _status;
 
         public Doctor() { }
-        public Doctor( int id,String lastName,String firstName,int idDept,String phoneNumber,Boolean status) {
+        public Doctor( int id,String lastName,String firstName,int idDept,String phoneNumber,int status) {
             this._id = id;
             this._lastName = lastName;
             this._firstName = firstName;
@@ -49,7 +49,7 @@ namespace Entity
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
         }
-        public Boolean Status
+        public int Status
         {
             get { return _status; }
             set { _status = value; }

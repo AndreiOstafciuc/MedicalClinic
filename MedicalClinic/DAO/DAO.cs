@@ -12,15 +12,18 @@ namespace DAO
     {
         protected OracleCommand _command;
         protected OracleDataReader _dataReader;
+        protected OracleTransaction _tr;
+        
 
         public DAO()
         {
             _command = new OracleCommand();
             _command.Connection = DBConnection.Connection;
+           
         }
-        abstract public void Save(Object pacient);
-        abstract public void Update(Object pacient);
-        abstract public Object GetById(int id);
+        abstract public void Save(Object obj);
+        abstract public void Update(Object obj);
+        abstract public Object FindById(int id);
         abstract public List<Object> FindAllByProperty(String property, String value);
     }
 }

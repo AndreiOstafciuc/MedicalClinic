@@ -12,11 +12,11 @@ namespace Entity
         int _idPacient;      
         int _idDoctor; 
         int _time;
-        int _appointmentDate;
-        String _symptom;
+        DateTime _appointmentDate;
+        String _symptoms;
 
         public Appointment() { }
-        public Appointment(int id, int idPacient,int idDoctor,int time,int appointmentDate){
+        public Appointment(int id, int idPacient,int idDoctor,int time, DateTime appointmentDate){
             this._id = id;
             this._idPacient = idPacient;
             this._idDoctor=idDoctor;
@@ -25,7 +25,7 @@ namespace Entity
 
         }
 
-        public int AppointmentDate
+        public DateTime AppointmentDate
         {
             get { return _appointmentDate; }
             set { _appointmentDate = value; }
@@ -51,10 +51,10 @@ namespace Entity
             get { return _time; }
             set { _time = value; }
         }
-        public String Symptom
+        public String Symptoms
         {
-            get { return _symptom; }
-            set { _symptom = value; }
+            get { return _symptoms; }
+            set { _symptoms = value; }
         }
 
     }

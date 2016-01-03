@@ -19,10 +19,14 @@ namespace DAO
 
         }
 
-        public override void Save(Patient pacient)
+        /// <summary>
+        /// Throws Exception
+        /// </summary>
+        /// <param name="pacient"></param>
+        /// <exception cref="System.Exception">Thrown when...</exception>
+        /// <returns></returns>
+        public override int Save(Patient pacient)
         {
-            string sql = "insert into patient values (" + pacient.Id + ",'" + pacient.FirstName + "','" + pacient.LastName + "','" + pacient.Address + "','" + pacient.BirthDate.ToString("dd-MMM-yy") + "','" + pacient.PhoneNumber + "','" + pacient.GeneticDiseases + "','" + pacient.InsuranceNumber + "')";
-
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into patient values ( " +
                             ":id_patient, "+
@@ -34,6 +38,7 @@ namespace DAO
                               ":genetic_disorder, " +
                               ":insurance_number)";
 
+            _command.Parameters.Clear();
             _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = pacient.Id;
             _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = pacient.FirstName;
             _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = pacient.LastName;
@@ -43,14 +48,9 @@ namespace DAO
             _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = pacient.GeneticDiseases;
             _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = pacient.InsuranceNumber;
             
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
+            _command.ExecuteNonQuery();
 
-            }
+            return pacient.Id;
         }
 
         public override void Update(Patient pacient)
@@ -65,6 +65,8 @@ namespace DAO
                               "genetic_disorder = :genetic_disorder, " +
                               "insurance_number = :insurance_number " +
                               "WHERE id_patient = :id_patient";
+
+            _command.Parameters.Clear();
             _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = pacient.FirstName;
             _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = pacient.LastName;
             _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = pacient.Address;
@@ -158,5 +160,45 @@ namespace DAO
             return patientsList;
         }
 
+        public override List<Patient> FindAll()
+        {
+            List<Patient> patientsList = null;
+
+            string sql = " select * from patient";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+            try
+            {
+                _dataReader = _command.ExecuteReader();
+
+
+                if (_dataReader.HasRows)
+                {
+                    patientsList = new List<Patient>();
+                    while (_dataReader.Read() && _dataReader.HasRows)
+                    {
+
+                        Patient p = new Patient();
+
+                        p.Id = Convert.ToInt32(_dataReader["id_patient"]);
+                        p.FirstName = _dataReader["first_name"].ToString();
+                        p.LastName = _dataReader["last_name"].ToString();
+                        p.InsuranceNumber = _dataReader["insurance_number"].ToString();
+                        p.Address = _dataReader["address"].ToString();
+                        p.BirthDate = (DateTime)_dataReader["birthdate"];
+                        p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
+                        p.PhoneNumber = _dataReader["phone_number"].ToString();
+
+                        patientsList.Add(p);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return patientsList;
+        }
     }
 }

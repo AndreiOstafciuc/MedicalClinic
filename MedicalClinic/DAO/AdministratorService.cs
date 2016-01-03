@@ -11,6 +11,35 @@ namespace DAO
 {
     public class AdministratorService : DAO<Administrator>
     {
+        public override List<Administrator> FindAll()
+        {
+            List<Administrator> administratorsList = null;
+
+            string sql = " select * from admin";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+            _dataReader = _command.ExecuteReader();
+
+
+            if (_dataReader.HasRows)
+            {
+                administratorsList = new List<Administrator>();
+                while (_dataReader.Read() && _dataReader.HasRows)
+                {
+
+                    Administrator a = new Administrator();
+
+                    a.Id = Convert.ToInt32(_dataReader["id_admin"]);
+                    a.FirstName = _dataReader["first_name"].ToString();
+                    a.LastName = _dataReader["last_name"].ToString();
+                    administratorsList.Add(a);
+                }
+            }
+
+            return administratorsList;
+        }
+
         public override List<Administrator> FindAllByProperty(string property, string value)
         {
             List<Administrator> administratorsList = null;
@@ -19,9 +48,7 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -38,11 +65,7 @@ namespace DAO
                         administratorsList.Add(a);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return administratorsList;
         }
 
@@ -75,13 +98,15 @@ namespace DAO
             return a;
         }
 
-        public override void Save(Administrator obj)
+        public override int Save(Administrator obj)
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into admin values (" +
                               ":id, "+
                               ":first_name, " +
                               ":last_name )";
+
+            _command.Parameters.Clear();
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.LastName;
@@ -93,6 +118,8 @@ namespace DAO
             {
 
             }
+
+            return obj.Id;
         }
 
         public override void Update(Administrator obj)
@@ -102,6 +129,8 @@ namespace DAO
                               "SET first_name = :first_name, " +
                               "last_name = :last_name " +
                               "WHERE id_admin = :id";
+
+            _command.Parameters.Clear();
             _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.LastName;
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;

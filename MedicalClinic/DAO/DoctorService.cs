@@ -11,6 +11,42 @@ namespace DAO
 {
     public class DoctorService : DAO<Doctor>
     {
+        public override List<Doctor> FindAll()
+        {
+            List<Doctor> doctorsList = null;
+
+            string sql = " select * from doctor";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+            try
+            {
+                _dataReader = _command.ExecuteReader();
+                if (_dataReader.HasRows)
+                {
+                    doctorsList = new List<Doctor>();
+                    while (_dataReader.Read() && _dataReader.HasRows)
+                    {
+
+                        Doctor d = new Doctor();
+
+                        d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
+                        d.FirstName = _dataReader["first_name"].ToString();
+                        d.LastName = _dataReader["last_name"].ToString();
+                        d.PhoneNumber = _dataReader["phone_number"].ToString();
+                        d.Status = Convert.ToInt32(_dataReader["status"]);
+                        d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                        doctorsList.Add(d);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return doctorsList;
+        }
+
         public override List<Doctor> FindAllByProperty(string property, string value)
         {
             List<Doctor> doctorsList = null;
@@ -78,7 +114,7 @@ namespace DAO
             return d;
         }
 
-        public override void Save(Doctor obj)
+        public override int Save(Doctor obj)
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into doctor values ( " +
@@ -88,6 +124,8 @@ namespace DAO
                               ":id_dept, " +
                               ":phone_number, " +
                               ":status)";
+
+            _command.Parameters.Clear();
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
@@ -105,7 +143,8 @@ namespace DAO
                 // poate aparea contraint violation
                 // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator
             }
-
+            
+            return obj.Id;
         }
 
         public override void Update(Doctor obj)
@@ -118,6 +157,8 @@ namespace DAO
                               "phone_number = :phone_number, " +
                               "status = :status " +
                               "WHERE id_doctor = :id_doctor";
+
+            _command.Parameters.Clear();
             _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
             _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.IdDept;

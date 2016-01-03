@@ -21,9 +21,10 @@ namespace DAO
             _command.Connection = DBConnection.Connection;
            
         }
-        abstract public void Save(Object obj);
+        abstract public int Save(Object obj);
         abstract public void Update(Object obj);
         abstract public Object FindById(int id);
+        abstract public List<Object> FindAll();
         abstract public List<Object> FindAllByProperty(String property, String value);
     }
 }

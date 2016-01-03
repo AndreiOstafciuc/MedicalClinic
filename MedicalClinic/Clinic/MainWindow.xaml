@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="212,266,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="141" Margin="122,60,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+    <Grid x:Name="pageContainer">
+       
     </Grid>
 </Window>

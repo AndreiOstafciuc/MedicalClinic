@@ -115,6 +115,14 @@
       <Project>{20ac0fc7-d569-4aae-a2ea-cf852dafb016}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenericControls\GenericControls.csproj">
+      <Project>{0983fda6-507f-41b1-810b-0a7a47aeff4e}</Project>
+      <Name>GenericControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIViews\UIViews.csproj">
+      <Project>{82baeedf-c6b3-4b2d-951e-329fc075684f}</Project>
+      <Name>UIViews</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

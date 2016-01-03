@@ -103,7 +103,7 @@ namespace DAO
             {
                 _command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // poate aparea contraint violation
                 // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator

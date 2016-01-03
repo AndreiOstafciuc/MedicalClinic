@@ -21,10 +21,28 @@ namespace DAO
 
         public override void Save(Patient pacient)
         {
-            string sql = "insert into patient values (" + pacient.Id + ",'" + pacient.FirstName + "','" + pacient.LastName + "','" + pacient.Address + "','" + pacient.BirthDate.ToString("dd-MMM-yy") + "','" + pacient.PhoneNumber + "','" + pacient.GeneticDiseases + "','" + pacient.InsuranceNumber + "')";
-
-            _command.CommandText = sql;
+            //string sql = "insert into patient values (" + pacient.Id + ",'" + pacient.FirstName + "','" + pacient.LastName + "','" + pacient.Address + "','" + pacient.BirthDate.ToString("dd-MM-yyyy") + "','" + pacient.PhoneNumber + "','" + pacient.GeneticDiseases + "','" + pacient.InsuranceNumber + "')";
+            
             _command.CommandType = CommandType.Text;
+            _command.CommandText = "insert into patient values ( " +
+                              ":id_patient, " +
+                              ":first_name, " +
+                              ":last_name, " +
+                              ":address, " +
+                              ":birthdate, " +
+                              ":phone_number, " +
+                              ":genetic_disorder, " +
+                              ":insurance_number )";
+
+            _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = pacient.Id;
+            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = pacient.FirstName;
+            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = pacient.LastName;
+            _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = pacient.Address;
+            _command.Parameters.Add(":birthdate", OracleDbType.Date).Value = pacient.BirthDate;
+            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = pacient.PhoneNumber;
+            _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = pacient.GeneticDiseases;
+            _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = pacient.InsuranceNumber;
+
             try
             {
                 _command.ExecuteNonQuery();

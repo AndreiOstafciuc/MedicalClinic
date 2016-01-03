@@ -109,21 +109,19 @@ namespace DAO
         public override int Save(Department obj)
         {
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into department values ( " +
-                              ":id_dept, " +
+            _command.CommandText = "insert into department (name,description,floor) values ( " +
                               ":name, " +
                               ":description, " +
                               ":floor)";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":name", OracleDbType.Varchar2).Value = obj.Name;
             _command.Parameters.Add(":description", OracleDbType.Varchar2).Value = obj.Description;
             _command.Parameters.Add(":floor", OracleDbType.Int32).Value = obj.Floor;
            
              _command.ExecuteNonQuery();
 
-            return obj.Id;
+            return FindLastInserted().Id ;
         }
 
         /// <summary>
@@ -147,6 +145,30 @@ namespace DAO
             _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Department FindLastInserted()
+        {
+            Department d = null;
+            string sql = "select * from department where id_dept = (select max(id_dept) from department)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                d = new Department();
+                d.Id = Convert.ToInt32(_dataReader["id_dept"]);
+                d.Name = _dataReader["name"].ToString();
+                d.Description = _dataReader["description"].ToString();
+                d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+            }
+            return d;
         }
     }
 }

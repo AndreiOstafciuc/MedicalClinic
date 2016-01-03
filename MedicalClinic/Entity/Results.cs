@@ -16,9 +16,8 @@ namespace Entity
         String _medication;
 
         public Results() { }
-        public Results(  int id,int idAppointment, DateTime resultDate,String symptoms,String diagnosis,String medication)
+        public Results(int idAppointment, DateTime resultDate,String symptoms,String diagnosis,String medication)
         {
-            this._id = id;
             this._idAppointment = idAppointment;
             this._resultDate = resultDate;
             this._symptoms = symptoms;

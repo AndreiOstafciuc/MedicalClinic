@@ -111,18 +111,14 @@ namespace DAO
         /// <returns>id of the saved entity</returns>
         public override int Save(Schedule obj)
         {
-            string sql = "insert into schedule values (" + obj.Id + ",'" + obj.Day + "','" + obj.StartHour + "','" + obj.EndHour + "','" + obj.Id_doctor + "')";
-
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into schedule values (" +
-                              ":id_schedule, "+
+            _command.CommandText = "insert into schedule (day,start_hour,end_hour,id_doctor) values (" +
                               ":day, " +
                               ":start_hour, " +
                               ":end_hour, " +
                               ":id_doctor )";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":day", OracleDbType.Int32).Value = obj.Day;
             _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
@@ -130,7 +126,7 @@ namespace DAO
           
             _command.ExecuteNonQuery();
 
-            return obj.Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -156,6 +152,31 @@ namespace DAO
             _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        public Schedule FindLastInserted()
+        {
+            Schedule s = null;
+            string sql = "select * from schedule where id_schedule = (select max(id_schedule) from schedule)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                s = new Schedule();
+                s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
+                s.Day = Convert.ToInt32(_dataReader["day"]);
+                s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
+                s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
+                s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+            }
+
+            return s;
         }
     }
 }

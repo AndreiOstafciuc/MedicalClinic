@@ -90,7 +90,6 @@ namespace DAO
                     a.Id = Convert.ToInt32(_dataReader["id_admin"]);
                     a.FirstName = _dataReader["first_name"].ToString();
                     a.LastName = _dataReader["last_name"].ToString();
-
                 }
 
             return a;

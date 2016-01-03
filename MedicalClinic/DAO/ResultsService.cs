@@ -114,11 +114,8 @@ namespace DAO
         /// <returns>id of the saved entity</returns>
         public override int Save(Results obj)
         {
-            string sql = "insert into result values (" + obj.Id + ",'" + obj.IdAppointment + "','" + obj.ResultDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "','" + obj.Diagnosis + "','" + obj.Medication + "')";
-
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into result values (" +
-                              ":id_result, " +
+            _command.CommandText = "insert into result(id_appointment,result_date,symptoms,diagnosis,medication) values (" +
                               ":id_appointment, " +
                               ":result_date, " +
                               ":symptoms, " +
@@ -126,7 +123,6 @@ namespace DAO
                               ":medication )";
             
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_result", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.IdAppointment;
             _command.Parameters.Add(":result_date", OracleDbType.Date).Value = obj.ResultDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
@@ -135,7 +131,7 @@ namespace DAO
 
             _command.ExecuteNonQuery();
             
-            return obj.Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -164,5 +160,33 @@ namespace DAO
 
             _command.ExecuteNonQuery();
         }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Results FindLastInserted()
+        {
+            Results r = null;
+            string sql = "select * from result where id_result = (select max(id_result) from result)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                r = new Results();
+                r.Id = Convert.ToInt32(_dataReader["id_result"]);
+                r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
+                r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
+                r.Symptoms = _dataReader["symptoms"].ToString();
+                r.Diagnosis = _dataReader["diagnosis"].ToString();
+                r.Medication = _dataReader["medication"].ToString();
+            }
+
+            return r;
+        }
+
     }
 }

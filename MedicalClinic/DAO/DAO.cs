@@ -21,6 +21,7 @@ namespace DAO
             _command.Connection = DBConnection.Connection;
            
         }
+
         abstract public int Save(Object obj);
         abstract public void Update(Object obj);
         abstract public Object FindById(int id);

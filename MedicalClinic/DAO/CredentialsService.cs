@@ -11,6 +11,7 @@ namespace DAO
 {
     public class CredentialsService : DAO<Credentials>
     {
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Credentials> FindAll()
         {
             List<Credentials> credentialsList = null;
@@ -19,9 +20,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -39,14 +39,11 @@ namespace DAO
                         credentialsList.Add(c);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return credentialsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Credentials> FindAllByProperty(string property, string value)
         {
             List<Credentials> credentialsList = null;
@@ -55,9 +52,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -75,14 +71,11 @@ namespace DAO
                         credentialsList.Add(c);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return credentialsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Credentials FindById(int id)
         {
             Credentials c = null;
@@ -90,9 +83,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -105,19 +97,15 @@ namespace DAO
                     c.Type = Convert.ToInt32(_dataReader["type"]);
 
                 }
-            }
-            catch (Exception)
-            {
-
-            }
             return c;
         }
 
         /// <summary>
-        /// 
+        /// inserts into database the obj
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns>id to new saved credetial</returns>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Credentials obj)
         {
             _command.CommandType = CommandType.Text;
@@ -132,18 +120,17 @@ namespace DAO
             _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.Email;
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.Password;
             _command.Parameters.Add(":type", OracleDbType.Int32).Value = obj.Type;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
 
             return FindAllByProperty("email", obj.Email)[0].Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Credentials obj)
         {
 
@@ -159,14 +146,8 @@ namespace DAO
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.Password;
             _command.Parameters.Add(":type", OracleDbType.Int32).Value = obj.Type;
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

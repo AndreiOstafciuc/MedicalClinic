@@ -11,6 +11,7 @@ namespace DAO
 {
     public class ScheduleService : DAO<Schedule>
     {
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Schedule> FindAll()
         {
             List<Schedule> schedulesList = null;
@@ -19,9 +20,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -40,14 +40,11 @@ namespace DAO
                         schedulesList.Add(s);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return schedulesList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Schedule> FindAllByProperty(string property, string value)
         {
             List<Schedule> schedulesList = null;
@@ -56,9 +53,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -77,14 +73,11 @@ namespace DAO
                         schedulesList.Add(s);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return schedulesList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Schedule FindById(int id)
         {
             Schedule s = null;
@@ -92,9 +85,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -107,14 +99,16 @@ namespace DAO
                     s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
                     s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return s;
         }
 
+        /// <summary>
+        /// inserts into database the obj
+        /// </summary>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Schedule obj)
         {
             string sql = "insert into schedule values (" + obj.Id + ",'" + obj.Day + "','" + obj.StartHour + "','" + obj.EndHour + "','" + obj.Id_doctor + "')";
@@ -134,21 +128,16 @@ namespace DAO
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
           
-
-
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                // poate aparea contraint violation
-                // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator
-            }
+            _command.ExecuteNonQuery();
 
             return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Schedule obj)
         {
             _command.CommandType = CommandType.Text;
@@ -165,14 +154,8 @@ namespace DAO
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
             _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

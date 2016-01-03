@@ -20,12 +20,12 @@ namespace DAO
         }
 
         /// <summary>
-        /// Throws Exception
+        /// inserts into database the obj
         /// </summary>
-        /// <param name="pacient"></param>
-        /// <exception cref="System.Exception">Thrown when...</exception>
-        /// <returns></returns>
-        public override int Save(Patient pacient)
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
+        public override int Save(Patient obj)
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into patient values ( " +
@@ -39,20 +39,25 @@ namespace DAO
                               ":insurance_number)";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = pacient.Id;
-            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = pacient.FirstName;
-            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = pacient.LastName;
-            _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = pacient.Address;
-            _command.Parameters.Add(":birthdate", OracleDbType.Date).Value = pacient.BirthDate;
-            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = pacient.PhoneNumber;
-            _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = pacient.GeneticDiseases;
-            _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = pacient.InsuranceNumber;
+            _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = obj.Id;
+            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
+            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
+            _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = obj.Address;
+            _command.Parameters.Add(":birthdate", OracleDbType.Date).Value = obj.BirthDate;
+            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = obj.PhoneNumber;
+            _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = obj.GeneticDiseases;
+            _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = obj.InsuranceNumber;
             
             _command.ExecuteNonQuery();
 
-            return pacient.Id;
+            return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Patient pacient)
         {
             _command.CommandType = CommandType.Text;
@@ -75,16 +80,11 @@ namespace DAO
             _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = pacient.GeneticDiseases;
             _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = pacient.InsuranceNumber;
             _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = pacient.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Patient FindById(int id)
         {
             Patient p = null;
@@ -92,9 +92,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -111,14 +110,11 @@ namespace DAO
                     p.PhoneNumber = _dataReader["phone_number"].ToString();
 
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return p;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Patient> FindAllByProperty(String property, String value)
         {
             List<Patient> patientsList = null;
@@ -127,9 +123,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -152,14 +147,11 @@ namespace DAO
                         patientsList.Add(p);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return patientsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Patient> FindAll()
         {
             List<Patient> patientsList = null;
@@ -168,9 +160,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -193,11 +184,7 @@ namespace DAO
                         patientsList.Add(p);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return patientsList;
         }
     }

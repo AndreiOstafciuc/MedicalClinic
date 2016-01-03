@@ -11,6 +11,7 @@ namespace DAO
 {
     public class AdministratorService : DAO<Administrator>
     {
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Administrator> FindAll()
         {
             List<Administrator> administratorsList = null;
@@ -40,6 +41,7 @@ namespace DAO
             return administratorsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Administrator> FindAllByProperty(string property, string value)
         {
             List<Administrator> administratorsList = null;
@@ -69,6 +71,7 @@ namespace DAO
             return administratorsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Administrator FindById(int id)
         {
             Administrator a = null;
@@ -76,9 +79,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -90,14 +92,16 @@ namespace DAO
                     a.LastName = _dataReader["last_name"].ToString();
 
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return a;
         }
 
+        /// <summary>
+        /// inserts into database the obj
+        /// </summary>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Administrator obj)
         {
             _command.CommandType = CommandType.Text;
@@ -110,18 +114,17 @@ namespace DAO
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.LastName;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
 
             return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Administrator obj)
         {
             _command.CommandType = CommandType.Text;
@@ -134,14 +137,8 @@ namespace DAO
             _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.LastName;
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

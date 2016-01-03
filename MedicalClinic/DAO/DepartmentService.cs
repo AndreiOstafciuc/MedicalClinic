@@ -11,6 +11,8 @@ namespace DAO
 {
     public class DepartmentService : DAO<Department>
     {
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Department> FindAll()
         {
             List<Department> deptsList = null;
@@ -19,9 +21,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -39,14 +40,11 @@ namespace DAO
                         deptsList.Add(d);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return deptsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Department> FindAllByProperty(string property, string value)
         {
             List<Department> deptsList = null;
@@ -55,9 +53,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -75,14 +72,11 @@ namespace DAO
                         deptsList.Add(d);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return deptsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Department FindById(int id)
         {
             Department d = null;
@@ -90,9 +84,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -104,14 +97,15 @@ namespace DAO
                     d.Description = _dataReader["description"].ToString();
                     d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
                 }
-            }
-            catch (Exception)
-            {
-
-            }
             return d;
         }
 
+        /// <summary>
+        /// inserts into database the obj
+        /// </summary>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Department obj)
         {
             _command.CommandType = CommandType.Text;
@@ -127,19 +121,16 @@ namespace DAO
             _command.Parameters.Add(":description", OracleDbType.Varchar2).Value = obj.Description;
             _command.Parameters.Add(":floor", OracleDbType.Int32).Value = obj.Floor;
            
-
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator
-            }
+             _command.ExecuteNonQuery();
 
             return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Department obj)
         {
             _command.CommandType = CommandType.Text;
@@ -154,14 +145,8 @@ namespace DAO
             _command.Parameters.Add(":description", OracleDbType.Varchar2).Value = obj.Description;
             _command.Parameters.Add(":floor", OracleDbType.Int32).Value = obj.Floor;
             _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

@@ -11,6 +11,7 @@ namespace DAO
 {
     public class ResultsService : DAO<Results>
     {
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Results> FindAll()
         {
             List<Results> resultsList = null;
@@ -19,9 +20,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -41,14 +41,11 @@ namespace DAO
                         resultsList.Add(r);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return resultsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Results> FindAllByProperty(string property, string value)
         {
             List<Results> resultsList = null;
@@ -57,9 +54,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -79,14 +75,11 @@ namespace DAO
                         resultsList.Add(r);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return resultsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Results FindById(int id)
         {
             Results r = null;
@@ -94,9 +87,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -110,14 +102,16 @@ namespace DAO
                     r.Diagnosis = _dataReader["diagnosis"].ToString();
                     r.Medication = _dataReader["medication"].ToString();
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return r;
         }
 
+        /// <summary>
+        /// inserts into database the obj
+        /// </summary>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Results obj)
         {
             string sql = "insert into result values (" + obj.Id + ",'" + obj.IdAppointment + "','" + obj.ResultDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "','" + obj.Diagnosis + "','" + obj.Medication + "')";
@@ -138,20 +132,17 @@ namespace DAO
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
             _command.Parameters.Add(":diagnosis", OracleDbType.Varchar2).Value = obj.Diagnosis;
             _command.Parameters.Add(":medication", OracleDbType.Varchar2).Value = obj.Medication;
-          
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                // poate aparea contraint violation
-                // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator
-            }
 
+            _command.ExecuteNonQuery();
+            
             return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Results obj)
         {
             _command.CommandType = CommandType.Text;
@@ -170,14 +161,8 @@ namespace DAO
             _command.Parameters.Add(":diagnosis", OracleDbType.Varchar2).Value = obj.Diagnosis;
             _command.Parameters.Add(":medication", OracleDbType.Varchar2).Value = obj.Medication;
             _command.Parameters.Add(":id_result", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

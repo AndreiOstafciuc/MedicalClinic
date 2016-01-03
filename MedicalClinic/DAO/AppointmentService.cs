@@ -11,6 +11,7 @@ namespace DAO
 {
     public class AppointmentService : DAO<Appointment>
     {
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Appointment> FindAll()
         {
             List<Appointment> appointmentsList = null;
@@ -19,9 +20,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -41,14 +41,11 @@ namespace DAO
                         appointmentsList.Add(a);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return appointmentsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override List<Appointment> FindAllByProperty(string property, string value)
         {
             List<Appointment> appointmentsList = null;
@@ -57,9 +54,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
 
                 if (_dataReader.HasRows)
@@ -79,14 +75,11 @@ namespace DAO
                         appointmentsList.Add(a);
                     }
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return appointmentsList;
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public override Appointment FindById(int id)
         {
             Appointment a = null;
@@ -94,9 +87,8 @@ namespace DAO
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
-            try
-            {
-                _dataReader = _command.ExecuteReader();
+
+            _dataReader = _command.ExecuteReader();
 
                 _dataReader.Read();
 
@@ -110,14 +102,16 @@ namespace DAO
                     a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
                     a.Symptoms = _dataReader["symptoms"].ToString();
                 }
-            }
-            catch (Exception)
-            {
 
-            }
             return a;
         }
 
+        /// <summary>
+        /// inserts into database the obj
+        /// </summary>
+        /// <param name="obj">object to insert into database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <returns>id of the saved entity</returns>
         public override int Save(Appointment obj)
         {
             string sql = "insert into appointment values (" + obj.Id + ",'" + obj.IdDoctor + "','" + obj.IdPacient + "','" + obj.Time + "','" + obj.AppointmentDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "')";
@@ -138,20 +132,17 @@ namespace DAO
             _command.Parameters.Add(":time", OracleDbType.Int32).Value = obj.Time;
             _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.AppointmentDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
-           
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                // poate aparea contraint violation
-                // poate facem un logger ceva + un sistem de afisare a errorilor pentru utilizator
-            }
 
+            _command.ExecuteNonQuery();
+            
             return obj.Id;
         }
 
+        /// <summary>
+        /// updates the obj from database
+        /// </summary>
+        /// <param name="obj">object to update from database</param>
+        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
         public override void Update(Appointment obj)
         {
             _command.CommandType = CommandType.Text;
@@ -170,14 +161,8 @@ namespace DAO
             _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.AppointmentDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
             _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.Id;
-            try
-            {
-                _command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
 
-            }
+            _command.ExecuteNonQuery();
         }
     }
 }

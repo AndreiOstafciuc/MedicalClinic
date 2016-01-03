@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
+﻿using Entity;
 using Oracle.ManagedDataAccess.Client;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace DAO
 {

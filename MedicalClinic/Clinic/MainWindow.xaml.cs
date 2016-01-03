@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using DAO;
-using Entity;
+﻿using DAO;
 using DBConnNamespace;
+using Entity;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Clinic
 {

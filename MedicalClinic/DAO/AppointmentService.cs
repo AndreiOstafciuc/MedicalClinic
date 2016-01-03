@@ -117,8 +117,7 @@ namespace DAO
             string sql = "insert into appointment values (" + obj.Id + ",'" + obj.IdDoctor + "','" + obj.IdPacient + "','" + obj.Time + "','" + obj.AppointmentDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "')";
 
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into appointment values ( " +
-                               ":id_appointment, "+
+            _command.CommandText = "insert into appointment(id_doctor,id_patient,time,scheduled_date,symptoms) values ( " +
                               ":id_doctor, " +
                               ":id_patient, " +
                               ":time, " +
@@ -126,7 +125,6 @@ namespace DAO
                                ":symptoms )";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.IdDoctor;
             _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = obj.IdPacient;
             _command.Parameters.Add(":time", OracleDbType.Int32).Value = obj.Time;

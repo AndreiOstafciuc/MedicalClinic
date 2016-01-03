@@ -14,9 +14,8 @@ namespace Entity
         int _floor;
 
         public Department() { }
-        public Department(int id, String name, String description, int floor)
+        public Department(String name, String description, int floor)
         {
-            this._id = id;
             this._name = name;
             this._description = description;
             this._floor = floor;

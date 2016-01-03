@@ -109,14 +109,12 @@ namespace DAO
         public override int Save(Department obj)
         {
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into department values ( " +
-                              ":id_dept, " +
+            _command.CommandText = "insert into department (name,description,floor) values ( " +
                               ":name, " +
                               ":description, " +
                               ":floor)";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":name", OracleDbType.Varchar2).Value = obj.Name;
             _command.Parameters.Add(":description", OracleDbType.Varchar2).Value = obj.Description;
             _command.Parameters.Add(":floor", OracleDbType.Int32).Value = obj.Floor;

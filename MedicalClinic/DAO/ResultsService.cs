@@ -114,11 +114,8 @@ namespace DAO
         /// <returns>id of the saved entity</returns>
         public override int Save(Results obj)
         {
-            string sql = "insert into result values (" + obj.Id + ",'" + obj.IdAppointment + "','" + obj.ResultDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "','" + obj.Diagnosis + "','" + obj.Medication + "')";
-
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into result values (" +
-                              ":id_result, " +
+            _command.CommandText = "insert into result(id_appointment,result_date,symptoms,diagnosis,medication) values (" +
                               ":id_appointment, " +
                               ":result_date, " +
                               ":symptoms, " +
@@ -126,7 +123,6 @@ namespace DAO
                               ":medication )";
             
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_result", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.IdAppointment;
             _command.Parameters.Add(":result_date", OracleDbType.Date).Value = obj.ResultDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;

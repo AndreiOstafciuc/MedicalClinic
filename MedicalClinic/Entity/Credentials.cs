@@ -14,9 +14,8 @@ namespace Entity
         int _type;
 
         public Credentials() { }
-        public Credentials(  int id,String email,String password,int type)
+        public Credentials(String email,String password,int type)
         {
-            this._id = id;
             this._email = email;
             this._password = password;
             this._type = type;

@@ -111,18 +111,14 @@ namespace DAO
         /// <returns>id of the saved entity</returns>
         public override int Save(Schedule obj)
         {
-            string sql = "insert into schedule values (" + obj.Id + ",'" + obj.Day + "','" + obj.StartHour + "','" + obj.EndHour + "','" + obj.Id_doctor + "')";
-
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "insert into schedule values (" +
-                              ":id_schedule, "+
+            _command.CommandText = "insert into schedule (day,start_hour,end_hour,id_doctor) values (" +
                               ":day, " +
                               ":start_hour, " +
                               ":end_hour, " +
                               ":id_doctor )";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
             _command.Parameters.Add(":day", OracleDbType.Int32).Value = obj.Day;
             _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;

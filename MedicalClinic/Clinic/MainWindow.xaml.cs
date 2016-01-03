@@ -52,16 +52,16 @@ namespace Clinic
 
             try
             {
-                administratorService.Save(new Administrator(credentialsService.Save(new Credentials(1, "admin@s.com", "password", 2)), "Admin test", "last name admin"));
+                administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@s.com", "password", 2)), "Admin test", "last name admin"));
 
-                patientService.Save(new Patient(credentialsService.Save(new Credentials(5, "patient@s.com", "password", 1)), "Patient test", "first name test", "2301230232", "address test", new System.DateTime(), "genetic diseases", "0785858585"));
+                patientService.Save(new Patient(credentialsService.Save(new Credentials("patient@s.com", "password", 1)), "Patient test", "first name test", "2301230232", "address test", new System.DateTime(), "genetic diseases", "0785858585"));
 
 
-                departmentService.Save(new Department(1, "Cardiologie", "Departamentul de cardiologie", 1));
-                doctorService.Save(new Doctor(credentialsService.Save(new Credentials(2, "doctor@s.com", "password", 2)), "Doctor test", "test d", 1, "0785858585", 1));
-                appointmentService.Save(new Appointment(5, patientService.FindAll()[0].Id, doctorService.FindAll()[0].Id, 12, new System.DateTime(), "symptoms"));
-                resultsService.Save(new Results(5, 5, new System.DateTime(), "simptome test", "diagnostic test", "medicatie test"));
-                scheduleService.Save(new Schedule(5, doctorService.FindAll()[0].Id, 2, 10, 18));
+                departmentService.Save(new Department("Cardiologie", "Departamentul de cardiologie", 1));
+                doctorService.Save(new Doctor(credentialsService.Save(new Credentials("doctor@s.com", "password", 2)), "Doctor test", "test d", departmentService.FindAll()[0].Id, "0785858585", 1));
+                appointmentService.Save(new Appointment(patientService.FindAll()[0].Id, doctorService.FindAll()[0].Id, 12, new System.DateTime(), "symptoms"));
+                resultsService.Save(new Results(appointmentService.FindAll()[0].Id, new System.DateTime(), "simptome test", "diagnostic test", "medicatie test"));
+                scheduleService.Save(new Schedule(doctorService.FindAll()[0].Id, 2, 10, 18));
 
 
                 // FindAllByProperty

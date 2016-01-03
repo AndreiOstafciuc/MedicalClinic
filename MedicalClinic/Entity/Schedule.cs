@@ -15,9 +15,8 @@ namespace Entity
         int _endHour;
 
         public Schedule() { }
-        public Schedule(int id, int id_doctor,int day,int startHour, int endHour)
+        public Schedule(int id_doctor,int day,int startHour, int endHour)
         {
-            this._id = id;
             this._idDoctor = id_doctor;
             this._day = day;
             this._startHour = startHour;

@@ -16,13 +16,13 @@ namespace Entity
         String _symptoms;
 
         public Appointment() { }
-        public Appointment(int id, int idPacient,int idDoctor,int time, DateTime appointmentDate){
+        public Appointment(int id, int idPacient,int idDoctor,int time, DateTime appointmentDate,String symtoms){
             this._id = id;
             this._idPacient = idPacient;
             this._idDoctor=idDoctor;
             this._time = time;
             this._appointmentDate=appointmentDate;
-
+            this._symptoms = symtoms;
         }
 
         public DateTime AppointmentDate

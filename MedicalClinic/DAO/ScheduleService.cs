@@ -82,8 +82,20 @@ namespace DAO
         {
             string sql = "insert into schedule values (" + obj.Id + ",'" + obj.Day + "','" + obj.StartHour + "','" + obj.EndHour + "','" + obj.Id_doctor + "')";
 
-            _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
+            _command.CommandText = "insert into schedule values (" +
+                              ":id_schedule, "+
+                              ":day, " +
+                              ":start_hour, " +
+                              ":end_hour, " +
+                              ":id_doctor )";
+            _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
+            _command.Parameters.Add(":day", OracleDbType.Int32).Value = obj.Day;
+            _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
+            _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
+            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
+          
+
 
             try
             {

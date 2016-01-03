@@ -79,10 +79,16 @@ namespace DAO
 
         public override void Save(Credentials obj)
         {
-            string sql = "insert into credentials values (" + obj.Id + ",'" + obj.Email + "','" + obj.Password + "','" + obj.Type + "')";
-
-            _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
+            _command.CommandText = "insert into credentials values ( " +
+                              ":id, " +
+                              ":email, " +
+                              ":password, " +
+                              ":type )";
+            _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
+            _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.Email;
+            _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.Password;
+            _command.Parameters.Add(":type", OracleDbType.Int32).Value = obj.Type;
             try
             {
                 _command.ExecuteNonQuery();

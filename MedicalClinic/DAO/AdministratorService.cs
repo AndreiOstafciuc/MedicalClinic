@@ -77,10 +77,14 @@ namespace DAO
 
         public override void Save(Administrator obj)
         {
-            string sql = "insert into admin values (" + obj.Id + ",'" + obj.FirstName + "','" + obj.LastName + "')";
-
-            _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
+            _command.CommandText = "insert into admin values (" +
+                              ":id, "+
+                              ":first_name, " +
+                              ":last_name )";
+            _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
+            _command.Parameters.Add(":email", OracleDbType.Varchar2).Value = obj.FirstName;
+            _command.Parameters.Add(":password", OracleDbType.Varchar2).Value = obj.LastName;
             try
             {
                 _command.ExecuteNonQuery();

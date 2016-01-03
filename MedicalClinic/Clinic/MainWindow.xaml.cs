@@ -50,12 +50,12 @@ namespace Clinic
 
             //Insert as long as no constrait is violated
             
-            credentialsService.Save(new Credentials(5, "serviceTest@s.com", "password", 2));
+            credentialsService.Save(new Credentials(6, "serviceTestt@s.com", "password", 2));
             administratorService.Save(new Administrator(5, "Admin test", "last name admin"));
             patientService.Save(new Patient(5, "Patient test", "first name test", "2301230232", "address test", new System.DateTime(), "genetic diseases", "0785858585"));
             departmentService.Save(new Department(5, "Cardiologie", "Departamentul de cardiologie", 1));
             doctorService.Save(new Doctor(5, "Doctor test", "test d", 5, "0785858585", 1));
-            appointmentService.Save(new Appointment(5, 5, 5, 12, new System.DateTime()));
+            appointmentService.Save(new Appointment(5, 5, 5, 12, new System.DateTime(),"symptoms"));
             resultsService.Save(new Results(5, 5, new System.DateTime(), "simptome test", "diagnostic test", "medicatie test"));
             scheduleService.Save(new Schedule(5, 5, 2, 10, 18));
             
@@ -97,7 +97,7 @@ namespace Clinic
 
             Schedule schedule = scheduleService.FindById(5);
             schedule.Day = 4;
-            scheduleService.Update(schedule);
+            scheduleService.Update(schedule);   
 
 
             Patient patient = patientService.FindById(5);

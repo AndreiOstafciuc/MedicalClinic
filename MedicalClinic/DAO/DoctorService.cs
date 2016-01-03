@@ -80,10 +80,21 @@ namespace DAO
 
         public override void Save(Doctor obj)
         {
-            string sql = "insert into doctor values (" + obj.Id + ",'" + obj.FirstName + "','" + obj.LastName + "','" + obj.IdDept + "','" + obj.PhoneNumber + "','" + obj.Status + "')";
-
-            _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
+            _command.CommandText = "insert into doctor values ( " +
+                              ":id_doctor, " +
+                              ":first_name, " +
+                              ":last_name, " +
+                              ":id_dept, " +
+                              ":phone_number, " +
+                              ":status)";
+            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id;
+            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
+            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
+            _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.IdDept;
+            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = obj.PhoneNumber;
+            _command.Parameters.Add(":status", OracleDbType.Decimal).Value = obj.Status;
+            
 
             try
             {
@@ -106,7 +117,7 @@ namespace DAO
                               "id_dept = :id_dept, " +
                               "phone_number = :phone_number, " +
                               "status = :status " +
-                              "WHERE id_doctor = :id";
+                              "WHERE id_doctor = :id_doctor";
             _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
             _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
             _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.IdDept;

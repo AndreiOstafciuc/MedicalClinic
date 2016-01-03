@@ -121,7 +121,7 @@ namespace DAO
            
              _command.ExecuteNonQuery();
 
-            return obj.Id;
+            return FindLastInserted().Id ;
         }
 
         /// <summary>
@@ -145,6 +145,30 @@ namespace DAO
             _command.Parameters.Add(":id_dept", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Department FindLastInserted()
+        {
+            Department d = null;
+            string sql = "select * from department where id_dept = (select max(id_dept) from department)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                d = new Department();
+                d.Id = Convert.ToInt32(_dataReader["id_dept"]);
+                d.Name = _dataReader["name"].ToString();
+                d.Description = _dataReader["description"].ToString();
+                d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+            }
+            return d;
         }
     }
 }

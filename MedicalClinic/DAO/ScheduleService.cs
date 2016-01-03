@@ -126,7 +126,7 @@ namespace DAO
           
             _command.ExecuteNonQuery();
 
-            return obj.Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -152,6 +152,31 @@ namespace DAO
             _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        public Schedule FindLastInserted()
+        {
+            Schedule s = null;
+            string sql = "select * from schedule where id_schedule = (select max(id_schedule) from schedule)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                s = new Schedule();
+                s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
+                s.Day = Convert.ToInt32(_dataReader["day"]);
+                s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
+                s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
+                s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+            }
+
+            return s;
         }
     }
 }

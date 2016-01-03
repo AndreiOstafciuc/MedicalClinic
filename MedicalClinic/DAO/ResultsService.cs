@@ -131,7 +131,7 @@ namespace DAO
 
             _command.ExecuteNonQuery();
             
-            return obj.Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -160,5 +160,33 @@ namespace DAO
 
             _command.ExecuteNonQuery();
         }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Results FindLastInserted()
+        {
+            Results r = null;
+            string sql = "select * from result where id_result = (select max(id_result) from result)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                r = new Results();
+                r.Id = Convert.ToInt32(_dataReader["id_result"]);
+                r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
+                r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
+                r.Symptoms = _dataReader["symptoms"].ToString();
+                r.Diagnosis = _dataReader["diagnosis"].ToString();
+                r.Medication = _dataReader["medication"].ToString();
+            }
+
+            return r;
+        }
+
     }
 }

@@ -121,7 +121,7 @@ namespace DAO
 
             _command.ExecuteNonQuery();
 
-            return FindAllByProperty("email", obj.Email)[0].Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -146,6 +146,31 @@ namespace DAO
             _command.Parameters.Add(":id", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Credentials FindLastInserted()
+        {
+            Credentials c = null;
+            string sql = "select * from credentials where id = (select max(id) from credentials)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                c = new Credentials();
+                c.Id = Convert.ToInt32(_dataReader["id"]);
+                c.Email = _dataReader["email"].ToString();
+                c.Password = _dataReader["password"].ToString();
+                c.Type = Convert.ToInt32(_dataReader["type"]);
+
+            }
+            return c;
         }
     }
 }

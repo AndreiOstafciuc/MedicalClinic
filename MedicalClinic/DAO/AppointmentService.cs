@@ -133,7 +133,7 @@ namespace DAO
 
             _command.ExecuteNonQuery();
             
-            return obj.Id;
+            return FindLastInserted().Id;
         }
 
         /// <summary>
@@ -161,6 +161,33 @@ namespace DAO
             _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
+        }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Appointment FindLastInserted()
+        {
+            Appointment a = null;
+            string sql = "select * from appointment where id_appointment = (select max(id_appointment) from appointment)";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+            _dataReader.Read();
+
+            if (_dataReader.HasRows)
+            {
+                a = new Appointment();
+                a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
+                a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
+                a.Time = Convert.ToInt32(_dataReader["time"]);
+                a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
+                a.Symptoms = _dataReader["symptoms"].ToString();
+            }
+
+            return a;
         }
     }
 }

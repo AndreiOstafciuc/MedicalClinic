@@ -19,6 +19,5 @@
                 <DropShadowEffect BlurRadius="23" Color="#FFF0E7E7"/>
             </Label.Effect>
         </Label>
-
     </Grid>
 </base:CustomUserControl>

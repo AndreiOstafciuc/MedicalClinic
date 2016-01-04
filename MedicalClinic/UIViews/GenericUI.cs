@@ -28,10 +28,11 @@ namespace UIViews
             _content = getMainContent();
 
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
-           
+            _header.OnWindowLayoutChange+= new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
             this.RowDefinitions.Add(new RowDefinition());
             this.RowDefinitions.Add(new RowDefinition());
             this.RowDefinitions.Add(new RowDefinition());
+            
             this.RowDefinitions[0].Height = new GridLength(50);
             this.RowDefinitions[1].Height = new GridLength(1, GridUnitType.Star);
             this.RowDefinitions[2].Height = new GridLength(30);

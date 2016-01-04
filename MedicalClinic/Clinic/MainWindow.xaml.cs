@@ -16,7 +16,7 @@ namespace Clinic
         {
             InitializeComponent();
             mainUI = new MainUI();
-            mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
+           mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
             pageContainer.Children.Add(mainUI);
         }
@@ -26,13 +26,16 @@ namespace Clinic
             {
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
+                    
+
+
                     break;
                 default:
                     mainUI = new MainUI();
                     break;
                     
             }
-
+            mainUI.OnMainWindowLayoutChange += new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
             pageContainer.Children.RemoveAt(0);
             pageContainer.Children.Add(mainUI);

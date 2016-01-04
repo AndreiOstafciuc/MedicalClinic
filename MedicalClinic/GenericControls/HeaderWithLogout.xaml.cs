@@ -1,5 +1,4 @@
-﻿using GenericControls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,28 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UIViews
+namespace GenericControls
 {
     /// <summary>
-    /// Interaction logic for AdminUI.xaml
+    /// Interaction logic for HeaderWithLogout.xaml
     /// </summary>
-    public partial class AdminUI : GenericUI
+    public partial class HeaderWithLogout : CustomUserControl
     {
-        public AdminUI():base()
+        public HeaderWithLogout()
         {
             InitializeComponent();
         }
-        public override CustomUserControl getHeader()
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            return new HeaderWithLogout();
-        }
-        public override CustomUserControl getFooter()
-        {
-            return new Footer();
-        }
-        public override CustomUserControl getMainContent()
-        {
-            return new AdminPageContent();
+            RaiseChangeWindowLayoutEvent(5);
         }
     }
 }

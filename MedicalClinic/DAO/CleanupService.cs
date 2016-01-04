@@ -34,6 +34,7 @@ namespace DAO
             throw new NotImplementedException();
         }
 
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
         public void CleanDatabase()
         {
             _command.CommandType = CommandType.StoredProcedure;

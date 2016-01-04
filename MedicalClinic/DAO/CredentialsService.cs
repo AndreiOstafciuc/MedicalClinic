@@ -169,5 +169,30 @@ namespace DAO
             }
             return c;
         }
+
+        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        public Credentials validateCredentials(String email,String password)
+        {
+            Credentials credentials = null;
+            _command.CommandType = CommandType.StoredProcedure;
+            _command.CommandText = "check_user";
+            _command.Parameters.Clear();
+            _command.Parameters.Add("v_email", OracleDbType.Varchar2,ParameterDirection.Input).Value=email;
+            _command.Parameters.Add("v_password", OracleDbType.Varchar2, ParameterDirection.Input).Value = password;
+            _command.Parameters.Add("v_id", OracleDbType.Int32, ParameterDirection.Output);
+            _command.Parameters.Add("v_type", OracleDbType.Int32, ParameterDirection.Output);
+            _command.ExecuteNonQuery();
+
+            int v_id = Convert.ToInt32(_command.Parameters["v_id"].Value.ToString());
+            int v_type = Convert.ToInt32(_command.Parameters["v_type"].Value.ToString());
+
+            if (v_id != 0)
+            {
+                credentials = new Credentials(email,password,v_type);
+                credentials.Id = v_id;
+            }
+
+            return credentials;
+        }
     }
 }

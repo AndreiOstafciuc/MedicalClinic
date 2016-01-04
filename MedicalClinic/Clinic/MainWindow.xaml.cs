@@ -10,7 +10,7 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        
         GenericUI mainUI;
         public MainWindow()
         {
@@ -27,10 +27,15 @@ namespace Clinic
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
                     break;
+                case Utils.UserTypes.ADMIN:
+                    mainUI = new AdminUI();
+                    break;
+                case Utils.UserTypes.USER:
+                    mainUI = new PatientUI();
+                    break;
                 default:
                     mainUI = new MainUI();
                     break;
-                    
             }
 
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;

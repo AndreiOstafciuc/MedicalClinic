@@ -2,3 +2,8 @@ D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.dll
 D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.pdb
 D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.dll
 D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.pdb
+D:\non-Cloud\Git\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.dll
+D:\non-Cloud\Git\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.pdb
+D:\non-Cloud\Git\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
+D:\non-Cloud\Git\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.dll
+D:\non-Cloud\Git\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.pdb

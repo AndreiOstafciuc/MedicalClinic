@@ -8,7 +8,7 @@ namespace DAO
 {
     public class AppointmentService : DAO<Appointment>
     {
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Appointment> FindAll()
         {
             List<Appointment> appointmentsList = null;
@@ -42,7 +42,7 @@ namespace DAO
             return appointmentsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Appointment> FindAllByProperty(string property, string value)
         {
             List<Appointment> appointmentsList = null;
@@ -76,7 +76,7 @@ namespace DAO
             return appointmentsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Appointment FindById(int id)
         {
             Appointment a = null;
@@ -107,7 +107,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Appointment obj)
         {
@@ -137,7 +137,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Appointment obj)
         {
             _command.CommandType = CommandType.Text;
@@ -160,7 +160,7 @@ namespace DAO
             _command.ExecuteNonQuery();
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public Appointment FindLastInserted()
         {
             Appointment a = null;

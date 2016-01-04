@@ -61,14 +61,17 @@ namespace GenericControls
             // ----------- testing phase
 
             //Insert as long as no constrait is violated
+
             try
             {
-                cleanupService.CleanDatabase();
+                Credentials c = credentialsService.validateCredentials("admin","pass");
+               // cleanupService.CleanDatabase();
             }
             catch (System.Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
+            /*
             try
             {
                 int g = administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@s.com", "password", 2)), "Admin test", "last name admin"));
@@ -136,13 +139,13 @@ namespace GenericControls
                 doctor.PhoneNumber = "5555555555";
                 doctorService.Update(doctor);
             }
+           
             catch (System.Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
+             */
             textBox.Text = "Success !";
-
-
         }
     }
 }

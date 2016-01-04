@@ -8,7 +8,7 @@ namespace DAO
 {
     public class CredentialsService : DAO<Credentials>
     {
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Credentials> FindAll()
         {
             List<Credentials> credentialsList = null;
@@ -40,7 +40,7 @@ namespace DAO
             return credentialsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Credentials> FindAllByProperty(string property, string value)
         {
             List<Credentials> credentialsList = null;
@@ -72,7 +72,7 @@ namespace DAO
             return credentialsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Credentials FindById(int id)
         {
             Credentials c = null;
@@ -101,7 +101,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Credentials obj)
         {
@@ -125,7 +125,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Credentials obj)
         {
 
@@ -145,7 +145,7 @@ namespace DAO
             _command.ExecuteNonQuery();
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public Credentials FindLastInserted()
         {
             Credentials c = null;
@@ -168,6 +168,31 @@ namespace DAO
 
             }
             return c;
+        }
+
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
+        public Credentials validateCredentials(String email,String password)
+        {
+            Credentials credentials = null;
+            _command.CommandType = CommandType.StoredProcedure;
+            _command.CommandText = "check_user";
+            _command.Parameters.Clear();
+            _command.Parameters.Add("v_email", OracleDbType.Varchar2,ParameterDirection.Input).Value=email;
+            _command.Parameters.Add("v_password", OracleDbType.Varchar2, ParameterDirection.Input).Value = password;
+            _command.Parameters.Add("v_id", OracleDbType.Int32, ParameterDirection.Output);
+            _command.Parameters.Add("v_type", OracleDbType.Int32, ParameterDirection.Output);
+            _command.ExecuteNonQuery();
+
+            int v_id = Convert.ToInt32(_command.Parameters["v_id"].Value.ToString());
+            int v_type = Convert.ToInt32(_command.Parameters["v_type"].Value.ToString());
+
+            if (v_id != 0)
+            {
+                credentials = new Credentials(email,password,v_type);
+                credentials.Id = v_id;
+            }
+
+            return credentials;
         }
     }
 }

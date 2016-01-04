@@ -48,10 +48,17 @@
       <DependentUpon>DoctorUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="GenericUI.cs" />
+    <Compile Include="MainUI.xaml.cs">
+      <DependentUpon>MainUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="DoctorUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

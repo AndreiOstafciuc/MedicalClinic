@@ -7,8 +7,33 @@
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Button x:Name="buttonNextPage" Content="Next page" HorizontalAlignment="Left" Margin="94,134,0,0" VerticalAlignment="Top" Width="75" Click="buttonNextPage_Click"/>
+    <Grid Background="Beige">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" Content="Email:" FontSize="14.667" FontWeight="Bold"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Password:" FontSize="14.667" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxUserEmail" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" />
+        <PasswordBox x:Name="passwordBoxUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="3,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="195" MinHeight="30"/>
+        <Button x:Name="buttonLogin" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" 
+            MinWidth="80" Margin="3" Content="Login" Click="buttonLogin_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
+                    <GradientStop Color="#FFC79292" Offset="1"/>
+                    <GradientStop Color="#FFC79292" Offset="0.981"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </base:CustomUserControl>

@@ -21,7 +21,7 @@ namespace GenericControls
     /// <summary>
     /// Interaction logic for MainContent.xaml
     /// </summary>
-    public partial class MainContent : UserControl
+    public partial class MainContent : CustomUserControl
     {
         AdministratorService administratorService;
         AppointmentService appointmentService;
@@ -36,7 +36,7 @@ namespace GenericControls
             InitializeComponent();
             try
             {
-                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+                DBConnection.CreateConnection("localhost", "ORCL", "HR", "roxana");
             }
             catch (System.Exception e)
             {

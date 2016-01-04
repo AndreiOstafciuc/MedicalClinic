@@ -26,9 +26,11 @@ namespace GenericControls
             InitializeComponent();
         }
 
-        private void buttonNextPage_Click(object sender, RoutedEventArgs e)
+        private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            RaiseChangePageContentEvent(new MainContent());
+            //verify user
+            //if exists change layout according to his role: doctor, admin, user
+            RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR);
         }
     }
 }

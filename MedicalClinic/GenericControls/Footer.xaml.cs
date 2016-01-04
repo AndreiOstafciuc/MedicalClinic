@@ -18,7 +18,7 @@ namespace GenericControls
     /// <summary>
     /// Interaction logic for Footer.xaml
     /// </summary>
-    public partial class Footer : UserControl
+    public partial class Footer : CustomUserControl
     {
         public Footer()
         {

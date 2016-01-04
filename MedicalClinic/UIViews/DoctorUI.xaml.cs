@@ -1,5 +1,6 @@
 ﻿using DAO;
 using DBConnNamespace;
+using GenericControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +29,17 @@ namespace UIViews
             InitializeComponent();
             
         }
-        public override UserControl getHeader()
+        public override CustomUserControl getHeader()
         {
-            return new GenericControls.Header();
+            return new Header();
         }
-        public override UserControl getFooter()
+        public override CustomUserControl getFooter()
         {
-            return new GenericControls.Footer();
+            return new Footer();
         }
-        public override UserControl getMainContent()
+        public override CustomUserControl getMainContent()
         {
-            return new GenericControls.MainContent();
+            return new MainContent();
         }
     }
 }

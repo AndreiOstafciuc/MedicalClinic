@@ -18,7 +18,7 @@ namespace GenericControls
     /// <summary>
     /// Interaction logic for Header.xaml
     /// </summary>
-    public partial class Header : UserControl
+    public partial class Header : CustomUserControl
     {
         public Header()
         {

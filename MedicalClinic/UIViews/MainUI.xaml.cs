@@ -38,7 +38,7 @@ namespace UIViews
 
         public override CustomUserControl getMainContent()
         {
-            return new GenericControls.LoginContent();
+            return new GenericControls.HomePageContent();
         }
         
 

@@ -1,9 +1,7 @@
 ﻿using System.Windows;
-using DAO;
-using Entity;
-using DBConnNamespace;
 using System.Collections.Generic;
 using UIViews;
+using System;
 
 namespace Clinic
 {
@@ -12,16 +10,36 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        
 
+        GenericUI mainUI;
         public MainWindow()
         {
             InitializeComponent();
-            var doctorUI = new DoctorUI();
-            doctorUI.VerticalAlignment = VerticalAlignment.Stretch;
-            pageContainer.Children.Add(doctorUI);
-            
+            mainUI = new MainUI();
+            mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
+            mainUI.VerticalAlignment = VerticalAlignment.Stretch;
+            pageContainer.Children.Add(mainUI);
         }
-  
+        private void ChangeWindowLayout(object sender,GenericControls.WindowLayoutEventArgs e)
+        {
+            switch(e.ArgWindowLayout)
+            {
+                case Utils.UserTypes.DOCTOR:
+                    mainUI = new DoctorUI();
+                    break;
+                default:
+                    mainUI = new MainUI();
+                    break;
+                    
+            }
+
+            mainUI.VerticalAlignment = VerticalAlignment.Stretch;
+            pageContainer.Children.RemoveAt(0);
+            pageContainer.Children.Add(mainUI);
+
+
+        }
+
+
     }
 }

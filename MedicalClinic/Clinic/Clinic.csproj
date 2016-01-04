@@ -103,18 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{8434a1e5-2890-4db1-bd1b-efc09860a27b}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DBConn\DBConnection.csproj">
-      <Project>{1c9084c7-f7fc-47b5-a911-2c71034183c9}</Project>
-      <Name>DBConnection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entity\Entity.csproj">
-      <Project>{20ac0fc7-d569-4aae-a2ea-cf852dafb016}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenericControls\GenericControls.csproj">
       <Project>{0983fda6-507f-41b1-810b-0a7a47aeff4e}</Project>
       <Name>GenericControls</Name>
@@ -122,6 +110,10 @@
     <ProjectReference Include="..\UIViews\UIViews.csproj">
       <Project>{82baeedf-c6b3-4b2d-951e-329fc075684f}</Project>
       <Name>UIViews</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{c3877cf1-dde0-44e2-a610-3016384e92c1}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

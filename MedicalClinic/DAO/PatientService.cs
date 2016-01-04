@@ -18,7 +18,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Patient obj)
         {
@@ -52,7 +52,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Patient pacient)
         {
             _command.CommandType = CommandType.Text;
@@ -79,7 +79,7 @@ namespace DAO
             _command.ExecuteNonQuery();
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Patient FindById(int id)
         {
             Patient p = null;
@@ -109,7 +109,7 @@ namespace DAO
             return p;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Patient> FindAllByProperty(String property, String value)
         {
             List<Patient> patientsList = null;
@@ -146,7 +146,7 @@ namespace DAO
             return patientsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Patient> FindAll()
         {
             List<Patient> patientsList = null;

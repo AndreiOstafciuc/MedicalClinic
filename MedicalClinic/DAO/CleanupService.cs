@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
-   public class CleanupService : DAO<Object>
+    public class CleanupService : DAO<Object>
     {
         public override List<object> FindAll()
         {
@@ -34,7 +31,7 @@ namespace DAO
             throw new NotImplementedException();
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="Oracle.ManagedDataAccess.Client.OracleException">no active connection by ExecuteReader()</exception>
         public void CleanDatabase()
         {
             _command.CommandType = CommandType.StoredProcedure;

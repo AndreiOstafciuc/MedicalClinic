@@ -17,5 +17,10 @@ namespace DBConnNamespace
             _conn.ConnectionString = "Data Source=" + ip + ":1521/" + serviceName + "; User Id=" + user + ";Password=" + password + ";";
             _conn.Open();            
         }
+        
+        public static void CloseConnection()
+        {
+            _conn.Close();
+        }
     }
 }

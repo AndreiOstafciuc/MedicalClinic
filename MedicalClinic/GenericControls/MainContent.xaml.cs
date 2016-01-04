@@ -31,12 +31,13 @@ namespace GenericControls
         PatientService patientService;
         CredentialsService credentialsService;
         DoctorService doctorService;
+        CleanupService cleanupService;
         public MainContent()
         {
             InitializeComponent();
             try
             {
-                DBConnection.CreateConnection("localhost", "ORCL", "HR", "roxana");
+                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
             }
             catch (System.Exception e)
             {
@@ -50,6 +51,7 @@ namespace GenericControls
             patientService = new PatientService();
             credentialsService = new CredentialsService();
             doctorService = new DoctorService();
+            cleanupService = new CleanupService();
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +61,14 @@ namespace GenericControls
             // ----------- testing phase
 
             //Insert as long as no constrait is violated
+            try
+            {
+                cleanupService.CleanDatabase();
+            }
+            catch (System.Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
             try
             {
                 int g = administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@s.com", "password", 2)), "Admin test", "last name admin"));
@@ -130,7 +140,6 @@ namespace GenericControls
             {
                 MessageBox.Show(ee.Message);
             }
-
             textBox.Text = "Success !";
 
 

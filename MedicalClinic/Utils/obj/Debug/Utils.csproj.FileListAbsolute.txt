@@ -1,0 +1,5 @@
+D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.dll
+D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.pdb
+D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
+D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.dll
+D:\Facultate\IP-PSBD\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.pdb

@@ -10,6 +10,16 @@ namespace DAOTests
     {
         CredentialsService credentialsService = null;
         AdministratorService administratorService = null;
+        PatientService patientService = null;
+        AppointmentService appointmentService = null;
+
+
+        private void OpenConnection()
+        {
+            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            credentialsService = new CredentialsService();
+            administratorService = new AdministratorService();
+        }
 
         /// <summary>
         /// Testing the "insert" into database function
@@ -22,11 +32,22 @@ namespace DAOTests
             Assert.IsInstanceOfType(administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@test.com", "testPassword", Utils.UserTypes.ADMIN)), "TestFirstName", "TestLastName")), typeof(int));
         }
 
-        private void OpenConnection()
+        /// <summary>
+        /// 
+        /// </summary>
+        [TestMethod()]
+        public void UpdatePatientTest()
         {
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
-            credentialsService = new CredentialsService();
-            administratorService = new AdministratorService();
+
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [TestMethod()]
+        public void FindAllTest()
+        {
+            
         }
     }
 }

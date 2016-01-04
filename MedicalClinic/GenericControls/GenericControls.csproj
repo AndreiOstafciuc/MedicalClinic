@@ -44,6 +44,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminCreateDoctorAccount.xaml.cs">
+      <DependentUpon>AdminCreateDoctorAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminPageContent.xaml.cs">
       <DependentUpon>AdminPageContent.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
     <Compile Include="WindowLayoutEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AdminCreateDoctorAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminPageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

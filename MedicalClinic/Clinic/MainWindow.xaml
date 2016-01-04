@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Main Window" Height="500" Width="525">
     <Grid x:Name="pageContainer">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="51*"/>
-            <ColumnDefinition Width="466*"/>
-        </Grid.ColumnDefinitions>
 
     </Grid>
 </Window>

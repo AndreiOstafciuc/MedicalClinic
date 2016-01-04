@@ -1,6 +1,4 @@
-﻿using DAO;
-using DBConnNamespace;
-using GenericControls;
+﻿using GenericControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +17,13 @@ using System.Windows.Shapes;
 namespace UIViews
 {
     /// <summary>
-    /// Interaction logic for DoctorUI.xaml
+    /// Interaction logic for PatientUI.xaml
     /// </summary>
-    public partial class DoctorUI : GenericUI
+    public partial class PatientUI : GenericUI
     {
-        
-        public DoctorUI():base()
+        public PatientUI():base()
         {
             InitializeComponent();
-            
         }
         public override CustomUserControl getHeader()
         {
@@ -39,7 +35,7 @@ namespace UIViews
         }
         public override CustomUserControl getMainContent()
         {
-            return new DoctorPageContent();
+            return new PatientPageContent();
         }
     }
 }

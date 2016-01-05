@@ -25,9 +25,19 @@ namespace GenericControls
             InitializeComponent();
         }
 
-        private void adminFormBtn_Click(object sender, RoutedEventArgs e)
+        private void doctorForm_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangePageContentEvent(new AdminCreateDoctorAccount());
+        }
+
+        private void deptForm_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangePageContentEvent(new CreateDepartmentForm());
+        }
+
+        private void adminForm_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangePageContentEvent(new CreateAdminForm());
         }
     }
 }

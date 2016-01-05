@@ -20,11 +20,12 @@
         <TextBox x:Name="firstnameTextBox" HorizontalAlignment="Left" Height="22" Margin="116,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="lastnameTextBox" HorizontalAlignment="Left" Height="22" Margin="116,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="phonenumberTextBox" HorizontalAlignment="Left" Height="22" Margin="116,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="departmentComboBox" HorizontalAlignment="Left" Margin="116,203,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="departmentComboBox" HorizontalAlignment="Left" Margin="116,203,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
         <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Height="22" Margin="116,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="statusComoBox" HorizontalAlignment="Left" Margin="116,234,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="2"/>
+        <ComboBox x:Name="statusComoBox" HorizontalAlignment="Left" Margin="116,234,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="3"/>
         <Button x:Name="submitBtn" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="160,270,0,0" Click="submitBtn_Click"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="116,84,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <Button x:Name="button" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="19" Click="button_Click"/>
 
     </Grid>
 </base:CustomUserControl>

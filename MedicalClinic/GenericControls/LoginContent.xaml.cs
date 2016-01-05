@@ -59,6 +59,25 @@ namespace GenericControls
 
         private void hideErrorLabel(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Enter)
+            {
+                Credentials c = credentialService.validateCredentials(textBoxUserEmail.Text, Utils.Encrypter.getMD5(passwordBoxUserPassword.Password));
+
+                //if exists change layout according to his role: doctor, admin, user
+                if (c != null)
+                {
+                    switch (c.Type)
+                    {
+                        case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
+                        case Utils.UserTypes.DOCTOR: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
+                        case Utils.UserTypes.PATIENT: RaiseChangeWindowLayoutEvent(Utils.UserTypes.PATIENT); break;
+                    }
+                }
+                else
+                {
+                    errorLabel.Visibility = Visibility.Visible;
+                }
+            }
             errorLabel.Visibility = Visibility.Hidden;
         }
 

@@ -50,6 +50,12 @@
     <Compile Include="AdminPageContent.xaml.cs">
       <DependentUpon>AdminPageContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateAdminForm.xaml.cs">
+      <DependentUpon>CreateAdminForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateDepartmentForm.xaml.cs">
+      <DependentUpon>CreateDepartmentForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomUserControl.cs" />
     <Compile Include="DoctorPageContent.xaml.cs">
       <DependentUpon>DoctorPageContent.xaml</DependentUpon>
@@ -88,6 +94,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminPageContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateAdminForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateDepartmentForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

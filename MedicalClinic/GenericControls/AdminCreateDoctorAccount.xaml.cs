@@ -80,7 +80,6 @@ namespace GenericControls
                 int docDeptId = Convert.ToInt32(((ComboBoxItem)departmentComboBox.SelectedItem).Tag.ToString());
                 int status = Convert.ToInt32(((ComboBoxItem)statusComoBox.SelectedItem).Tag.ToString());
                 int docId = 0;
-                int docIdlast = 0;
                 try
                 {
                     docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
@@ -90,27 +89,29 @@ namespace GenericControls
                     MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                 }
 
-                try
+                if (docId != 0)
                 {
-                    docIdlast = doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
-                }
-                catch (Exception ee)
-                {
-                    MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                     try
                     {
-                        credentialsService.delete(docId);
+                        doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+                        MessageBox.Show("Account created !");
+                        RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
                     }
-                    catch (Exception eee)
+                    catch (Exception ee)
                     {
-                        MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                        MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
+                        try
+                        {
+                            credentialsService.delete(docId);
+                        }
+                        catch (Exception eee)
+                        {
+                            MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                        }
                     }
                 }
-                if (docIdlast != 0)
-                {
-                    MessageBox.Show("Account created !");
-                }
-                RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
+
+
             }
         }
 

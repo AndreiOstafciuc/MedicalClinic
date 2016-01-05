@@ -71,9 +71,17 @@ namespace GenericControls
             {
                 MessageBox.Show(ee.Message);
             }
-            /*
+            
             try
             {
+
+                Credentials c = new Credentials("patient" + (new Random().Next()) + "@test.com", "passwordTest", Utils.UserTypes.PATIENT);
+                Patient p = new Patient(credentialsService.Save(c), "lastNameTT", "WhateverF", "instsav363", "address", System.DateTime.Now, "geneticsDis", "54468413");
+                patientService.Save(p);
+                p.GeneticDiseases = "new genetics";
+                patientService.Update(p);
+
+                /*
                 int g = administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@s.com", "password", 2)), "Admin test", "last name admin"));
 
                 int f = patientService.Save(new Patient(credentialsService.Save(new Credentials("patient@s.com", "password", 1)), "Patient test", "first name test", "2301230232", "address test", new System.DateTime(), "genetic diseases", "0785858585"));
@@ -138,13 +146,15 @@ namespace GenericControls
                 Doctor doctor = doctorService.FindById(doctorService.FindAll()[0].Id);
                 doctor.PhoneNumber = "5555555555";
                 doctorService.Update(doctor);
+                */
             }
            
             catch (System.Exception ee)
             {
                 MessageBox.Show(ee.Message);
+                return;
             }
-             */
+
             textBox.Text = "Success !";
         }
 

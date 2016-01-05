@@ -43,7 +43,7 @@ namespace GenericControls
                 {
                     case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
                     case Utils.UserTypes.DOCTOR: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
-                    case Utils.UserTypes.USER: RaiseChangeWindowLayoutEvent(Utils.UserTypes.USER); break;
+                    case Utils.UserTypes.PATIENT: RaiseChangeWindowLayoutEvent(Utils.UserTypes.PATIENT); break;
                 }
             }
             else
@@ -60,6 +60,11 @@ namespace GenericControls
         private void hideErrorLabel(object sender, KeyEventArgs e)
         {
             errorLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
     }
 }

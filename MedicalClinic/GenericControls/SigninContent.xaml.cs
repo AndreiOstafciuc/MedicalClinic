@@ -30,5 +30,10 @@ namespace GenericControls
             //create new user, if success redirect to login view
             RaiseChangePageContentEvent(new LoginContent());
         }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
+        }
     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
-        Title="Main Window" Height="500" Width="525" Closing="Window_Closing">
-    <Grid x:Name="pageContainer">
+        Title="Main Window" Closing="Window_Closing">
+    <Grid Background="Beige"  x:Name="pageContainer">
         
 
     </Grid>

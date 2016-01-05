@@ -27,8 +27,7 @@ namespace GenericControls
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            // TODO : check AdminCreateDoctorAccount 
-            //RaiseChangePageContentEvent(new AdminCreateDoctorAccount());
+            RaiseChangePageContentEvent(new AdminCreateDoctorAccount());
         }
     }
 }

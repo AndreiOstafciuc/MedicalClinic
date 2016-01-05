@@ -46,6 +46,10 @@ namespace GenericControls
                 departmentComboBox.Items.Add(d.Name);
             }
             // inlocuit cu o lista din utils
+            ComboBoxItem item = new ComboBoxItem();
+            //item.SetValue = 1;
+            //item.Tag=
+            //statusComoBox.Items.Add()
             statusComoBox.Items.Add("inactive");
             statusComoBox.Items.Add("active");
         }

@@ -41,10 +41,9 @@ namespace GenericControls
             {
                 switch (c.Type)
                 {
-                    case 1: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
-                    case 2: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
-                    case 3: RaiseChangeWindowLayoutEvent(Utils.UserTypes.USER); break;
-
+                    case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
+                    case Utils.UserTypes.DOCTOR: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
+                    case Utils.UserTypes.USER: RaiseChangeWindowLayoutEvent(Utils.UserTypes.USER); break;
                 }
             }
             else

@@ -74,6 +74,7 @@ namespace GenericControls
             int docDeptId = Convert.ToInt32(((ComboBoxItem)departmentComboBox.SelectedItem).Tag.ToString());
             int status = Convert.ToInt32(((ComboBoxItem)statusComoBox.SelectedItem).Tag.ToString());
             int docId = 0;
+            int docIdlast = 0;
             try {
                 docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
             } catch(Exception ee)
@@ -83,7 +84,7 @@ namespace GenericControls
 
             try
             {
-                doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+                docIdlast=doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
             }
             catch (Exception ee)
             {
@@ -96,6 +97,10 @@ namespace GenericControls
                 {
                     MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
                 }
+            }
+            if (docIdlast != 0)
+            {
+                MessageBox.Show("Account created !");
             }
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
         }

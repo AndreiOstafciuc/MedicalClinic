@@ -32,7 +32,7 @@ namespace Clinic
                 case Utils.UserTypes.ADMIN:
                     mainUI = new AdminUI();
                     break;
-                case Utils.UserTypes.USER:
+                case Utils.UserTypes.PATIENT:
                     mainUI = new PatientUI();
                     break;
                 default:

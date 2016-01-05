@@ -48,7 +48,7 @@
         <TextBox x:Name="textBoxUserEmail" Grid.Column="1" Grid.Row="8" Margin="3" MinHeight="30" />
         <PasswordBox x:Name="passwordBoxUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="3,3,0,0" Grid.Row="9" VerticalAlignment="Top" Width="195" MinHeight="30"/>
         <Button x:Name="buttonSignin" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
-            MinWidth="80" Margin="3" Content="Sign up" Click="buttonSignin_Click">
+            MinWidth="80" Margin="0,6,3,0" Content="Sign up" Click="buttonSignin_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
@@ -60,6 +60,18 @@
             </Button.Background>
         </Button>
             <Label Foreground="Red" x:Name="labelError" Grid.Row="11" Grid.Column="0" Content="Error" FontSize="14.667" FontWeight="Bold" Visibility="Hidden"/>
+            <Button x:Name="buttonBack" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
+            	MinWidth="80" Margin="0,6,117,0" Content="Back" Click="buttonBack_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
+                        <GradientStop Color="#FFC79292" Offset="1"/>
+                        <GradientStop Color="#FFC79292" Offset="0.981"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 </base:CustomUserControl>

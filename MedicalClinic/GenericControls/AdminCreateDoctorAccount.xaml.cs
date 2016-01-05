@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utils;
 
 namespace GenericControls
 {
@@ -41,30 +42,74 @@ namespace GenericControls
 
             deptsList = departmentService.FindAll();
             statusList = new List<string>() { "active", "inactive" };
-            foreach(Department d in deptsList)
+            ComboBoxItem cbm;
+            if (deptsList != null)
             {
-                departmentComboBox.Items.Add(d.Name);
+                foreach (Department d in deptsList)
+                {
+                    cbm = new ComboBoxItem();
+                    cbm.Content = d.Name;
+                    cbm.Tag = d.Id;
+                    departmentComboBox.Items.Add(cbm);
+                }
             }
-            // inlocuit cu o lista din utils
-            ComboBoxItem item = new ComboBoxItem();
-            //item.SetValue = 1;
-            //item.Tag=
-            //statusComoBox.Items.Add()
-            statusComoBox.Items.Add("inactive");
-            statusComoBox.Items.Add("active");
+            foreach(KeyValuePair<int,string> status in DoctorStatus.doctorStatuses)
+            {
+                cbm = new ComboBoxItem();
+                cbm.Content = status.Value;
+                cbm.Tag = status.Key;
+                statusComoBox.Items.Add(cbm);
+            }
+            
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
             String docEmail = emailTextBox.Text;
-            String docPass = passwordBox.Password;
+            String docPass = Encrypter.getMD5(passwordBox.Password);
             String docFName = firstnameTextBox.Text;
             String docLNaame = lastnameTextBox.Text;
             String docPhoneNumber = phonenumberTextBox.Text;
-            int docDeptId = deptsList[departmentComboBox.SelectedIndex].Id;
-            int status = statusComoBox.SelectedIndex;
-            doctorService.Save(new Doctor(credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR)),docLNaame,docFName,docDeptId,docPhoneNumber,status));
+
+            int docDeptId = Convert.ToInt32(((ComboBoxItem)departmentComboBox.SelectedItem).Tag.ToString());
+            int status = Convert.ToInt32(((ComboBoxItem)statusComoBox.SelectedItem).Tag.ToString());
+            int docId = 0;
+            try {
+                docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
+            } catch(Exception ee)
+            {
+                MessageBox.Show("Something went wrong ! \n"+ee.Data.ToString());
+            }
+
+            try
+            {
+                doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
+                try
+                {
+                    credentialsService.delete(docId);
+                }
+                catch (Exception eee)
+                {
+                    MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                }
+            }
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
+        }
+    }
+
+    public class ComboBoxPairs
+    {
+        public int _Key { get; set; }
+        public string _Value { get; set; }
+
+        public ComboBoxPairs(int _key, string _value)
+        {
+            _Key = _key;
+            _Value = _value;
         }
     }
 }

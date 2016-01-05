@@ -28,7 +28,7 @@ namespace GenericControls
         public LoginContent() : base()
         {
             InitializeComponent();
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
             credentialService = new CredentialsService();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UIViews;
 using System;
+using DBConnNamespace;
 
 namespace Clinic
 {
@@ -15,6 +16,7 @@ namespace Clinic
         public MainWindow()
         {
             InitializeComponent();
+            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
             mainUI = new MainUI();
            mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
@@ -48,6 +50,9 @@ namespace Clinic
 
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DBConnection.CloseConnection();
+        }
     }
 }

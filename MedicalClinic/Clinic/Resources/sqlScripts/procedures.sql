@@ -12,3 +12,18 @@ begin
         v_id:=0;
         v_type:=0;
 end;
+
+
+create or replace procedure cleandatabase_proc
+is
+begin
+    delete from RESULT;
+    delete from SCHEDULE;
+    delete from APPOINTMENT;
+    delete from PATIENT;
+    delete from DOCTOR;
+    delete from ADMIN;
+    delete from DEPARTMENT;
+    delete from CREDENTIALS;
+    commit;
+end;

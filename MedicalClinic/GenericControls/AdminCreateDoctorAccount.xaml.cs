@@ -53,14 +53,14 @@ namespace GenericControls
                     departmentComboBox.Items.Add(cbm);
                 }
             }
-            foreach(KeyValuePair<int,string> status in DoctorStatus.doctorStatuses)
+            foreach (KeyValuePair<int, string> status in DoctorStatus.doctorStatuses)
             {
                 cbm = new ComboBoxItem();
                 cbm.Content = status.Value;
                 cbm.Tag = status.Key;
                 statusComoBox.Items.Add(cbm);
             }
-            
+
         }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
@@ -71,50 +71,52 @@ namespace GenericControls
             String docLNaame = lastnameTextBox.Text;
             String docPhoneNumber = phonenumberTextBox.Text;
 
-            int docDeptId = Convert.ToInt32(((ComboBoxItem)departmentComboBox.SelectedItem).Tag.ToString());
-            int status = Convert.ToInt32(((ComboBoxItem)statusComoBox.SelectedItem).Tag.ToString());
-            int docId = 0;
-            int docIdlast = 0;
-            try {
-                docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
-            } catch(Exception ee)
+            if (docEmail.Equals("") || passwordBox.Password.Equals("") || docFName.Equals("") || docLNaame.Equals("") || docPhoneNumber.Equals(""))
             {
-                MessageBox.Show("Something went wrong ! \n"+ee.Data.ToString());
+                MessageBox.Show("Wrong inputs !");
             }
+            else {
 
-            try
-            {
-                docIdlast=doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
+                int docDeptId = Convert.ToInt32(((ComboBoxItem)departmentComboBox.SelectedItem).Tag.ToString());
+                int status = Convert.ToInt32(((ComboBoxItem)statusComoBox.SelectedItem).Tag.ToString());
+                int docId = 0;
+                int docIdlast = 0;
                 try
                 {
-                    credentialsService.delete(docId);
+                    docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
                 }
-                catch (Exception eee)
+                catch (Exception ee)
                 {
-                    MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                    MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                 }
+
+                try
+                {
+                    docIdlast = doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
+                    try
+                    {
+                        credentialsService.delete(docId);
+                    }
+                    catch (Exception eee)
+                    {
+                        MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                    }
+                }
+                if (docIdlast != 0)
+                {
+                    MessageBox.Show("Account created !");
+                }
+                RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
             }
-            if (docIdlast != 0)
-            {
-                MessageBox.Show("Account created !");
-            }
-            RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
         }
-    }
 
-    public class ComboBoxPairs
-    {
-        public int _Key { get; set; }
-        public string _Value { get; set; }
-
-        public ComboBoxPairs(int _key, string _value)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            _Key = _key;
-            _Value = _value;
+            RaiseChangePageContentEvent(new AdminPageContent());
         }
     }
 }

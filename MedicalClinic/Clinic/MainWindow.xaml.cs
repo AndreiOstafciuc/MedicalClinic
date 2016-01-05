@@ -16,7 +16,7 @@ namespace Clinic
         public MainWindow()
         {
             InitializeComponent();
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
             mainUI = new MainUI();
            mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;

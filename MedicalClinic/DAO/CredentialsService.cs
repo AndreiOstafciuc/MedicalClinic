@@ -194,5 +194,13 @@ namespace DAO
 
             return credentials;
         }
+
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
+        public void delete(int id)
+        {
+            _command.CommandType = CommandType.Text;
+            _command.CommandText = "delete from credentials where id="+id;
+            _command.ExecuteNonQuery();
+        }
     }
 }

@@ -106,6 +106,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBConn\DBConnection.csproj">
+      <Project>{1c9084c7-f7fc-47b5-a911-2c71034183c9}</Project>
+      <Name>DBConnection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenericControls\GenericControls.csproj">
       <Project>{0983fda6-507f-41b1-810b-0a7a47aeff4e}</Project>
       <Name>GenericControls</Name>
@@ -127,6 +131,9 @@
     <Content Include="Resources\sqlScripts\db_clean.sql" />
     <Content Include="Resources\sqlScripts\db_schema.sql" />
     <Content Include="Resources\sqlScripts\procedures.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

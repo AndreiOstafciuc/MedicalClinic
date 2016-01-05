@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utils;
 
 namespace GenericControls
 {
@@ -28,24 +29,22 @@ namespace GenericControls
         public LoginContent() : base()
         {
             InitializeComponent();
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
             credentialService = new CredentialsService();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             //verify user
-            Credentials c = credentialService.validateCredentials(textBoxUserEmail.Text, passwordBoxUserPassword.Password);
+            Credentials c = credentialService.validateCredentials(textBoxUserEmail.Text,Encrypter.getMD5(passwordBoxUserPassword.Password));
            
             //if exists change layout according to his role: doctor, admin, user
             if (c != null)
             {
                 switch (c.Type)
                 {
-                    case 1: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
-                    case 2: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
-                    case 3: RaiseChangeWindowLayoutEvent(Utils.UserTypes.USER); break;
-
+                    case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
+                    case Utils.UserTypes.DOCTOR: RaiseChangeWindowLayoutEvent(Utils.UserTypes.DOCTOR); break;
+                    case Utils.UserTypes.USER: RaiseChangeWindowLayoutEvent(Utils.UserTypes.USER); break;
                 }
             }
             else

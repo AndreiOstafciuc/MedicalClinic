@@ -123,7 +123,10 @@
     <Resource Include="Resources\IconMain.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\procedures.sql" />
+    <Content Include="Resources\sqlScripts\db_auto_increment_sequence_and_triggers.sql" />
+    <Content Include="Resources\sqlScripts\db_clean.sql" />
+    <Content Include="Resources\sqlScripts\db_schema.sql" />
+    <Content Include="Resources\sqlScripts\procedures.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

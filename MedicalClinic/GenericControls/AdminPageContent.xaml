@@ -9,7 +9,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Beige" Height="300" VerticalAlignment="Bottom">
         <Label x:Name="label" Content="Admin" HorizontalAlignment="Left" Margin="127,0,0,274" VerticalAlignment="Bottom"/>
-        <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" Margin="46,73,0,0" VerticalAlignment="Top" Width="148" Click="updateBtn_Click"/>
+        <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" Margin="46,73,0,0" VerticalAlignment="Top" Width="148" Click="doctorForm_Click"/>
+        <Button x:Name="updateBtn_Copy" Content="Create department" HorizontalAlignment="Left" Margin="46,108,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click"/>
+        <Button x:Name="updateBtn_Copy1" Content="Create admin" HorizontalAlignment="Left" Margin="46,142,0,0" VerticalAlignment="Top" Width="148" Click="adminForm_Click"/>
 
     </Grid>
 </base:CustomUserControl>

@@ -55,6 +55,7 @@ namespace UIViews
             _content = e.ArgPageContent;
             _content.HorizontalAlignment = HorizontalAlignment.Stretch;
             _content.VerticalAlignment = VerticalAlignment.Stretch;
+            _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
             _content.OnWindowLayoutChange += new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
             Grid.SetRow(_content, 1);
             this.Children.Add(_content);

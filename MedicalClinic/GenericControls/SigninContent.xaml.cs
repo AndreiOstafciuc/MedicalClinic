@@ -28,7 +28,6 @@ namespace GenericControls
         private void buttonSignin_Click(object sender, RoutedEventArgs e)
         {
             //create new user, if success redirect to login view
-            DBConnection conn = DBConnNamespace.DBConnection.Connection;
             RaiseChangePageContentEvent(new LoginContent());
         }
     }

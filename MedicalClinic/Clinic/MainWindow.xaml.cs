@@ -28,9 +28,6 @@ namespace Clinic
             {
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
-                    
-
-
                     break;
                 case Utils.UserTypes.ADMIN:
                     mainUI = new AdminUI();

@@ -25,6 +25,7 @@ namespace GenericControls
     {
         private CredentialsService _credentialsService;
         private PatientService _patientService;
+        private DateTime _defaultDate;
         public SigninContent()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace GenericControls
         private bool validateUserInput(String patientFirstName, String patientLastName, String patientAddress,
                      String patientPhone,String patientEmail, String patientPassword ,DateTime patientBirthdate)
         {
-            if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == null)
+            if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == _defaultDate)
                 return false;
             return true;
         }
@@ -42,6 +43,7 @@ namespace GenericControls
             //create new user, if success redirect to login view
             _credentialsService = new CredentialsService();
             _patientService = new PatientService();
+            _defaultDate = DateTime.Now;
             String patientFirstName = textBoxUserFirstName.Text;
             String patientLastName = textBoxUserLastName.Text;
             String patientAddress = textBoxUserAddress.Text;
@@ -50,7 +52,15 @@ namespace GenericControls
             String patientInsuranceNumber = textBoxUserInsuranceNr.Text;
             String patientEmail = textBoxUserEmail.Text;
             String patientPassword = (passwordBoxUserPassword.Password!="")?Encrypter.getMD5(passwordBoxUserPassword.Password):"";
-            DateTime patientBirthdate = datePickerUserBirthdate.SelectedDate.Value;
+            DateTime patientBirthdate;
+            if (datePickerUserBirthdate.SelectedDate != null)
+            {
+                patientBirthdate = datePickerUserBirthdate.SelectedDate.Value;
+            }
+            else
+            {
+                patientBirthdate = _defaultDate;
+            }
             int patientId = 0;
             if(validateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientEmail, patientPassword
                 ,patientBirthdate))
@@ -65,7 +75,7 @@ namespace GenericControls
                 try
                 {
                     _patientService.Save(new Patient(patientId,patientLastName,patientFirstName,patientInsuranceNumber,patientAddress,patientBirthdate,patientGeneticDisorder,patientPhone));
-                    RaiseChangePageContentEvent(new LoginContent());
+                    
                 }
                 catch (Exception ee)
                 {
@@ -79,6 +89,17 @@ namespace GenericControls
                         MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
                     }
                 }
+                if(patientId!=0)
+                {
+                    MessageBox.Show("Account created!");
+                    RaiseChangePageContentEvent(new LoginContent());
+                }
+            }
+            else
+            {
+                labelError.Visibility = Visibility.Visible;
+                labelError.Content= "Invalid input. Please fill in mandatory fields.";
+                
             }
 
             
@@ -87,6 +108,18 @@ namespace GenericControls
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
+        }
+
+         
+       
+        private void hideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            labelError.Visibility = Visibility.Hidden;
+        }
+
+        private void datePickerUserBirthdate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            labelError.Visibility = Visibility.Hidden;
         }
     }
 }

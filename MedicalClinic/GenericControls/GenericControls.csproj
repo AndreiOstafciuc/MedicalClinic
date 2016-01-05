@@ -69,8 +69,8 @@
     <Compile Include="LoginContent.xaml.cs">
       <DependentUpon>LoginContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainContent.xaml.cs">
-      <DependentUpon>MainContent.xaml</DependentUpon>
+    <Compile Include="TestContent.xaml.cs">
+      <DependentUpon>TestContent.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageContentEventArgs.cs" />
     <Compile Include="PatientPageContent.xaml.cs">
@@ -115,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainContent.xaml">
+    <Page Include="TestContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

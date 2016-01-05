@@ -5,10 +5,10 @@ namespace UIViews
     /// <summary>
     /// Interaction logic for LoginUi.xaml
     /// </summary>
-    public partial class MainUI : GenericUI
+    public partial class DebugUI : GenericUI
     {
-       
-        public MainUI() : base()
+
+        public DebugUI() : base()
         {
             InitializeComponent();
         }
@@ -24,8 +24,8 @@ namespace UIViews
 
         public override CustomUserControl getMainContent()
         {
-            return new GenericControls.HomePageContent();
+            return new GenericControls.TestContent();
         }
-        
+
     }
 }

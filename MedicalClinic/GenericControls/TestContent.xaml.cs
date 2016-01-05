@@ -21,7 +21,7 @@ namespace GenericControls
     /// <summary>
     /// Interaction logic for MainContent.xaml
     /// </summary>
-    public partial class MainContent : CustomUserControl
+    public partial class TestContent : CustomUserControl
     {
         AdministratorService administratorService;
         AppointmentService appointmentService;
@@ -32,7 +32,7 @@ namespace GenericControls
         CredentialsService credentialsService;
         DoctorService doctorService;
         CleanupService cleanupService;
-        public MainContent()
+        public TestContent()
         {
             InitializeComponent();
             try
@@ -146,6 +146,11 @@ namespace GenericControls
             }
              */
             textBox.Text = "Success !";
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
     }
 }

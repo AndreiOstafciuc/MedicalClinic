@@ -47,6 +47,9 @@
     <Compile Include="AdminUI.xaml.cs">
       <DependentUpon>AdminUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DebugUI.xaml.cs">
+      <DependentUpon>DebugUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DoctorUI.xaml.cs">
       <DependentUpon>DoctorUI.xaml</DependentUpon>
     </Compile>
@@ -61,6 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AdminUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DebugUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

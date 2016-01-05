@@ -30,6 +30,7 @@ namespace UIViews
             _content.VerticalAlignment = VerticalAlignment.Stretch;
 
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
+            _content.OnWindowLayoutChange += new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
             _header.OnWindowLayoutChange+= new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
             this.RowDefinitions.Add(new RowDefinition());
             this.RowDefinitions.Add(new RowDefinition());

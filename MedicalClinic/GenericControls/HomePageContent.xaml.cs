@@ -34,5 +34,10 @@ namespace GenericControls
         {
             RaiseChangePageContentEvent(new SigninContent());
         }
+
+        private void buttonTestStuff_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangeWindowLayoutEvent(-1);
+        }
     }
 }

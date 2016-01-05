@@ -1,4 +1,0 @@
-C:\Users\Andre\Documents\GitHub\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.dll
-C:\Users\Andre\Documents\GitHub\MedicalClinic\MedicalClinic\Utils\bin\Debug\Utils.pdb
-C:\Users\Andre\Documents\GitHub\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.dll
-C:\Users\Andre\Documents\GitHub\MedicalClinic\MedicalClinic\Utils\obj\Debug\Utils.pdb

@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:GenericControls"
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Beige">
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid Background="Beige" Margin="0">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="Auto" />
@@ -35,6 +36,6 @@
             </Button.Background>
         </Button>
         <Label x:Name="errorLabel" Content="Invalid credentials" HorizontalAlignment="Left" Height="27" Margin="42,39,0,-37" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="176" Background="White" Foreground="Red" FontWeight="Bold" FontSize="13.333" Visibility="Hidden"/>
-
+        </Grid>
     </Grid>
 </base:CustomUserControl>

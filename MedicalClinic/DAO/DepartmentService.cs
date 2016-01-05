@@ -9,7 +9,7 @@ namespace DAO
     public class DepartmentService : DAO<Department>
     {
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Department> FindAll()
         {
             List<Department> deptsList = null;
@@ -41,7 +41,7 @@ namespace DAO
             return deptsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Department> FindAllByProperty(string property, string value)
         {
             List<Department> deptsList = null;
@@ -73,7 +73,7 @@ namespace DAO
             return deptsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Department FindById(int id)
         {
             Department d = null;
@@ -101,7 +101,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Department obj)
         {
@@ -125,7 +125,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Department obj)
         {
             _command.CommandType = CommandType.Text;
@@ -144,7 +144,7 @@ namespace DAO
             _command.ExecuteNonQuery();
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public Department FindLastInserted()
         {
             Department d = null;

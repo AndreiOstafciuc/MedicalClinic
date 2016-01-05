@@ -27,7 +27,7 @@ namespace UIViews
         }
         public override CustomUserControl getHeader()
         {
-            return new Header();
+            return new HeaderWithLogout();
         }
         public override CustomUserControl getFooter()
         {

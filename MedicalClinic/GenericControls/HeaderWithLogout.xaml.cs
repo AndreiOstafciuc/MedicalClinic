@@ -16,18 +16,18 @@ using System.Windows.Shapes;
 namespace GenericControls
 {
     /// <summary>
-    /// Interaction logic for AdminPageContent.xaml
+    /// Interaction logic for HeaderWithLogout.xaml
     /// </summary>
-    public partial class AdminPageContent : CustomUserControl
+    public partial class HeaderWithLogout : CustomUserControl
     {
-        public AdminPageContent()
+        public HeaderWithLogout()
         {
             InitializeComponent();
         }
 
-        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseChangePageContentEvent(new AdminCreateDoctorAccount());
+            RaiseChangeWindowLayoutEvent(5);
         }
     }
 }

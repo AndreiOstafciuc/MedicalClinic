@@ -8,7 +8,7 @@ namespace DAO
 {
     public class ScheduleService : DAO<Schedule>
     {
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Schedule> FindAll()
         {
             List<Schedule> schedulesList = null;
@@ -41,7 +41,7 @@ namespace DAO
             return schedulesList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Schedule> FindAllByProperty(string property, string value)
         {
             List<Schedule> schedulesList = null;
@@ -74,7 +74,7 @@ namespace DAO
             return schedulesList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Schedule FindById(int id)
         {
             Schedule s = null;
@@ -104,7 +104,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Schedule obj)
         {
@@ -130,7 +130,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Schedule obj)
         {
             _command.CommandType = CommandType.Text;

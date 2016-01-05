@@ -8,7 +8,7 @@ namespace DAO
 {
     public class AdministratorService : DAO<Administrator>
     {
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Administrator> FindAll()
         {
             List<Administrator> administratorsList = null;
@@ -38,7 +38,7 @@ namespace DAO
             return administratorsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Administrator> FindAllByProperty(string property, string value)
         {
             List<Administrator> administratorsList = null;
@@ -68,7 +68,7 @@ namespace DAO
             return administratorsList;
         }
 
-        /// <exception cref="System.Exception">no active connection by ExecuteReader()</exception>
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override Administrator FindById(int id)
         {
             Administrator a = null;
@@ -96,7 +96,7 @@ namespace DAO
         /// inserts into database the obj
         /// </summary>
         /// <param name="obj">object to insert into database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         /// <returns>id of the saved entity</returns>
         public override int Save(Administrator obj)
         {
@@ -120,7 +120,7 @@ namespace DAO
         /// updates the obj from database
         /// </summary>
         /// <param name="obj">object to update from database</param>
-        /// <exception cref="System.Exception">ExecuteNonQuery()</exception>
+        /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Administrator obj)
         {
             _command.CommandType = CommandType.Text;

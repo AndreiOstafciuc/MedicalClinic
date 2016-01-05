@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
 
-namespace MedicalClinicTests
+namespace ConnectionTests
 {
     [TestClass()]
     public class DBConnectionTests

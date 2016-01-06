@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic"
         mc:Ignorable="d"
-        Title="Main Window" Closing="Window_Closing">
+        Title="Main Window" Closing="Window_Closing"  WindowState="Maximized">
     <Grid Background="Beige"  x:Name="pageContainer">
         
 

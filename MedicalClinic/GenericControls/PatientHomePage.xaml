@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="GenericControls.PatientHomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenericControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="gridBody">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBoxDepartments" Grid.Column="0" Header= "Departments" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
+            <Grid x:Name="gridDepartaments" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Width="200"/>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxDescription" Grid.Column="1" Header="About us" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
+            <TextBlock TextWrapping="Wrap"  x:Name="textBlockDescription" Text="MedicalClinic is the primary Romania's health care
+                    outpatient clinic.
+                    Designed to provide total health care service 
+                    within one location, more than 400 physicians and
+                    dentists in more than two dozen specialties are
+                    available, offering a wide range of primary and
+                    specialty care." Margin="0,10,11,10"/>
+        </GroupBox>
+        <GroupBox x:Name="groupBoxDoctors" Grid.Column="2" Header="Doctors" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
+            <Grid x:Name="gridDoctors" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Width="200"/>
+        </GroupBox>
+    </Grid>
+</UserControl>

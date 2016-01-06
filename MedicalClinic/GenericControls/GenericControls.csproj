@@ -30,10 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="microsoft.expression.prototyping.runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +45,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +65,9 @@
     <Compile Include="DoctorPageContent.xaml.cs">
       <DependentUpon>DoctorPageContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditPatientForm.xaml.cs">
+      <DependentUpon>EditPatientForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
@@ -74,6 +82,12 @@
     </Compile>
     <Compile Include="LoginContent.xaml.cs">
       <DependentUpon>LoginContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDetailsPage.xaml.cs">
+      <DependentUpon>PatientDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHomePage.xaml.cs">
+      <DependentUpon>PatientHomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestContent.xaml.cs">
       <DependentUpon>TestContent.xaml</DependentUpon>
@@ -109,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditPatientForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Footer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +144,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +180,10 @@
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{20ac0fc7-d569-4aae-a2ea-cf852dafb016}</Project>
       <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SessionData\SessionData.csproj">
+      <Project>{15b4c451-cf5e-4bc6-ad96-6b7f914acff8}</Project>
+      <Name>SessionData</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{c3877cf1-dde0-44e2-a610-3016384e92c1}</Project>

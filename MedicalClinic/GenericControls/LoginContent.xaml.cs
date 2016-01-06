@@ -39,6 +39,7 @@ namespace GenericControls
             //if exists change layout according to his role: doctor, admin, user
             if (c != null)
             {
+                SessionData.UserSessionData.SaveUserSessionData(c.Id);
                 switch (c.Type)
                 {
                     case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;
@@ -66,6 +67,8 @@ namespace GenericControls
                 //if exists change layout according to his role: doctor, admin, user
                 if (c != null)
                 {
+                    //save user session data
+                    SessionData.UserSessionData.SaveUserSessionData(c.Id);
                     switch (c.Type)
                     {
                         case Utils.UserTypes.ADMIN: RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN); break;

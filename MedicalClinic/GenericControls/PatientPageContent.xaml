@@ -6,9 +6,32 @@
              xmlns:local="clr-namespace:GenericControls"
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Beige">
-        <Label x:Name="label" Content="Patient" HorizontalAlignment="Left" Margin="97,111,0,0" VerticalAlignment="Top"/>
+             d:DesignHeight="600" d:DesignWidth="450">
+    <Grid Background="Beige" Margin="0,0,20,0">
+        <Grid x:Name="gridPacientPage" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Menu Grid.Row="0" x:Name="patientMenu" Height="44" VerticalAlignment="Top">
+                <MenuItem x:Name="menuItemHome" Header="General info" FontSize="16" VerticalContentAlignment="Center" Padding="10,5,10,5" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Width="Auto" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True" Click="menuItemHome_Click">
+                </MenuItem>
+                <MenuItem Header="Personal data" FontSize="16" VerticalContentAlignment="Center" Padding="10,5,10,5" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True">
+                    <MenuItem x:Name="menuItemEditPatient" Header="Edit" HorizontalAlignment="Left" Click="menuItemEditPatient_Click"/>
+                    <MenuItem x:Name="menuItemViewPatient" Header="View" HorizontalAlignment="Left" Click="menuItemViewPatient_Click"/>
+                </MenuItem>
+                <MenuItem Header="Appointments" Height="40" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10,5,10,5" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+                    <MenuItem x:Name="menuItemAppointmentHistory" Header="View history" HorizontalAlignment="Left" Click="menuItemAppointmentHistory_Click"/>
+                    <MenuItem x:Name="menuItemNewAppointment" Header="New" HorizontalAlignment="Left" Width="176" Click="menuItemNewAppointment_Click"/>
+                </MenuItem>
+                <MenuItem Header="Results" Height="40" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10,5,10,5" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+                    <MenuItem x:Name="menuItemResultHistory" Header="View history" HorizontalAlignment="Left" Click="menuItemResultHistory_Click"/>
+                </MenuItem>
+            </Menu>
+            
+            
+            
+        </Grid>
 
     </Grid>
 </base:CustomUserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <GroupBox x:Name="groupBox" Header="Patient info" Margin="0,0,10,0" FontStyle="Italic" FontSize="13.333">
-            <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Grid Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -18,10 +18,10 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-            <Image Grid.Column="0" Grid.Row="0" Source="Clinic/Resources/user.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Image Grid.Column="0" Grid.Row="1" Source="Clinic/Resources/email.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Image Grid.Column="0" Grid.Row="2" Source="Clinic/Resources/phone.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Image Grid.Column="0" Grid.Row="3" Source="Clinic/Resources/address.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Image Grid.Column="0" Grid.Row="0" x:Name="imgUser" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Image Grid.Column="0" Grid.Row="1" x:Name="imgEmail" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Image Grid.Column="0" Grid.Row="2" x:Name="imgPhone" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Image Grid.Column="0" Grid.Row="3" x:Name="imgAddress" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <Label x:Name="labelPatientName" Grid.Row="0" Grid.Column="1" FontSize="16" />
                 <Label x:Name="labelPatientEmail" Grid.Row="1" Grid.Column="1" FontSize="16" />
                 <Label x:Name="labelPatientPhone" Grid.Row="2" Grid.Column="1" FontSize="16" />

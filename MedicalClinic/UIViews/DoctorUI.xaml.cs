@@ -39,7 +39,7 @@ namespace UIViews
         }
         public override CustomUserControl getMainContent()
         {
-            return new DoctorPageContent();
+            return new DoctorAppointmentsPage();
         }
     }
 }

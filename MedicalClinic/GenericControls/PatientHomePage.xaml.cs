@@ -39,6 +39,7 @@ namespace GenericControls
             foreach (var dept in depts)
             {
                 Expander expander = new Expander();
+                expander.HorizontalAlignment = HorizontalAlignment.Stretch;
                 expander.Header = dept.Name;
                 StackPanel stackPanel = new StackPanel();
                 TextBlock txt = new TextBlock();

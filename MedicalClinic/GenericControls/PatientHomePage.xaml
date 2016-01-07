@@ -13,7 +13,9 @@
             <ColumnDefinition Width="0.4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <GroupBox x:Name="groupBoxDepartments" Grid.Column="0" Header= "Departments" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
-            <Grid x:Name="gridDepartaments" Margin="10,10,0,0"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500" VerticalAlignment="Top" Margin="0,0,0,10">
+                <Grid x:Name="gridDepartaments" Margin="0,0,0,0"/>
+            </ScrollViewer>
         </GroupBox>
         <GroupBox x:Name="groupBoxDescription" Grid.Column="1" Header="About us" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
             <TextBlock TextWrapping="Wrap"  x:Name="textBlockDescription" Text="MedicalClinic is the primary Romania's health care
@@ -25,7 +27,9 @@
                     specialty care." Margin="0,10,11,10"/>
         </GroupBox>
         <GroupBox x:Name="groupBoxDoctors" Grid.Column="2" Header="Doctors" Margin="10,9,10,0" FontStyle="Italic" FontWeight="Bold">
-            <Grid x:Name="gridDoctors" Margin="10,10,0,0"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500" VerticalAlignment="Top" Margin="0,0,0,10">
+                <Grid x:Name="gridDoctors" Margin="0,0,0,0"/>
+             </ScrollViewer>
         </GroupBox>
     </Grid>
 </UserControl>

@@ -55,9 +55,6 @@
     <Compile Include="AdminPageContent.xaml.cs">
       <DependentUpon>AdminPageContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppointmentHistoryPage.xaml.cs">
-      <DependentUpon>AppointmentHistoryPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ChangeCredentialsForm.xaml.cs">
       <DependentUpon>ChangeCredentialsForm.xaml</DependentUpon>
     </Compile>
@@ -123,10 +120,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AdminPageContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AppointmentHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

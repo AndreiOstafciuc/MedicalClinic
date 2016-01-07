@@ -103,6 +103,7 @@ namespace GenericControls
                 h_medication.Visibility = Visibility.Visible;
                 h_symptoms.Visibility = Visibility.Visible;
                 h_results.Visibility = Visibility.Visible;
+                comboBox.SelectedIndex = 0;
                 dateHistoryLabel.Content = resultsHistory[0].ResultDate;
                 symptomsHistoryLabel.Content = resultsHistory[0].Symptoms;
                 diagnosisHistoryabel.Content = resultsHistory[0].Diagnosis;

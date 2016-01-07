@@ -52,10 +52,24 @@ namespace GenericControls
                 gridDepartaments.Children.Add(expander);
             }
         }
+
+        private string getDeptName(int id, List<Department> departments)
+        {
+            foreach(Department d in departments)
+            {
+                if (d.Id == id)
+                {
+                    return d.Name;
+                }
+            }
+            return "";
+        }
+
         private void PopulateDoctorGrid()
         {
             _doctorService = new DoctorService();
             List<Doctor> doctors = _doctorService.FindAll();
+            List<Department> departments = _deptService.FindAll();
             int i = 0;
 
             foreach (Doctor doctor in doctors)
@@ -68,8 +82,7 @@ namespace GenericControls
                     expander.Header = doctor.FirstName + " " + doctor.LastName;
                     StackPanel stackPanel = new StackPanel();
                     TextBlock txt = new TextBlock();
-                    Department doctorDept = _deptService.FindById(doctor.IdDept);
-                    txt.Text = doctorDept.Name + ", " + doctorDept.Floor;
+                    txt.Text = getDeptName(doctor.IdDept,departments);//doctorDept.Name + ", " + doctorDept.Floor;
                     stackPanel.Children.Add(txt);
                     expander.Content = stackPanel;
                     gridDoctors.RowDefinitions.Add(new RowDefinition());

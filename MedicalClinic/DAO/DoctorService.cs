@@ -156,5 +156,30 @@ namespace DAO
 
             _command.ExecuteNonQuery();
         }
+
+
+        public bool checkDoctorAvailability(int idDoctor,int day, int time, DateTime date)
+        {
+            _command.CommandType = CommandType.StoredProcedure;
+            _command.CommandText = "check_doctor_availability";
+            _command.Parameters.Clear();
+            _command.Parameters.Add("v_id_doctor", OracleDbType.Int32, ParameterDirection.Input).Value = idDoctor;
+            _command.Parameters.Add("v_day", OracleDbType.Int32, ParameterDirection.Input).Value = day;
+            _command.Parameters.Add("v_time", OracleDbType.Int32, ParameterDirection.Input).Value = time;
+            _command.Parameters.Add("v_date", OracleDbType.Date, ParameterDirection.Input).Value = date;
+            _command.Parameters.Add("v_availability", OracleDbType.Int32, ParameterDirection.Output);
+            _command.ExecuteNonQuery();
+
+            int v_availability = Convert.ToInt32(_command.Parameters["v_availability"].Value.ToString());
+            if(v_availability==1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }

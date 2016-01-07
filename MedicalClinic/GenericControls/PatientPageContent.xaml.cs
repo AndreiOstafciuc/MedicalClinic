@@ -70,7 +70,10 @@ namespace GenericControls
 
         private void menuItemNewAppointment_Click(object sender, RoutedEventArgs e)
         {
-
+            gridPacientPage.Children.Remove(_patientCurrentPage);
+            _patientCurrentPage = new NewAppointmentForm();
+            Grid.SetRow(_patientCurrentPage, 1);
+            gridPacientPage.Children.Add(_patientCurrentPage);
         }
 
         private void menuItemResultHistory_Click(object sender, RoutedEventArgs e)

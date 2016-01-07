@@ -89,6 +89,9 @@
     <Compile Include="LoginContent.xaml.cs">
       <DependentUpon>LoginContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewAppointmentForm.xaml.cs">
+      <DependentUpon>NewAppointmentForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PatientDetailsPage.xaml.cs">
       <DependentUpon>PatientDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewAppointmentForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

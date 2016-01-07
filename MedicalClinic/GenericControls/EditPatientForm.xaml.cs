@@ -40,6 +40,7 @@ namespace GenericControls
                 textBoxUserFirstName.Text = _patient.FirstName;
                 textBoxUserLastName.Text = _patient.LastName;
                 textBoxUserAddress.Text = _patient.Address;
+                textBoxUserPhone.Text = _patient.PhoneNumber;
                 datePickerUserBirthdate.SelectedDate = _patient.BirthDate;
                 textBoxUserGeneticDisorder.Text = _patient.GeneticDiseases;
                 textBoxUserInsuranceNr.Text = _patient.InsuranceNumber;

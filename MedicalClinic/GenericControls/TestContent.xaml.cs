@@ -74,13 +74,38 @@ namespace GenericControls
             
             try
             {
-
-                Credentials c = new Credentials("patient" + (new Random().Next()) + "@test.com", "passwordTest", Utils.UserTypes.PATIENT);
-                Patient p = new Patient(credentialsService.Save(c), "lastNameTT", "WhateverF", "instsav363", "address", System.DateTime.Now, "geneticsDis", "54468413");
-                patientService.Save(p);
-                p.GeneticDiseases = "new genetics";
-                patientService.Update(p);
-
+                Random r = new Random(new Random().Next(789, 987));
+                /*
+                for (int pcnt = 298; pcnt < 500; pcnt ++)
+                {
+                    patientService.Save(new Patient(credentialsService.Save(
+                            new Credentials("patient" + pcnt.ToString("D4") + "@gmail.com", Utils.Encrypter.getMD5(pcnt.ToString("D4")), Utils.UserTypes.PATIENT)
+                        ), "Last Name "+ pcnt.ToString("D4"), "First Name "+ pcnt.ToString("D4"), "ins"+r.Next(100000000, 999999999).ToString(), 
+                        "address#"+ pcnt.ToString("D4"), System.DateTime.Now, "genetic#"+ pcnt.ToString("D4"), r.Next(100000,999999).ToString()));
+                }
+                */
+                /*
+                for (int acnt = 0; acnt < 30; acnt++)
+                {
+                    administratorService.Save(new Administrator(credentialsService.Save(
+                        new Credentials("admin" + acnt.ToString("D4") + "@gmail.com", Utils.Encrypter.getMD5(acnt.ToString("D4")), Utils.UserTypes.ADMIN)
+                        ), "Admin First Name " + acnt.ToString("D4"), "Admin Last Name" + acnt.ToString("D4")));
+                }
+                */
+                /*
+                for (int deptcnt = 0; deptcnt < 13; deptcnt++)
+                {
+                    departmentService.Save(new Department("Department#"+deptcnt.ToString("D2"), "Description for Department nr." + deptcnt.ToString("D2"), r.Next(0,9)));
+                }
+                */
+                /*
+                for (int dcnt = 30; dcnt < 100; dcnt++)
+                {
+                    doctorService.Save(new Doctor(credentialsService.Save(
+                        new Credentials("doc" + dcnt.ToString("D4") + "@gmail.com", Utils.Encrypter.getMD5(dcnt.ToString("D4")), Utils.UserTypes.DOCTOR)
+                        ), "Doctor Last Name" + dcnt.ToString("D4"), "Doctor First Name " + dcnt.ToString("D4"), r.Next(330,342), r.Next(100000, 999999).ToString(), Utils.DoctorStatus.ACTIVE));
+                }
+                */
                 /*
                 int g = administratorService.Save(new Administrator(credentialsService.Save(new Credentials("admin@s.com", "password", 2)), "Admin test", "last name admin"));
 

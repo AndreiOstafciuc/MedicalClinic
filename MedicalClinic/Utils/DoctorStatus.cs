@@ -8,6 +8,8 @@ namespace Utils
 {
     public class DoctorStatus
     {
-        public static Dictionary<int, string> doctorStatuses = new Dictionary<int, string>() { { 0, "inactive" }, { 1, "active" } };
+        public const int INACTIVE = 0;
+        public const int ACTIVE = 1;
+        public static Dictionary<int, string> doctorStatuses = new Dictionary<int, string>() { { 0, "INACTIVE" }, { 1, "ACTIVE" } };
     }
 }

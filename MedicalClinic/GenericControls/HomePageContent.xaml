@@ -7,7 +7,7 @@
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
-    <Grid Background="Beige" VerticalAlignment="Top" HorizontalAlignment="Center" Height="331" Margin="0,8,-64,-39" Width="464">
+    <Grid Background="Beige" VerticalAlignment="Center" HorizontalAlignment="Center" Height="331" Margin="0,8,-64,-39" Width="464">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="200" />

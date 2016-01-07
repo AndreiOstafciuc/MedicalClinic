@@ -27,9 +27,9 @@ namespace GenericControls
         public PatientDetailsPage()
         {
             InitializeComponent();
-            displayPatientInfo();
+            DisplayPatientInfo();
         }
-        private void displayPatientInfo()
+        private void DisplayPatientInfo()
         {
             _credentialsService = new CredentialsService();
             Credentials credentials = _credentialsService.FindById(SessionData.UserSessionData.CurrentUserId);
@@ -37,14 +37,14 @@ namespace GenericControls
             Patient patient = _patientService.FindById(SessionData.UserSessionData.CurrentUserId);
             if (patient != null && credentials != null)
             {
-                setImages();
+                SetImages();
                labelPatientName.Content=patient.FirstName+" "+patient.LastName;
                labelPatientEmail.Content = credentials.Email;
                labelPatientPhone.Content = patient.PhoneNumber;
                labelPatientAddress.Content = patient.Address;
             }
         }
-        private void setImages()
+        private void SetImages()
         {
             BitmapImage bmpUser = new BitmapImage();
             bmpUser.BeginInit();

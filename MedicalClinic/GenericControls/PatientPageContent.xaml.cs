@@ -62,7 +62,10 @@ namespace GenericControls
 
         private void menuItemAppointmentHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            gridPacientPage.Children.Remove(_patientCurrentPage);
+            _patientCurrentPage = new AppointmentHistoryPage();
+            Grid.SetRow(_patientCurrentPage, 1);
+            gridPacientPage.Children.Add(_patientCurrentPage);
         }
 
         private void menuItemNewAppointment_Click(object sender, RoutedEventArgs e)
@@ -72,7 +75,19 @@ namespace GenericControls
 
         private void menuItemResultHistory_Click(object sender, RoutedEventArgs e)
         {
+            gridPacientPage.Children.Remove(_patientCurrentPage);
+            _patientCurrentPage = new ResultsHistoryPage();
+            Grid.SetRow(_patientCurrentPage, 1);
+            gridPacientPage.Children.Add(_patientCurrentPage);
+        }
 
+        private void menuItemChangeCredentials_Click(object sender, RoutedEventArgs e)
+        {
+
+            gridPacientPage.Children.Remove(_patientCurrentPage);
+            _patientCurrentPage = new ChangeCredentialsForm();
+            Grid.SetRow(_patientCurrentPage, 1);
+            gridPacientPage.Children.Add(_patientCurrentPage);
         }
     }
 }

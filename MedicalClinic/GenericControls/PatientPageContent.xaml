@@ -6,14 +6,22 @@
              xmlns:local="clr-namespace:GenericControls"
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="450">
-    <Grid Background="Beige" Margin="0,0,20,0">
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid Background="Beige" Margin="0,0,0,0">
         <Grid x:Name="gridPacientPage" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Menu Grid.Row="0" x:Name="patientMenu" Height="44" VerticalAlignment="Top">
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF6F6F6" Offset="0.25"/>
+                        <GradientStop Color="#FFEAE8E8" Offset="0.25"/>
+                        <GradientStop Color="#FFDCD9D9" Offset="0.8"/>
+                        <GradientStop Color="#FF473E3E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
                 <MenuItem x:Name="menuItemHome" Header="General info" FontSize="16" VerticalContentAlignment="Center" Padding="10,5,10,5" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" Width="Auto" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True" Click="menuItemHome_Click">
                 </MenuItem>
                 <MenuItem Header="Personal data" FontSize="16" VerticalContentAlignment="Center" Padding="10,5,10,5" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" HorizontalContentAlignment="Center" ScrollViewer.CanContentScroll="True">
@@ -27,6 +35,7 @@
                 <MenuItem Header="Results" Height="40" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10,5,10,5" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
                     <MenuItem x:Name="menuItemResultHistory" Header="View history" HorizontalAlignment="Left" Click="menuItemResultHistory_Click"/>
                 </MenuItem>
+                <MenuItem x:Name="menuItemChangeCredentials" Header="Change credentials" Padding="10,5,10,5" FontSize="16" BorderBrush="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" Click="menuItemChangeCredentials_Click"/>
             </Menu>
             
             

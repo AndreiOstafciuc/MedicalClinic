@@ -16,8 +16,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="28" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -34,18 +32,14 @@
         <Label Grid.Row="5" Grid.Column="0" Content="Phone number*:" FontSize="14.667" FontWeight="Bold"/>
         <Label Grid.Row="6" Grid.Column="0" Content="Genetic disorders:" FontSize="14.667" FontWeight="Bold"/>
         <Label Grid.Row="7" Grid.Column="0" Content="Insurance number:" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="8" Grid.Column="0" Content="Email* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="9" Grid.Column="0" Content="Password* :" FontSize="14.667" FontWeight="Bold"/>
-        <TextBox x:Name="textBoxUserFirstName" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <TextBox x:Name="textBoxUserLastName" Grid.Column="1" Grid.Row="2" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <TextBox x:Name="textBoxUserAddress" Grid.Column="1" Grid.Row="3" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
+        <TextBox x:Name="textBoxUserFirstName" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+        <TextBox x:Name="textBoxUserLastName" Grid.Column="1" Grid.Row="2" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+        <TextBox x:Name="textBoxUserAddress" Grid.Column="1" Grid.Row="3" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
         <DatePicker x:Name="datePickerUserBirthdate" Grid.Column="1" Grid.Row="4" Margin="3" MinHeight="30" GotFocus="datePickerUserBirthdate_GotFocus" />
-        <TextBox x:Name="textBoxUserPhone" Grid.Column="1" Grid.Row="5" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <TextBox x:Name="textBoxUserGeneticDisorder" Grid.Column="1" Grid.Row="6" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <TextBox x:Name="textBoxUserInsuranceNr" Grid.Column="1" Grid.Row="7" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <TextBox x:Name="textBoxUserEmail" Grid.Column="1" Grid.Row="8" Margin="3" MinHeight="30" GotKeyboardFocus="hideErrorMessage" />
-        <PasswordBox x:Name="passwordBoxUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Top" Width="250" MinHeight="30" GotKeyboardFocus="hideErrorMessage"/>
-        <Button x:Name="buttonUpdate" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
+        <TextBox x:Name="textBoxUserPhone" Grid.Column="1" Grid.Row="5" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+        <TextBox x:Name="textBoxUserGeneticDisorder" Grid.Column="1" Grid.Row="6" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+        <TextBox x:Name="textBoxUserInsuranceNr" Grid.Column="1" Grid.Row="7" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+        <Button x:Name="buttonUpdate" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Right" 
             MinWidth="80" Margin="0,6,3,0" Content="Update" Click="buttonUpdate_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -57,6 +51,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Foreground="Red" x:Name="labelError" Grid.Row="11" Grid.Column="1" Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
+        <Label Foreground="Red" x:Name="labelError" Grid.Row="9" Grid.Column="1" Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
     </Grid>
 </UserControl>

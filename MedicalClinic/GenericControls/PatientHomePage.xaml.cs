@@ -27,10 +27,10 @@ namespace GenericControls
         public PatientHomePage()
         {
             InitializeComponent();
-            populateDepartmentGrid();
-            populateDoctorGrid();
+            PopulateDepartmentGrid();
+            PopulateDoctorGrid();
         }
-        private void populateDepartmentGrid()
+        private void PopulateDepartmentGrid()
         {
             _deptService = new DepartmentService();
             List<Department> depts = _deptService.FindAll();
@@ -52,7 +52,7 @@ namespace GenericControls
                 gridDepartaments.Children.Add(expander);
             }
         }
-        private void populateDoctorGrid()
+        private void PopulateDoctorGrid()
         {
             _doctorService = new DoctorService();
             List<Doctor> doctors = _doctorService.FindAll();

@@ -31,7 +31,7 @@ namespace GenericControls
             InitializeComponent();
         }
 
-        private bool validateUserInput(String patientFirstName, String patientLastName, String patientAddress,
+        private bool ValidateUserInput(String patientFirstName, String patientLastName, String patientAddress,
                      String patientPhone,String patientEmail, String patientPassword ,DateTime patientBirthdate)
         {
             if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == _defaultDate)
@@ -62,7 +62,7 @@ namespace GenericControls
                 patientBirthdate = _defaultDate;
             }
             int patientId = 0;
-            if(validateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientEmail, patientPassword
+            if(ValidateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientEmail, patientPassword
                 ,patientBirthdate))
             {
                 try
@@ -112,7 +112,7 @@ namespace GenericControls
 
          
        
-        private void hideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
+        private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;
         }

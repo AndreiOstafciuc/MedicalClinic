@@ -7,7 +7,7 @@
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Beige" Height="300" VerticalAlignment="Bottom">
+    <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Height="300" VerticalAlignment="Bottom">
         <Label x:Name="label" Content="Administrator options" Margin="10,10,45,257" VerticalAlignment="Center" Height="33" Width="245" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
         <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="148" Click="doctorForm_Click"/>
         <Button x:Name="updateBtn_Copy" Content="Create department" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click"/>

@@ -50,6 +50,11 @@ namespace GenericControls
             this._cview = new PagingCollectionView(dataSet, 20);
             this.DataContext = this._cview;
             }
+            else
+            {
+                previousBtn.IsEnabled = false;
+                nextBtn.IsEnabled = false;
+            }
         }
 
         private void OnNextClicked(object sender, RoutedEventArgs e)

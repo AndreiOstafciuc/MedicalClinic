@@ -20,8 +20,8 @@
                     </Binding>
                 </Label.Content>
             </Label>
-            <Button Content="Previous" Click="OnPreviousClicked" Margin="2"/>
-            <Button Content="Next" Click="OnNextClicked" Margin="2"/>
+            <Button Name="previousBtn" Content="Previous" Click="OnPreviousClicked" Margin="2"/>
+            <Button Name="nextBtn" Content="Next" Click="OnNextClicked" Margin="2"/>
         </StackPanel>
         <DataGrid Height="Auto" Width="Auto" Margin="0,0,0,248" ItemsSource="{Binding}" Grid.Row="1">
             <DataGrid.Columns>

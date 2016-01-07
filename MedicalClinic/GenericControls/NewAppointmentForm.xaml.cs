@@ -24,7 +24,6 @@ namespace GenericControls
     {
         private DepartmentService _departmentService;
         private DoctorService _doctorService;
-        private ScheduleService _scheduleService;
         private AppointmentService _appointmentService;
         private String _errorMessage = "";
         private DateTime _defaultDate;

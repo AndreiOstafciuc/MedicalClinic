@@ -186,5 +186,43 @@ namespace DAO
 
             return a;
         }
+
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
+        public List<Appointment> getNextAppointmentsByDoctorId(int id)
+        {
+            List<Appointment> appointmentsList = null;
+
+            _command.CommandText = "select * from appointment where id_doctor = :id_doctor and scheduled_date >= :scheduled_date ";//and time >= :time";
+
+            _command.Parameters.Clear();
+            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = id;
+            _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = DateTime.Now;
+          //  _command.Parameters.Add(":time", OracleDbType.Int32).Value = DateTime.Now.Hour;
+
+            _dataReader = _command.ExecuteReader();
+
+
+            if (_dataReader.HasRows)
+            {
+                appointmentsList = new List<Appointment>();
+                while (_dataReader.Read() && _dataReader.HasRows)
+                {
+
+                    Appointment a = new Appointment();
+
+                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
+                    a.Time = Convert.ToInt32(_dataReader["time"]);
+                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
+                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    appointmentsList.Add(a);
+                }
+            }
+
+            return appointmentsList;
+        }
+
+        
     }
 }

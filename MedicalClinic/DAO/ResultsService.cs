@@ -185,5 +185,40 @@ namespace DAO
             return r;
         }
 
+        /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
+        public List<Results> findAllResultsOfPatient(int patient_id)
+        {
+            List<Results> resultsList = null;
+
+            string sql = "select * from result where id_appointment in (select id_appointment from appointment where id_patient = "+patient_id+")";
+
+            _command.CommandText = sql;
+            _command.CommandType = CommandType.Text;
+
+            _dataReader = _command.ExecuteReader();
+
+
+            if (_dataReader.HasRows)
+            {
+                resultsList = new List<Results>();
+                while (_dataReader.Read() && _dataReader.HasRows)
+                {
+
+                    Results r = new Results();
+
+                    r.Id = Convert.ToInt32(_dataReader["id_result"]);
+                    r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
+                    r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
+                    r.Symptoms = _dataReader["symptoms"].ToString();
+                    r.Diagnosis = _dataReader["diagnosis"].ToString();
+                    r.Medication = _dataReader["medication"].ToString();
+                    resultsList.Add(r);
+                }
+            }
+
+            return resultsList;
+        }
+        
+
     }
 }

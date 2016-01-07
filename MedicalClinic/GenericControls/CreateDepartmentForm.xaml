@@ -7,16 +7,16 @@
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
-        <Label x:Name="label" Content="Create department form :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Cursor=""/>
-        <Label x:Name="label3" Content="Floor" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="nameLabel" HorizontalAlignment="Left" Height="23" Margin="97,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="descriptionLabel" HorizontalAlignment="Left" Height="23" Margin="97,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="floorLabel" HorizontalAlignment="Left" Height="23" Margin="97,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Submit" HorizontalAlignment="Left" Margin="142,170,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="button1" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Click="button1_Click"/>
+    <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+        <Label x:Name="label" Content="Create department form :" HorizontalAlignment="Left" Margin="13,48,0,0" VerticalAlignment="Top" Width="280" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
+        <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="13,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Description" HorizontalAlignment="Left" Margin="13,127,0,0" VerticalAlignment="Top" Cursor=""/>
+        <Label x:Name="label3" Content="Floor" HorizontalAlignment="Left" Margin="13,160,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="nameLabel" HorizontalAlignment="Left" Height="23" Margin="100,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="descriptionLabel" HorizontalAlignment="Left" Height="23" Margin="100,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="floorLabel" HorizontalAlignment="Left" Height="23" Margin="100,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Submit" HorizontalAlignment="Left" Margin="145,208,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button1" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Click="button1_Click" Margin="10,10,0,0"/>
 
     </Grid>
 </base:CustomUserControl>

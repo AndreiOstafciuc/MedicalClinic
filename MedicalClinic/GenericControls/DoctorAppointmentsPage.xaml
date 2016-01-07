@@ -1,0 +1,42 @@
+﻿<base:CustomUserControl x:Class="GenericControls.DoctorAppointmentsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenericControls"
+             xmlns:base="clr-namespace:GenericControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Label Grid.Row="0" Margin="2">
+                <Label.Content>
+                    <Binding Path="CurrentPage">
+                        <Binding.StringFormat>Current Page: {0}</Binding.StringFormat>
+                    </Binding>
+                </Label.Content>
+            </Label>
+            <Button Name="previousBtn" Content="Previous" Click="OnPreviousClicked" Margin="2"/>
+            <Button Name="nextBtn" Content="Next" Click="OnNextClicked" Margin="2"/>
+        </StackPanel>
+        <DataGrid Height="Auto" Width="Auto" Margin="0,0,0,248" ItemsSource="{Binding}" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Patient" Width="*" Binding="{Binding Patient}"/>
+                <DataGridTextColumn Header="Date" Width="*" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Time" Width="*" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="Symtoms" Width="*" Binding="{Binding Symtoms}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Tag="{Binding AppointmentId}" Click="AssignResults">Assign results</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</base:CustomUserControl>

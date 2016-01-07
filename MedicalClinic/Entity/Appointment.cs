@@ -12,6 +12,15 @@ namespace Entity
         String _symptoms;
 
         public Appointment() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idPacient"></param>
+        /// <param name="idDoctor"></param>
+        /// <param name="time">hour at what appointment starts</param>
+        /// <param name="appointmentDate"></param>
+        /// <param name="symtoms"></param>
         public Appointment(int idPacient,int idDoctor,int time, DateTime appointmentDate,String symtoms){
             this._idPacient = idPacient;
             this._idDoctor=idDoctor;

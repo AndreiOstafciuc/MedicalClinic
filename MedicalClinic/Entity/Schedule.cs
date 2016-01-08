@@ -9,6 +9,13 @@
         int _endHour;
 
         public Schedule() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id_doctor"></param>
+        /// <param name="day">day of week [0-6] where 0 == "sunday"</param>
+        /// <param name="startHour"></param>
+        /// <param name="endHour"></param>
         public Schedule(int id_doctor,int day,int startHour, int endHour)
         {
             this._idDoctor = id_doctor;

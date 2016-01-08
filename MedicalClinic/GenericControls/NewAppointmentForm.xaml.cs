@@ -23,6 +23,7 @@ namespace GenericControls
     public partial class NewAppointmentForm : UserControl
     {
         private DepartmentService _departmentService;
+        private ScheduleService _scheduleService;
         private DoctorService _doctorService;
         private AppointmentService _appointmentService;
         private String _errorMessage = "";
@@ -31,12 +32,15 @@ namespace GenericControls
         {
             _defaultDate = new DateTime(1, 1, 1);
             InitializeComponent();
+            scheduleTitle.Visibility = Visibility.Hidden;
+            scheduleContent.Visibility = Visibility.Hidden;
             PopulateDepartmentsList();
         }
 
         private void PopulateDepartmentsList()
         {
             _departmentService = new DepartmentService();
+            _scheduleService = new ScheduleService();
             List<Department> allDepartments = _departmentService.FindAll();
             ComboBoxItem cbm;
             if (allDepartments != null)
@@ -48,7 +52,7 @@ namespace GenericControls
                     cbm.Tag = d.Id;
                     comboBoxDepartments.Items.Add(cbm);
                 }
-                
+
             }
         }
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
@@ -58,13 +62,16 @@ namespace GenericControls
 
         private void datePickerAppointmentDate_GotFocus(object sender, RoutedEventArgs e)
         {
-            labelError.Visibility = Visibility.Visible; 
+            labelError.Visibility = Visibility.Visible;
         }
 
         private void comboBoxDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            scheduleTitle.Visibility = Visibility.Hidden;
+            scheduleContent.Visibility = Visibility.Hidden;
             if (comboBoxDepartments.SelectedItem != null)
             {
+                comboBoxDoctors.Items.Clear();
                 int selectedDeptId = Convert.ToInt32(((ComboBoxItem)comboBoxDepartments.SelectedItem).Tag.ToString());
                 PopulateDoctorsList(selectedDeptId);
             }
@@ -74,12 +81,12 @@ namespace GenericControls
             _doctorService = new DoctorService();
             List<Doctor> doctors = _doctorService.FindAllByProperty("id_dept", departmentId.ToString());
             ComboBoxItem cmb;
-            if(doctors!=null)
+            if (doctors != null)
             {
                 foreach (Doctor d in doctors)
                 {
                     cmb = new ComboBoxItem();
-                    cmb.Content = d.FirstName+" "+d.LastName;
+                    cmb.Content = d.FirstName + " " + d.LastName;
                     cmb.Tag = d.Id;
                     comboBoxDoctors.Items.Add(cmb);
                 }
@@ -88,28 +95,28 @@ namespace GenericControls
         }
         private bool ValidateUserInput(int idDept, int idDoctor, DateTime date, String time, String symptoms)
         {
-            if(idDept==0 || idDoctor==0)
+            if (idDept == 0 || idDoctor == 0)
             {
                 _errorMessage = "You have to select a department and a doctor";
                 return false;
             }
-            if(date==_defaultDate)
+            if (date == _defaultDate)
             {
                 _errorMessage = "Please select a valid date";
                 return false;
             }
-            if(time=="")
+            if (time == "")
             {
                 _errorMessage = "Please select a valid time";
                 return false;
             }
-            if(date<DateTime.Now)
+            if (date < DateTime.Now)
             {
                 _errorMessage = "Please select a valid date. You cannot choose a date in the past";
                 return false;
             }
             int day = (int)date.DayOfWeek;
-            if(_doctorService.checkDoctorAvailability(idDoctor,day,Convert.ToInt32(time), date)== false)
+            if (_doctorService.checkDoctorAvailability(idDoctor, day, Convert.ToInt32(time), date) == false)
             {
                 _errorMessage = "Doctor is not available, please select another date or time";
                 return false;
@@ -122,22 +129,22 @@ namespace GenericControls
         {
             int deptId = 0;
             int doctorId = 0;
-            if (comboBoxDepartments.SelectedItem!=null)
+            if (comboBoxDepartments.SelectedItem != null)
             {
                 deptId = Convert.ToInt32(((ComboBoxItem)comboBoxDepartments.SelectedItem).Tag.ToString());
             }
-            if(comboBoxDoctors.SelectedItem!= null)
+            if (comboBoxDoctors.SelectedItem != null)
             {
                 doctorId = Convert.ToInt32(((ComboBoxItem)comboBoxDoctors.SelectedItem).Tag.ToString());
             }
             DateTime scheduledDate = _defaultDate;
-            if(datePickerAppointmentDate.SelectedDate!=null)
+            if (datePickerAppointmentDate.SelectedDate != null)
             {
                 scheduledDate = datePickerAppointmentDate.SelectedDate.Value;
             }
             String time = textBoxTime.Text;
             String symptoms = textBoxSymptoms.Text;
-            if(ValidateUserInput(deptId, doctorId, scheduledDate, time, symptoms)== true)
+            if (ValidateUserInput(deptId, doctorId, scheduledDate, time, symptoms) == true)
             {
                 //create new appointment
                 _appointmentService = new AppointmentService();
@@ -146,7 +153,7 @@ namespace GenericControls
                     _appointmentService.Save(new Appointment(SessionData.UserSessionData.CurrentUserId, doctorId, Convert.ToInt32(time), scheduledDate, symptoms));
                     MessageBox.Show("Appointment created");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Something went wrong\n" + ex.Data.ToString());
                 }
@@ -156,6 +163,23 @@ namespace GenericControls
                 labelError.Content = _errorMessage;
                 labelError.Visibility = Visibility.Visible;
             }
+        }
+
+        private void comboBoxDoctors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxDoctors.SelectedItem!=null)
+            {
+                List<Schedule> schedule = _scheduleService.FindAllByProperty("id_doctor", ((ComboBoxItem)comboBoxDoctors.SelectedItem).Tag.ToString());
+                String sch = "";
+                foreach (Schedule s in schedule)
+                {
+                    sch += (DayOfWeek)(s.Day) + "\t" + s.StartHour + "-" + s.EndHour + "\n";
+                }
+                scheduleTitle.Visibility = Visibility.Visible;
+                scheduleContent.Visibility = Visibility.Visible;
+                scheduleContent.Content = sch;
+            }
+
         }
     }
 }

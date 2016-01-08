@@ -7,11 +7,13 @@
              xmlns:base="clr-namespace:GenericControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Height="300" VerticalAlignment="Bottom">
-        <Label x:Name="label" Content="Administrator options" Margin="10,10,45,257" VerticalAlignment="Center" Height="33" Width="245" FontWeight="Bold" FontStyle="Italic" FontSize="20"/>
-        <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="148" Click="doctorForm_Click"/>
-        <Button x:Name="updateBtn_Copy" Content="Create department" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click"/>
-        <Button x:Name="updateBtn_Copy1" Content="Create admin" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="148" Click="adminForm_Click"/>
+    <Grid  Height="300" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Label HorizontalAlignment="Center" x:Name="label" Content="Administrator options" VerticalAlignment="Top" Height="40" Width="245" FontWeight="Bold" FontStyle="Italic" FontSize="20" Margin="0,20,0,0"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Click="doctorForm_Click"/>
+            <Button x:Name="updateBtn_Copy1" Content="Create admin" HorizontalAlignment="Left" Margin="0,69,0,0" VerticalAlignment="Top" Width="148" Click="adminForm_Click"/>
+            <Button x:Name="updateBtn_Copy" Content="Create department" HorizontalAlignment="Left" Margin="0,139,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click"/>
+        </Grid>
 
     </Grid>
 </base:CustomUserControl>

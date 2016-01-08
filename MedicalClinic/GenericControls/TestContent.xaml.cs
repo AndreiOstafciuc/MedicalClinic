@@ -3,18 +3,7 @@ using DBConnNamespace;
 using Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -35,14 +24,7 @@ namespace GenericControls
         public TestContent()
         {
             InitializeComponent();
-            try
-            {
-                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
-            }
-            catch (System.Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            
             administratorService = new AdministratorService();
             appointmentService = new AppointmentService();
             departmentService = new DepartmentService();
@@ -157,10 +139,10 @@ namespace GenericControls
                 }
                 //*/
 
-                /*
+                //*
                 for (int shcnt = 40; shcnt < 240; shcnt++)
                 {
-                    scheduleService.Save(new Schedule(shcnt, r.Next(1,28), r.Next(9,11), r.Next(14, 18)));
+                    scheduleService.Save(new Schedule(shcnt, r.Next(0,6), r.Next(9,11), r.Next(14, 18)));
                 }
                 //*/
                 /*

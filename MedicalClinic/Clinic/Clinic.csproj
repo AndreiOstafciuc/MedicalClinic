@@ -147,6 +147,7 @@
     <Content Include="Resources\sqlScripts\db_clean.sql" />
     <Content Include="Resources\sqlScripts\db_schema.sql" />
     <Content Include="Resources\sqlScripts\db_TestData.sql" />
+    <Content Include="Resources\sqlScripts\alter_HR.sql" />
     <Content Include="Resources\sqlScripts\procedures.sql" />
   </ItemGroup>
   <ItemGroup>

@@ -86,3 +86,31 @@ begin
   end loop;
 
 end;
+
+CREATE FUNCTION IntToWeekDay (DayOfWeek number)
+RETURN varchar2
+AS
+    BEGIN
+        IF DayOfWeek = 0 then return 'Sunday'; end if;
+        IF DayOfWeek = 1 then return 'Monday'; end if;
+        IF DayOfWeek = 2 then return 'Tuesday'; end if;
+        IF DayOfWeek = 3 then return 'Wednesday'; end if;
+        IF DayOfWeek = 4 then return 'Thursday'; end if;
+        IF DayOfWeek = 5 then return 'Friday'; end if;
+        IF DayOfWeek = 6 then return'Saturday';end if;
+        RETURN '';
+END;
+
+
+create or replace procedure show_doctors_schedule
+is 
+cursor orar
+is
+select s.id_doctor, d.last_name, d.first_name, s.start_hour, s.end_hour, s.day
+from schedule s join doctor d
+on s.id_doctor=d.id_doctor;
+begin
+  for orar_rec in orar loop
+    dbms_output.put_line('Doctor ' || orar_rec.last_name || ' ' || orar_rec.first_name || ' is available ' || IntToWeekDay(orar_rec.day) || ' from ' || orar_rec.start_hour || ' to ' || orar_rec.end_hour);
+  end loop;
+end;

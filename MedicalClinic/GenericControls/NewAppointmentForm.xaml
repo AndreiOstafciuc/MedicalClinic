@@ -47,6 +47,6 @@
             </LinearGradientBrush>
         </Button.Background>
     </Button>
-    <Label Foreground="Red" x:Name="labelError" Grid.Row="7" Grid.Column="1" Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
+    <Label Foreground="Red" x:Name="labelError" Grid.Row="7" Grid.Column="1" Content="" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
     </Grid>
 </UserControl>

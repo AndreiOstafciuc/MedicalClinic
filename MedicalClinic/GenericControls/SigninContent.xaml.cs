@@ -1,6 +1,6 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : Get user input from the displayed form and validates them,  if input is valid then save user data using an instance of PatientService, otherwise show the corresponding error message
 */
 
 using DAO;
@@ -26,6 +26,16 @@ namespace GenericControls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// validate user input; returns true if valid, otherwise returns false
+        /// <param name="patientFirstName"> patientFirstName is povided by user and cannot be empty </param>
+        /// <param name="patientLastName"> patientLastName is povided by user and cannot be empty </param>
+        /// <param name="patientAddress"> patientAddress is povided by user and cannot be empty </param>
+        /// <param name="patientPhone"> patientPhone is povided by user and must have exactly 10 numberic characters </param>
+        /// <param name="patientEmail"> patientEmail is povided by user and must be a valid email </param>
+        /// <param name="patientPassword"> patientPassword is povided by user and must be minimum 6 characters long </param>
+        /// <param name="patientBirthdate"> patientBirthdate is povided by user and must be earlier than the current date</param>
+        /// </summary>
         private bool ValidateUserInput(String patientFirstName, String patientLastName, String patientAddress,
                      String patientPhone, String patientEmail, String patientPassword, DateTime patientBirthdate)
         {
@@ -57,6 +67,12 @@ namespace GenericControls
             
             return true;
         }
+        /// <summary>
+        /// handler for buttonSignin click Event, 
+        /// gets user input and check if is valid,
+        /// if input is valid use CrentialsService and PatientService to insert a new patient, 
+        /// otherwise set the errorLabel content and make it visible
+        /// </summary>
         private void buttonSignin_Click(object sender, RoutedEventArgs e)
         {
             //create new user, if success redirect to login view
@@ -123,19 +139,29 @@ namespace GenericControls
 
 
         }
-
+        /// <summary>
+        /// handler for buttonBack click Event, 
+        /// raise a new event for changing the layout to MainUI (the layout for user GUEST)
+        /// </summary>
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
 
 
-
+        /// <summary>
+        /// handler for all textBox elements KeyboardFocusChangedEvent,
+        /// if user selected a input and begins to write the errorLabel visibility is set hidden
+        /// </summary>
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// handler for DatePicker gotFocus event
+        /// errorLabel visibility is set hidden
+        /// </summary>
         private void datePickerUserBirthdate_GotFocus(object sender, RoutedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;

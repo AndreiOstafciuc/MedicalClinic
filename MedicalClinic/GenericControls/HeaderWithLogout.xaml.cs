@@ -1,6 +1,6 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana, Ostafciuc Andrei
+* Description : The header of the page containing application logo , the help button and the logout button
 */
 
 using DAO;
@@ -47,6 +47,10 @@ namespace GenericControls
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
 
+        /// <summary>
+        ///Handler for helpButton click event, 
+        ///open help according to current user type
+        /// </summary>
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
             int id = SessionData.UserSessionData.CurrentUserId;

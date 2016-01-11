@@ -1,6 +1,6 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : Get user input from the form and validates, if input is valid then update user data, otherwise show the corresponding error message
 */
 
 using DAO;
@@ -26,13 +26,25 @@ namespace GenericControls
             PopulateEmailInput();
         }
 
+        /// <summary>
+        /// find current user that is logged in the application and get his email in order to fill the edit
+        /// form with his old email
+        /// </summary>
         private void PopulateEmailInput()
         {
             _credentialsService = new CredentialsService();
             _credentials = _credentialsService.FindById(SessionData.UserSessionData.CurrentUserId);
-            textBoxUserEmail.Text = _credentials.Email;
+            if (_credentials != null)
+            {
+                textBoxUserEmail.Text = _credentials.Email;
+            }
+            
         }
-
+        /// <summary>
+        /// <param name="email"> email is povided by user and must be a valid email, </param>
+        /// <param name="oldPassword"> oldPassword is povided by user and must be the same as the password stored in the database, </param>
+        /// <param name="newPassword"> newPassword is povided by user and must be minimum 6 characters long </param>
+        /// </summary>
         private bool ValidateUserInput(String email, String oldPassword, String newPassword)
         {
             if (email == "")
@@ -66,6 +78,12 @@ namespace GenericControls
             return true;
 
         }
+        /// <summary>
+        /// handler for buttonUpdate click Event, 
+        /// gets user input and check if is valid,
+        /// if input is valid user CrentialsService to update user info, 
+        /// otherwise set the errorLabel content and make it visible
+        /// </summary>
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
 
@@ -94,6 +112,10 @@ namespace GenericControls
 
         }
 
+        /// <summary>
+        /// handler for all textBox elements KeyboardFocusChangedEvent,
+        /// if user selected a input and begins to write the errorLabel  visibility is set hidden
+        /// </summary>
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;

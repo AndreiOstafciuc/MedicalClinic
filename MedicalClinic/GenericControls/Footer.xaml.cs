@@ -1,6 +1,6 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : The footer of the page containing copyrights
 */
 
 namespace GenericControls

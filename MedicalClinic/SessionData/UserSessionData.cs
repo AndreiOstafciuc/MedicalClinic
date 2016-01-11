@@ -1,12 +1,12 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : used for storing data (user id) of the current logged user
 */
 
 namespace SessionData
 {
     /// <summary>
-    /// this class is used for storing data of the current loged in user
+    /// this class is used for storing data of the current logged in user
     /// </summary>
     public static class UserSessionData
     {

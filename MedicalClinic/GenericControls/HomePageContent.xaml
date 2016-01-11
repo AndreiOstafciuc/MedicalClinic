@@ -37,17 +37,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Visibility="Hidden" Grid.Row="2" x:Name="buttonTest" Grid.Column="0" Content="Debug" HorizontalAlignment="Center" Margin="160,10,165,5" VerticalAlignment="Center" Click="buttonTestStuff_Click" Height="25">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                    <GradientStop Color="#FFC79292" Offset="1"/>
-                    <GradientStop Color="#FFC79292" Offset="0.981"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-
+       
     </Grid>
 </base:CustomUserControl>

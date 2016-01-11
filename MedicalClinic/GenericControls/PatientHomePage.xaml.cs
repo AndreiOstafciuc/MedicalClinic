@@ -1,7 +1,10 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana, Ostafciuc Andrei
+* Description : This page contains three sections: a section where all the departments and info about them are displayed, 
+*               a section where all doctors and info about them are displayed, 
+*               a section where generalInfo about the clinic is displayed
 */
+
 
 using DAO;
 using Entity;
@@ -24,31 +27,44 @@ namespace GenericControls
             PopulateDepartmentGrid();
             PopulateDoctorGrid();
         }
+        /// <summary>
+        /// gets all departments using DepartmentService
+        /// and buid a Expander control with header= department name and content= department description
+        /// for each expander create a new row in  gridDepartaments
+        /// </summary>
         private void PopulateDepartmentGrid()
         {
             _deptService = new DepartmentService();
             List<Department> depts = _deptService.FindAll();
             int i = 0;
-
-            foreach (var dept in depts)
+            if (depts != null)
             {
-                Expander expander = new Expander();
-                expander.HorizontalAlignment = HorizontalAlignment.Stretch;
-                expander.Header = dept.Name;
-                StackPanel stackPanel = new StackPanel();
-                TextBlock txt = new TextBlock();
-                txt.Text = dept.Description + ", " + dept.Floor;
-                stackPanel.Children.Add(txt);
-                expander.Content = stackPanel;
-                gridDepartaments.RowDefinitions.Add(new RowDefinition());
-                gridDepartaments.RowDefinitions[i].Height = new GridLength(50);
-                Grid.SetRow(expander, i);
-                i++;
-                gridDepartaments.Children.Add(expander);
+                foreach (var dept in depts)
+                {
+                    Expander expander = new Expander();
+                    expander.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    expander.Header = dept.Name;
+                    StackPanel stackPanel = new StackPanel();
+                    TextBlock txt = new TextBlock();
+                    txt.Text = dept.Description + ", " + dept.Floor;
+                    stackPanel.Children.Add(txt);
+                    expander.Content = stackPanel;
+                    gridDepartaments.RowDefinitions.Add(new RowDefinition());
+                    gridDepartaments.RowDefinitions[i].Height = new GridLength(50);
+                    Grid.SetRow(expander, i);
+                    i++;
+                    gridDepartaments.Children.Add(expander);
+                }
             }
         }
 
-        private string getDeptName(int id, List<Department> departments)
+        /// <summary>
+        /// gets department name from a list by id
+        /// </summary>
+        /// <param name="id">id is department id</param>
+        /// <param name="departments">departments is a List<Department></param>
+        /// <returns></returns>
+        private string GetDepartmentName(int id, List<Department> departments)
         {
             foreach (Department d in departments)
             {
@@ -60,6 +76,11 @@ namespace GenericControls
             return "";
         }
 
+        /// <summary>
+        /// gets all doctors using DoctorService
+        /// and buid a Expander control with header= doctor name and content= department
+        /// for each expander create a new row in  gridDoctors
+        /// </summary>
         private void PopulateDoctorGrid()
         {
             _doctorService = new DoctorService();
@@ -77,7 +98,7 @@ namespace GenericControls
                     expander.Header = doctor.FirstName + " " + doctor.LastName;
                     StackPanel stackPanel = new StackPanel();
                     TextBlock txt = new TextBlock();
-                    txt.Text = getDeptName(doctor.IdDept, departments);//doctorDept.Name + ", " + doctorDept.Floor;
+                    txt.Text = GetDepartmentName(doctor.IdDept, departments);//doctorDept.Name + ", " + doctorDept.Floor;
                     stackPanel.Children.Add(txt);
                     expander.Content = stackPanel;
                     gridDoctors.RowDefinitions.Add(new RowDefinition());

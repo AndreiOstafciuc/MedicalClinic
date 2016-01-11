@@ -1,6 +1,7 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : Get user (identified by SessionData.UserSessionData.CurrentUserId) data from database using CredentialsService and PatientService 
+*               and display data on the page ( suggestive images located in resource are used for this information)
 */
 
 using DAO;
@@ -23,6 +24,10 @@ namespace GenericControls
             InitializeComponent();
             DisplayPatientInfo();
         }
+        /// <summary>
+        ///  Get user (identified by SessionData.UserSessionData.CurrentUserId) data from database using CredentialsService and PatientService 
+       ///and display data on the page
+       /// </summary>
         private void DisplayPatientInfo()
         {
             _credentialsService = new CredentialsService();
@@ -38,6 +43,9 @@ namespace GenericControls
                 labelPatientAddress.Content = patient.Address;
             }
         }
+        /// <summary>
+        /// Get images from resources and set the sources of the images in the UI
+        /// </summary>
         private void SetImages()
         {
             BitmapImage bmpUser = new BitmapImage();

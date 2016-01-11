@@ -45,9 +45,6 @@ namespace Clinic
         {
             switch (e.ArgWindowLayout)
             {
-                case -1:
-                    mainUI = new DebugUI();
-                    break;
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
                     break;

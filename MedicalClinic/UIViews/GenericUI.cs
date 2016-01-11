@@ -1,6 +1,15 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : GenericUI is derived from Grid and it is an abstract class
+*              Contains three abstract methods GetHeader, GetFooter and GetMainContent that return an object of type CustomUserControl
+*              It is the base class from the Template Method pattern
+*              The recipe is presented in the constructor and it says that each UI interface in this app must have a header, a mainContent and a footer,
+*              the content of this elements can vary but their locations and dimensions must be always the same 
+*              header is located on the top of the page
+*              footer is located on the bottom of the page
+*              body is located between header and footer
+*              also here are assigned and handlers for the custom events : ChangeMainWindowLayoutEvent and ChangePageContentEvent
+*              if an event ChangeMainWindowLayoutEvent is raised then this event is sent to the main window that has registered an handler for this tyoe of event
 */
 
 using GenericControls;
@@ -19,6 +28,14 @@ namespace UIViews
         public abstract CustomUserControl GetHeader();
         public abstract CustomUserControl GetFooter();
         public abstract CustomUserControl GetMainContent();
+        /// <summary>
+        /// contains the recipe that says that each UI interface in this app must have a header, 
+        /// a mainContent and a footer,
+        /// the content of this elements can vary but their locations and dimensions must be always the same
+        /// header is located on the top of the page
+        /// footer is located on the bottom of the page
+        /// body is located between header and footer       
+        /// </summary>
         public GenericUI() : base()
         {
             this.VerticalAlignment = System.Windows.VerticalAlignment.Top;
@@ -49,6 +66,11 @@ namespace UIViews
             this.Children.Add(_content);
             this.Children.Add(_footer);
         }
+        /// <summary>
+        /// handler for ChangePageContentEvent
+        /// content page is changed according to the new pageContent from PageContentEventArgs
+        /// register handlers for the custom events
+        /// </summary>
         private void ChangePageContent(object sender, PageContentEventArgs e)
         {
             this.Children.Remove(_content);
@@ -62,6 +84,9 @@ namespace UIViews
             this.Children.Add(_content);
 
         }
+        /// <summary>
+        /// raise WindowLayoutEvent to the main window that has a handler registered
+        /// </summary>
         private void ChangeWindowLayout(object sender, WindowLayoutEventArgs e)
         {
             RaiseChangeMainWindowLayoutEvent(e.ArgWindowLayout);

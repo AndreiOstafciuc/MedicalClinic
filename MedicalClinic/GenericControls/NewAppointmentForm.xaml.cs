@@ -1,7 +1,10 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana, Bordeian Marius, Ostafciuc Andrei
+* Description : Contains the new appointment form, get input , validate input, 
+*              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
+               otherwise corresponding error message are displayed
 */
+
 
 using DAO;
 using Entity;
@@ -51,11 +54,19 @@ namespace GenericControls
 
             }
         }
+        /// <summary>
+        /// handler for all textBox elements KeyboardFocusChangedEvent,
+        /// if user selected a input and begins to write the errorLabel visibility is set hidden
+        /// </summary>
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// handler for DatePicker gotFocus event
+        /// errorLabel visibility is set hidden
+        /// </summary>
         private void datePickerAppointmentDate_GotFocus(object sender, RoutedEventArgs e)
         {
             labelError.Visibility = Visibility.Visible;
@@ -89,7 +100,14 @@ namespace GenericControls
                 comboBoxDoctors.IsEnabled = true;
             }
         }
-        private bool ValidateUserInput(int idDept, int idDoctor, DateTime date, String time, String symptoms)
+        /// <summary>
+        /// validate user input; returns true if valid, otherwise returns false
+        /// <param name="idDept"> idDept is selected by user and cannot be 0 </param>
+        /// <param name="idDoctor"> idDoctor is selected by user and cannot be 0 </param>
+        /// <param name="date"> date is povided by user and must be a date later than or the same as current date</param>
+        /// <param name="time"> time is povided by user and must be between 00 and 24 </param>
+        /// </summary>
+        private bool ValidateUserInput(int idDept, int idDoctor, DateTime date, String time)
         {
             if (idDept == 0 || idDoctor == 0)
             {
@@ -122,6 +140,12 @@ namespace GenericControls
 
         }
 
+        /// <summary>
+        /// handler for button save click Event, 
+        /// gets user input and check if is valid,
+        /// if input is valid and selected doctor is available user AppointmentService to create new appointment 
+        /// otherwise set the errorLabel content and make it visible
+        /// </summary>
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             int deptId = 0;
@@ -141,7 +165,7 @@ namespace GenericControls
             }
             String time = textBoxTime.Text;
             String symptoms = textBoxSymptoms.Text;
-            if (ValidateUserInput(deptId, doctorId, scheduledDate, time, symptoms) == true)
+            if (ValidateUserInput(deptId, doctorId, scheduledDate, time) == true)
             {
                 //create new appointment
                 _appointmentService = new AppointmentService();
@@ -162,11 +186,16 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// handler for comboBoxDoctors SelectionChanged Event, 
+        /// gets selected Doctor and find his schedule using ScheduleService
+        /// build a string with his schedule and show the schedule to the user, in order to select a proper time for his appointment
+        /// </summary>
         private void comboBoxDoctors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxDoctors.SelectedItem != null)
             {
-                List<Schedule> schedule = _scheduleService.FindAllByProperty("id_doctor", ((ComboBoxItem)comboBoxDoctors.SelectedItem).Tag.ToString());
+                List<Schedule> schedule = _scheduleService.FindAllByProperty(Utils.ScheduleTableProperties.IdDoctor, ((ComboBoxItem)comboBoxDoctors.SelectedItem).Tag.ToString());
                 String sch = "";
                 foreach (Schedule s in schedule)
                 {

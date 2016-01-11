@@ -1,6 +1,8 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana
+* Description : A class derived form System.Windows.Controls.UserControl that has two custom events
+*       ChangePageContentHandler -for changing the body of the current window
+*       ChangeWindowLayoutHandler -for changing the window layout         
 */
 
 using System.Windows.Controls;

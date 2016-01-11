@@ -1,6 +1,6 @@
 ﻿/*
-* Author : 
-* Decription : 
+* Author : Cosmanescu Roxana, Ostafciuc Andrei
+* Description : The header of the page containing application logo and the help button
 */
 
 using System;
@@ -19,6 +19,9 @@ namespace GenericControls
             InitializeComponent();
             SetHelpImage();
         }
+        /// <summary>
+        /// Get image for help button from resources and set the source
+        /// </summary>
         private void SetHelpImage()
         {
             BitmapImage bmpHelp = new BitmapImage();
@@ -28,6 +31,10 @@ namespace GenericControls
             imageBtnHelp.Source = bmpHelp;
         }
 
+        /// <summary>
+        ///Handler for helpButton click event, 
+        ///open generic help
+        /// </summary>
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\GenericHelp.chm");

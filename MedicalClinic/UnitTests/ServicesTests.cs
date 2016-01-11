@@ -40,7 +40,14 @@ namespace DAOTests
             }
             catch (Exception)
             {
-                DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                try
+                {
+                    DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
 
             credentialsService = new CredentialsService();

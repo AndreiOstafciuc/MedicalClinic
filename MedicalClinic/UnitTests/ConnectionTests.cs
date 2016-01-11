@@ -24,7 +24,22 @@ namespace ConnectionTests
         [TestMethod()]
         public void CreateConnectionTest2()
         {
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            try
+            {
+                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+
             Assert.IsNotNull(DBConnection.Connection);
             DBConnection.CloseConnection();
         }
@@ -45,7 +60,21 @@ namespace ConnectionTests
         [TestMethod()]
         public void CloseConnectionTest2()
         {
-            DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            try
+            {
+                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
 
             if (DBConnection.Connection == null)
             {

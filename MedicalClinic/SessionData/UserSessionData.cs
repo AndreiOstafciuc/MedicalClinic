@@ -10,7 +10,7 @@ namespace SessionData
     //this class is used for storing data of the current loged user
     public static class UserSessionData
     {
-        private static int _currentUserId;
+        private static int _currentUserId=0;
 
         public static int CurrentUserId
         {

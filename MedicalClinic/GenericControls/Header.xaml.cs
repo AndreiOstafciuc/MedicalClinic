@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DAO;
+using Entity;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +35,11 @@ namespace GenericControls
             bmpHelp.UriSource = new Uri("pack://application:,,,/Clinic;component/Resources/help.png");
             bmpHelp.EndInit();
             imageBtnHelp.Source = bmpHelp;
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        { 
+            System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\GenericHelp.chm");
         }
     }
 }

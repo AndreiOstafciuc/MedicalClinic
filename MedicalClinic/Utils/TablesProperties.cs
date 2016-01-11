@@ -1,7 +1,18 @@
-﻿namespace Utils
+﻿// ***********************************************************************
+// Assembly         : Utils
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="TablesProperties.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Utils
 {
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class AdminTableProperties
     {
@@ -11,7 +22,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class AppointmentTableProperties
     {
@@ -24,7 +35,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class CredentialTableProperties
     {
@@ -35,7 +46,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class DepartmentTableProperties
     {
@@ -46,7 +57,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class DoctorTableProperties
     {
@@ -59,7 +70,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class PatientTableProperties
     {
@@ -74,7 +85,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class ResultsTableProperties
     {
@@ -87,7 +98,7 @@
     }
 
     /// <summary>
-    /// Class only containing the properties strings for the appropriate table 
+    /// Class only containing the properties strings for the appropriate table
     /// </summary>
     public static class ScheduleTableProperties
     {

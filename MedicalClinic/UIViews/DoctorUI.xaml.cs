@@ -1,8 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : DoctorUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods
 *              in order to return elements specific for the doctor UI
-*/
+// ***********************************************************************
+// <copyright file="DoctorStatus.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using GenericControls;
 
@@ -13,11 +18,9 @@ namespace UIViews
     /// </summary>
     public partial class DoctorUI : GenericUI
     {
-
         public DoctorUI() : base()
         {
             InitializeComponent();
-
         }
         /// <summary>
         /// returns an object representing the header

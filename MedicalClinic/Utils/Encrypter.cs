@@ -1,4 +1,15 @@
-﻿using System.Security.Cryptography;
+﻿// ***********************************************************************
+// Assembly         : Utils
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="Encrypter.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Utils
@@ -8,7 +19,7 @@ namespace Utils
     /// </summary>
     public static class Encrypter
     {
-        public static string getMD5(string password)
+        public static string GetMD5(string password)
         {
             MD5 md5Hash = MD5.Create();
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(password));

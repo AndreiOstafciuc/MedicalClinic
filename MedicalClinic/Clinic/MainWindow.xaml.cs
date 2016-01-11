@@ -1,12 +1,18 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : Clinic
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="MainWindow.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
+using DBConnNamespace;
+using System;
 using System.Windows;
 using UIViews;
-using System;
-using DBConnNamespace;
 
 namespace Clinic
 {
@@ -15,8 +21,8 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GenericUI mainUI;
 
-        GenericUI mainUI;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,19 +47,24 @@ namespace Clinic
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
             pageContainer.Children.Add(mainUI);
         }
+
         private void ChangeWindowLayout(object sender, GenericControls.WindowLayoutEventArgs e)
         {
             switch (e.ArgWindowLayout)
             {
+
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
                     break;
+
                 case Utils.UserTypes.ADMIN:
                     mainUI = new AdminUI();
                     break;
+
                 case Utils.UserTypes.PATIENT:
                     mainUI = new PatientUI();
                     break;
+
                 default:
                     mainUI = new MainUI();
                     break;
@@ -62,8 +73,6 @@ namespace Clinic
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
             pageContainer.Children.RemoveAt(0);
             pageContainer.Children.Add(mainUI);
-
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

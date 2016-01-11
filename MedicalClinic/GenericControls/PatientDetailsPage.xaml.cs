@@ -1,8 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : Get user (identified by SessionData.UserSessionData.CurrentUserId) data from database using CredentialsService and PatientService 
 *               and display data on the page ( suggestive images located in resource are used for this information)
-*/
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -19,6 +24,7 @@ namespace GenericControls
     {
         private PatientService _patientService;
         private CredentialsService _credentialsService;
+
         public PatientDetailsPage()
         {
             InitializeComponent();
@@ -71,7 +77,6 @@ namespace GenericControls
             bmpAddress.UriSource = new Uri("pack://application:,,,/Clinic;component/Resources/address.png");
             bmpAddress.EndInit();
             imgAddress.Source = bmpAddress;
-
         }
     }
 }

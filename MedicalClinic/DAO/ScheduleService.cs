@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -25,20 +31,18 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 schedulesList = new List<Schedule>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Schedule s = new Schedule();
 
                     s.Id = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdSchedule]);
                     s.Day = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.Day]);
                     s.StartHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.StartHour]);
                     s.EndHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.EndHour]);
-                    s.Id_doctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
+                    s.IdDoctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
                     schedulesList.Add(s);
                 }
             }
@@ -58,20 +62,18 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 schedulesList = new List<Schedule>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Schedule s = new Schedule();
 
                     s.Id = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdSchedule]);
                     s.Day = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.Day]);
                     s.StartHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.StartHour]);
                     s.EndHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.EndHour]);
-                    s.Id_doctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
+                    s.IdDoctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
                     schedulesList.Add(s);
                 }
             }
@@ -99,7 +101,7 @@ namespace DAO
                 s.Day = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.Day]);
                 s.StartHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.StartHour]);
                 s.EndHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.EndHour]);
-                s.Id_doctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
+                s.IdDoctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
             }
 
             return s;
@@ -124,7 +126,7 @@ namespace DAO
             _command.Parameters.Add(":day", OracleDbType.Int32).Value = obj.Day;
             _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
-            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
+            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.IdDoctor;
 
             _command.ExecuteNonQuery();
 
@@ -152,7 +154,7 @@ namespace DAO
             _command.Parameters.Add(":day", OracleDbType.Int32).Value = obj.Day;
             _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
-            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
+            _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.IdDoctor;
             _command.Parameters.Add(":id_schedule", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
@@ -177,7 +179,7 @@ namespace DAO
                 s.Day = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.Day]);
                 s.StartHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.StartHour]);
                 s.EndHour = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.EndHour]);
-                s.Id_doctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
+                s.IdDoctor = Convert.ToInt32(_dataReader[Utils.ScheduleTableProperties.IdDoctor]);
             }
 
             return s;

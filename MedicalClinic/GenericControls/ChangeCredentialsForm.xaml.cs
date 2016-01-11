@@ -1,7 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : Get user input from the form and validates, if input is valid then update user data, otherwise show the corresponding error message
-*/
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -20,6 +26,7 @@ namespace GenericControls
         private CredentialsService _credentialsService;
         private Credentials _credentials;
         private String _errorMessage;
+
         public ChangeCredentialsForm()
         {
             InitializeComponent();
@@ -47,36 +54,35 @@ namespace GenericControls
         /// </summary>
         private bool ValidateUserInput(String email, String oldPassword, String newPassword)
         {
-            if (email == "")
+            if ((email != null && String.IsNullOrEmpty(email)))
             {
                 _errorMessage = "Email cannot be empty.";
                 return false;
             }
-            if(Utils.Validator.ValidateEmail(email)==false)
+            if (Utils.Validator.ValidateEmail(email) == false)
             {
                 _errorMessage = "Invalid email. Ex: example@example.com";
                 return false;
             }
-            if (oldPassword == "")
+            if ((oldPassword != null && String.IsNullOrEmpty(oldPassword)))
             {
                 _errorMessage = "Old Password cannot be empty.";
                 return false;
             }
             else
             {
-                if (Utils.Encrypter.getMD5(oldPassword) != _credentials.Password)
+                if (Utils.Encrypter.GetMD5(oldPassword) != _credentials.Password)
                 {
                     _errorMessage = "Old Password is incorrect.";
                     return false;
                 }
             }
-            if(Utils.Validator.ValidatePassword(newPassword)== false)
+            if (Utils.Validator.ValidatePassword(newPassword) == false)
             {
                 _errorMessage = "New Password must have at least 6 characters.";
                 return false;
             }
             return true;
-
         }
         /// <summary>
         /// handler for buttonUpdate click Event, 
@@ -86,14 +92,13 @@ namespace GenericControls
         /// </summary>
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
-
             String email = textBoxUserEmail.Text;
             String oldPassword = textBoxUserOldPassword.Password;
             String newPassword = textBoxUserNewPassword.Password;
             if (ValidateUserInput(email, oldPassword, newPassword) == true)
             {
                 _credentials.Email = email;
-                _credentials.Password = Utils.Encrypter.getMD5(newPassword);
+                _credentials.Password = Utils.Encrypter.GetMD5(newPassword);
                 try
                 {
                     _credentialsService.Update(_credentials);
@@ -109,7 +114,6 @@ namespace GenericControls
                 labelError.Content = _errorMessage;
                 labelError.Visibility = Visibility.Visible;
             }
-
         }
 
         /// <summary>

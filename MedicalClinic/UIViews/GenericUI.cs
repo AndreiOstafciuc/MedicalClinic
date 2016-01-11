@@ -1,4 +1,4 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : GenericUI is derived from Grid and it is an abstract class
 *              Contains three abstract methods GetHeader, GetFooter and GetMainContent that return an object of type CustomUserControl
@@ -10,7 +10,6 @@
 *              body is located between header and footer
 *              also here are assigned and handlers for the custom events : ChangeMainWindowLayoutEvent and ChangePageContentEvent
 *              if an event ChangeMainWindowLayoutEvent is raised then this event is sent to the main window that has registered an handler for this tyoe of event
-*/
 
 using GenericControls;
 using System.Windows;
@@ -21,12 +20,15 @@ namespace UIViews
     public abstract class GenericUI : Grid
     {
         private CustomUserControl _header, _footer, _content;
+
         public delegate void ChangeMainWindowLayoutHandler(object sender, WindowLayoutEventArgs e);
+
         public event ChangeMainWindowLayoutHandler OnMainWindowLayoutChange;
 
-
         public abstract CustomUserControl GetHeader();
+
         public abstract CustomUserControl GetFooter();
+
         public abstract CustomUserControl GetMainContent();
         /// <summary>
         /// contains the recipe that says that each UI interface in this app must have a header, 
@@ -82,7 +84,6 @@ namespace UIViews
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
             Grid.SetRow(_content, 1);
             this.Children.Add(_content);
-
         }
         /// <summary>
         /// raise WindowLayoutEvent to the main window that has a handler registered
@@ -91,11 +92,11 @@ namespace UIViews
         {
             RaiseChangeMainWindowLayoutEvent(e.ArgWindowLayout);
         }
+
         public void RaiseChangeMainWindowLayoutEvent(int type)
         {
             if (OnMainWindowLayoutChange == null) return;
             OnMainWindowLayoutChange(this, new WindowLayoutEventArgs(type));
         }
-
     }
 }

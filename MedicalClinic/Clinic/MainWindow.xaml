@@ -7,7 +7,5 @@
         mc:Ignorable="d"
         Title="Main Window" Closing="Window_Closing" WindowStartupLocation="Manual">
     <Grid Background="Beige"  x:Name="pageContainer">
-        
-
     </Grid>
 </Window>

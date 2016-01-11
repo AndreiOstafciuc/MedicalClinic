@@ -1,8 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : AdminUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods
 *              in order to return elements specific for the admin UI
-*/
+// ***********************************************************************
+// <copyright file="DoctorStatus.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using GenericControls;
 

@@ -1,43 +1,43 @@
 ﻿<base:CustomUserControl x:Class="GenericControls.SigninContent"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GenericControls"
              xmlns:base="clr-namespace:GenericControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid Background="Beige" Margin="0">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="28" />
-            <RowDefinition Height="Auto" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="28" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="250" />
-        </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Content="Fields with * are mandatory" FontSize="14.667" FontWeight="Bold"/>
-            
-        <Label Grid.Row="1" Grid.Column="0" Content="First Name* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Last Name* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Address* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="4" Grid.Column="0" Content="Birthdate* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="5" Grid.Column="0" Content="Phone number*:" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Genetic disorders:" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="7" Grid.Column="0" Content="Insurance number:" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="8" Grid.Column="0" Content="Email* :" FontSize="14.667" FontWeight="Bold"/>
-        <Label Grid.Row="9" Grid.Column="0" Content="Password* :" FontSize="14.667" FontWeight="Bold"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Fields with * are mandatory" FontSize="14.667" FontWeight="Bold" />
+
+            <Label Grid.Row="1" Grid.Column="0" Content="First Name* :" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Last Name* :" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="3" Grid.Column="0" Content="Address* :" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="4" Grid.Column="0" Content="Birthdate* :" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="5" Grid.Column="0" Content="Phone number*:" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="6" Grid.Column="0" Content="Genetic disorders:" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="7" Grid.Column="0" Content="Insurance number:" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="8" Grid.Column="0" Content="Email* :" FontSize="14.667" FontWeight="Bold" />
+            <Label Grid.Row="9" Grid.Column="0" Content="Password* :" FontSize="14.667" FontWeight="Bold" />
             <TextBox x:Name="textBoxUserFirstName" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserLastName" Grid.Column="1" Grid.Row="2" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserAddress" Grid.Column="1" Grid.Row="3" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
@@ -46,29 +46,29 @@
             <TextBox x:Name="textBoxUserGeneticDisorder" Grid.Column="1" Grid.Row="6" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserInsuranceNr" Grid.Column="1" Grid.Row="7" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserEmail" Grid.Column="1" Grid.Row="8" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
-            <PasswordBox x:Name="passwordBoxUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Top" Width="250" MinHeight="30" GotKeyboardFocus="HideErrorMessage"/>
-        <Button x:Name="buttonSignin" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
+            <PasswordBox x:Name="passwordBoxUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Top" Width="250" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
+            <Button x:Name="buttonSignin" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right"
             MinWidth="80" Margin="0,6,3,0" Content="Sign up" Click="buttonSignin_Click">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                    <GradientStop Color="#FFC79292" Offset="1"/>
-                    <GradientStop Color="#FFC79292" Offset="0.981"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-            <Label Foreground="Red" x:Name="labelError" Grid.Row="11"  Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden" Grid.ColumnSpan="2"/>
-            <Button x:Name="buttonBack" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFC7BCBC" Offset="0.026" />
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                        <GradientStop Color="#FFDDDDDD" Offset="0.723" />
+                        <GradientStop Color="#FFC79292" Offset="1" />
+                        <GradientStop Color="#FFC79292" Offset="0.981" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Foreground="Red" x:Name="labelError" Grid.Row="11"  Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden" Grid.ColumnSpan="2" />
+            <Button x:Name="buttonBack" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right"
             	MinWidth="80" Margin="0,6,117,0" Content="Back" Click="buttonBack_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                        <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                        <GradientStop Color="#FFC79292" Offset="1"/>
-                        <GradientStop Color="#FFC79292" Offset="0.981"/>
+                        <GradientStop Color="#FFC7BCBC" Offset="0.026" />
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                        <GradientStop Color="#FFDDDDDD" Offset="0.723" />
+                        <GradientStop Color="#FFC79292" Offset="1" />
+                        <GradientStop Color="#FFC79292" Offset="0.981" />
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>

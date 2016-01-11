@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DBConnection
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DBConnection.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -9,7 +15,7 @@ using System;
 namespace DBConnNamespace
 {
     /// <summary>
-    /// static class that handle the connection to the database. 
+    /// static class that handle the connection to the database.
     /// Connection.Open() and Connection.Close() shall be called once per app lifecycle
     /// </summary>
     public static class DBConnection
@@ -20,6 +26,7 @@ namespace DBConnNamespace
         {
             get { return DBConnection._conn; }
         }
+
         public static void CreateConnection(String ip, String serviceName, String user, String password)
         {
             _conn = new OracleConnection();

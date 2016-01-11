@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -20,8 +26,8 @@ namespace GenericControls
     public partial class DoctorAppointmentsPage : CustomUserControl
     {
         private readonly PagingCollectionView _cview;
-        PatientService _patientService;
-        AppointmentService _appoitmentService;
+        private PatientService _patientService;
+        private AppointmentService _appoitmentService;
 
         public DoctorAppointmentsPage()
         {
@@ -30,7 +36,7 @@ namespace GenericControls
             _appoitmentService = new AppointmentService();
             List<Appointment> list = _appoitmentService.GetNextAppointmentsByDoctorId(SessionData.UserSessionData.CurrentUserId);
 
-            Dictionary<int, Patient> patientList = getDictionary(_patientService.FindAll());
+            Dictionary<int, Patient> patientList = GetDictionary(_patientService.FindAll());
             List<object> dataSet = null;
             if (list != null)
             {
@@ -40,7 +46,6 @@ namespace GenericControls
                     Patient p = patientList[app.IdPacient];
                     dataSet.Add(new { AppointmentId = app.Id, Patient = p.FirstName + " " + p.LastName, Date = app.ScheduledDate.ToString(), Time = app.Time.ToString(), Symtoms = app.Symptoms.ToString() });
                 }
-
 
                 this._cview = new PagingCollectionView(dataSet, 20);
                 this.DataContext = this._cview;
@@ -68,7 +73,7 @@ namespace GenericControls
             this._cview.MoveToPreviousPage();
         }
 
-        public Dictionary<int, Patient> getDictionary(List<Patient> list)
+        public Dictionary<int, Patient> GetDictionary(List<Patient> list)
         {
             Dictionary<int, Patient> dictionary = new Dictionary<int, Patient>();
             foreach (Patient p in list)
@@ -78,8 +83,6 @@ namespace GenericControls
             return dictionary;
         }
     }
-
-
 
     public class PagingCollectionView : CollectionView
     {

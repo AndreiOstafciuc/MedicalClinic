@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -29,7 +35,6 @@ namespace DAO
                 doctorsList = new List<Doctor>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Doctor d = new Doctor();
 
                     d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
@@ -61,7 +66,6 @@ namespace DAO
                 doctorsList = new List<Doctor>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Doctor d = new Doctor();
 
                     d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
@@ -94,11 +98,11 @@ namespace DAO
             {
                 d = new Doctor();
                 d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
-                    d.FirstName = _dataReader[Utils.DoctorTableProperties.FirstName].ToString();
-                    d.LastName = _dataReader[Utils.DoctorTableProperties.LastName].ToString();
-                    d.PhoneNumber = _dataReader[Utils.DoctorTableProperties.PhoneNumber].ToString();
-                    d.Status = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.Status]);
-                    d.IdDept = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDepartment]);
+                d.FirstName = _dataReader[Utils.DoctorTableProperties.FirstName].ToString();
+                d.LastName = _dataReader[Utils.DoctorTableProperties.LastName].ToString();
+                d.PhoneNumber = _dataReader[Utils.DoctorTableProperties.PhoneNumber].ToString();
+                d.Status = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.Status]);
+                d.IdDept = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDepartment]);
             }
 
             return d;
@@ -161,7 +165,6 @@ namespace DAO
             _command.ExecuteNonQuery();
         }
 
-
         public bool CheckDoctorAvailability(int idDoctor, int day, int time, DateTime date)
         {
             _command.CommandType = CommandType.StoredProcedure;
@@ -183,7 +186,6 @@ namespace DAO
             {
                 return false;
             }
-
         }
     }
 }

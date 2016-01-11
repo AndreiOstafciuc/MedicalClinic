@@ -1,7 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana
 * Description : Get user input from the displayed form and validates them,  if input is valid then update user data using an instance of PatientService, otherwise show the corresponding error message
-*/
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -22,6 +28,7 @@ namespace GenericControls
         private DateTime _defaultDate;
         private Patient _patient;
         private String _errorMessage;
+
         public EditPatientForm()
         {
             InitializeComponent();
@@ -48,15 +55,15 @@ namespace GenericControls
             }
         }
 
-
         /// <summary>
-        /// handler method for KeyboardFocusChanged 
+        /// handler method for KeyboardFocusChanged
         /// that hides error message when user begins to edit form fiedls
         /// </summary>
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;
         }
+
         /// <summary>
         /// handler method for DateTimePicker GotFocus
         /// that hides error message when user selects a new date
@@ -97,7 +104,6 @@ namespace GenericControls
                     _patient.BirthDate = patientBirthdate;
                     _patientService.Update(_patient);
                     MessageBox.Show("Information updated!");
-
                 }
                 catch (Exception ee)
                 {
@@ -108,15 +114,13 @@ namespace GenericControls
             {
                 labelError.Visibility = Visibility.Visible;
                 labelError.Content = _errorMessage;
-
             }
-
-
         }
+
         private bool ValidateUserInput(String patientFirstName, String patientLastName, String patientAddress,
                     String patientPhone, DateTime patientBirthdate)
         {
-            if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientBirthdate == _defaultDate)
+            if ((patientFirstName != null && String.IsNullOrEmpty(patientFirstName)) || (patientLastName != null && String.IsNullOrEmpty(patientLastName)) || (patientAddress != null && String.IsNullOrEmpty(patientAddress)) || (patientPhone != null && String.IsNullOrEmpty(patientPhone)) || patientBirthdate == _defaultDate)
             {
                 _errorMessage = "Invalid input. Please fill in mandatory fields.";
                 return false;

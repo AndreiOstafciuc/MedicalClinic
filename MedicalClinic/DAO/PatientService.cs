@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -15,7 +21,6 @@ namespace DAO
     {
         public PatientService() : base()
         {
-
         }
 
         /// <summary>
@@ -57,7 +62,7 @@ namespace DAO
         /// </summary>
         /// <param name="obj">object to update from database</param>
         /// <exception cref="OracleException">ExecuteNonQuery()</exception>
-        public override void Update(Patient pacient)
+        public override void Update(Patient obj)
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "UPDATE patient " +
@@ -71,14 +76,14 @@ namespace DAO
                               "WHERE id_patient = :id_patient";
 
             _command.Parameters.Clear();
-            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = pacient.FirstName;
-            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = pacient.LastName;
-            _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = pacient.Address;
-            _command.Parameters.Add(":birthdate", OracleDbType.Date).Value = pacient.BirthDate;
-            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = pacient.PhoneNumber;
-            _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = pacient.GeneticDiseases;
-            _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = pacient.InsuranceNumber;
-            _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = pacient.Id;
+            _command.Parameters.Add(":first_name", OracleDbType.Varchar2).Value = obj.FirstName;
+            _command.Parameters.Add(":last_name", OracleDbType.Varchar2).Value = obj.LastName;
+            _command.Parameters.Add(":address", OracleDbType.Varchar2).Value = obj.Address;
+            _command.Parameters.Add(":birthdate", OracleDbType.Date).Value = obj.BirthDate;
+            _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = obj.PhoneNumber;
+            _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = obj.GeneticDiseases;
+            _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = obj.InsuranceNumber;
+            _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = obj.Id;
 
             _command.ExecuteNonQuery();
         }
@@ -107,7 +112,6 @@ namespace DAO
                 p.BirthDate = (DateTime)_dataReader[Utils.PatientTableProperties.Birthdate];
                 p.GeneticDiseases = _dataReader[Utils.PatientTableProperties.GeneticDisorder].ToString();
                 p.PhoneNumber = _dataReader[Utils.PatientTableProperties.PhoneNumber].ToString();
-
             }
 
             return p;
@@ -125,13 +129,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 patientsList = new List<Patient>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Patient p = new Patient();
 
                     p.Id = Convert.ToInt32(_dataReader[Utils.PatientTableProperties.IdPatient]);
@@ -162,13 +164,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 patientsList = new List<Patient>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Patient p = new Patient();
 
                     p.Id = Convert.ToInt32(_dataReader[Utils.PatientTableProperties.IdPatient]);

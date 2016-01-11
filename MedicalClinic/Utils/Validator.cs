@@ -2,12 +2,15 @@
 * Author : Cosmanescu Roxana
 * Description : Contains various methods for validating emails, appointment date, appointment time, birthdates, password
 */
+// ***********************************************************************
+// <copyright file="Validator.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Utils
 {
@@ -19,7 +22,7 @@ namespace Utils
         /// </summary>
         public static bool ValidateEmail(String email)
         {
-           return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
         }
 
         /// <summary> 
@@ -37,7 +40,7 @@ namespace Utils
         /// </summary>
         public static bool ValidateBithdate(DateTime birthdate)
         {
-            if(DateTime.Compare(birthdate,DateTime.Now)>=0)
+            if (DateTime.Compare(birthdate, DateTime.Now) >= 0)
             {
                 return false;
             }
@@ -50,7 +53,7 @@ namespace Utils
         /// </summary>
         public static bool ValidateAppointmentDate(DateTime appointmentDate)
         {
-            if (DateTime.Compare(appointmentDate, DateTime.Now) <0)
+            if (DateTime.Compare(appointmentDate, DateTime.Now) < 0)
             {
                 return false;
             }
@@ -72,7 +75,7 @@ namespace Utils
         /// </summary>
         public static bool ValidatePassword(String pass)
         {
-            if(pass.Length<6)
+            if (pass.Length < 6)
             {
                 return false;
             }

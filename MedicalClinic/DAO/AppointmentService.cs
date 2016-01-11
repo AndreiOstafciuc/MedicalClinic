@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -25,13 +31,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 appointmentsList = new List<Appointment>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Appointment a = new Appointment();
 
                     a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
@@ -59,13 +63,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 appointmentsList = new List<Appointment>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Appointment a = new Appointment();
 
                     a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
@@ -208,13 +210,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 appointmentsList = new List<Appointment>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Appointment a = new Appointment();
 
                     a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
@@ -229,7 +229,5 @@ namespace DAO
 
             return appointmentsList;
         }
-
-
     }
 }

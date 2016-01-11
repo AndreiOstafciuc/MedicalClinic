@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using System;
@@ -15,9 +21,10 @@ namespace GenericControls
     /// </summary>
     public partial class CreateAdminForm : CustomUserControl
     {
-        CredentialsService _credentialsService;
-        AdministratorService _administratorService;
+        private CredentialsService _credentialsService;
+        private AdministratorService _administratorService;
         private String _errorMessage;
+
         public CreateAdminForm()
         {
             InitializeComponent();
@@ -32,12 +39,12 @@ namespace GenericControls
 
         private bool ValidateInput(String email, String password, String firstName, String lastName)
         {
-            if(email.Equals("") || passwordBox.Password.Equals("") || firstName.Equals("") || lastName.Equals(""))
+            if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(passwordBox.Password) || String.IsNullOrEmpty(firstName) || String.IsNullOrEmpty(lastName))
             {
                 _errorMessage = "Fields cannot be empty.";
                 return false;
             }
-            if(Utils.Validator.ValidateEmail(email)==false)
+            if (Utils.Validator.ValidateEmail(email) == false)
             {
                 _errorMessage = "Email is invalid. Ex: example@example.com";
                 return false;
@@ -49,14 +56,15 @@ namespace GenericControls
             }
             return true;
         }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             String email = emailTB.Text;
-            String password = Encrypter.getMD5(passwordBox.Password);
+            String password = Encrypter.GetMD5(passwordBox.Password);
             String firstName = firstnameTB.Text;
             String lastName = lastnameTB.Text;
             int adminId = 0;
-            if (ValidateInput(email,password,firstName,lastName)== false)
+            if (ValidateInput(email, password, firstName, lastName) == false)
             {
                 MessageBox.Show(_errorMessage);
             }

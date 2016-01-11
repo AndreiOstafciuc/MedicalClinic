@@ -1,4 +1,15 @@
-﻿using System.Collections.Generic;
+﻿// ***********************************************************************
+// Assembly         : Utils
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorStatus.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using System.Collections.Generic;
 
 namespace Utils
 {
@@ -9,6 +20,6 @@ namespace Utils
     {
         public const int INACTIVE = 0;
         public const int ACTIVE = 1;
-        public static Dictionary<int, string> doctorStatuses = new Dictionary<int, string>() { { 0, "INACTIVE" }, { 1, "ACTIVE" } };
+        public static Dictionary<int, string> DoctorStatuses = new Dictionary<int, string>() { { 0, "INACTIVE" }, { 1, "ACTIVE" } };
     }
 }

@@ -1,9 +1,13 @@
-﻿/*
+﻿// ***********************************************************************
 * Author : Cosmanescu Roxana, Bordeian Marius, Ostafciuc Andrei
 * Description : Contains the new appointment form, get input , validate input, 
 *              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
                otherwise corresponding error message are displayed
-*/
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 
 using DAO;
@@ -27,6 +31,7 @@ namespace GenericControls
         private AppointmentService _appointmentService;
         private String _errorMessage = "";
         private DateTime _defaultDate;
+
         public NewAppointmentForm()
         {
             _defaultDate = new DateTime(1, 1, 1);
@@ -51,7 +56,6 @@ namespace GenericControls
                     cbm.Tag = d.Id;
                     comboBoxDepartments.Items.Add(cbm);
                 }
-
             }
         }
         /// <summary>
@@ -83,6 +87,7 @@ namespace GenericControls
                 PopulateDoctorsList(selectedDeptId);
             }
         }
+
         private void PopulateDoctorsList(int departmentId)
         {
             _doctorService = new DoctorService();
@@ -124,7 +129,7 @@ namespace GenericControls
                 _errorMessage = "Please select a valid time.";
                 return false;
             }
-            if (Utils.Validator.ValidateAppointmentDate(date)== false)
+            if (Utils.Validator.ValidateAppointmentDate(date) == false)
             {
                 _errorMessage = "Please select a valid date. You cannot choose a date in the past";
                 return false;
@@ -137,7 +142,6 @@ namespace GenericControls
             }
 
             return true;
-
         }
 
         /// <summary>
@@ -205,7 +209,6 @@ namespace GenericControls
                 scheduleContent.Visibility = Visibility.Visible;
                 scheduleContent.Content = sch;
             }
-
         }
     }
 }

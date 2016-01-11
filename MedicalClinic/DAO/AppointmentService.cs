@@ -21,23 +21,23 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                appointmentsList = new List<Appointment>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    appointmentsList = new List<Appointment>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Appointment a = new Appointment();
+                    Appointment a = new Appointment();
 
-                        a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                        a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                        a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                        a.Time = Convert.ToInt32(_dataReader["time"]);
-                        a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                        a.Symptoms = _dataReader["symptoms"].ToString();
-                        appointmentsList.Add(a);
-                    }
+                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
+                    a.Time = Convert.ToInt32(_dataReader["time"]);
+                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
+                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    appointmentsList.Add(a);
                 }
+            }
 
             return appointmentsList;
         }
@@ -55,23 +55,23 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                appointmentsList = new List<Appointment>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    appointmentsList = new List<Appointment>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Appointment a = new Appointment();
+                    Appointment a = new Appointment();
 
-                        a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                        a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                        a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                        a.Time = Convert.ToInt32(_dataReader["time"]);
-                        a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                        a.Symptoms = _dataReader["symptoms"].ToString();
-                        appointmentsList.Add(a);
-                    }
+                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
+                    a.Time = Convert.ToInt32(_dataReader["time"]);
+                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
+                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    appointmentsList.Add(a);
                 }
+            }
 
             return appointmentsList;
         }
@@ -87,18 +87,18 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    a = new Appointment();
-                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                    a.Time = Convert.ToInt32(_dataReader["time"]);
-                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                    a.Symptoms = _dataReader["symptoms"].ToString();
-                }
+            if (_dataReader.HasRows)
+            {
+                a = new Appointment();
+                a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
+                a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
+                a.Time = Convert.ToInt32(_dataReader["time"]);
+                a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
+                a.Symptoms = _dataReader["symptoms"].ToString();
+            }
 
             return a;
         }
@@ -129,8 +129,10 @@ namespace DAO
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
 
             _command.ExecuteNonQuery();
-            
-            return FindLastInserted().Id;
+
+            obj.Id = FindLastInserted().Id;
+
+            return obj.Id;
         }
 
         /// <summary>
@@ -197,7 +199,7 @@ namespace DAO
             _command.Parameters.Clear();
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = id;
             _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = DateTime.Now;
-          //  _command.Parameters.Add(":time", OracleDbType.Int32).Value = DateTime.Now.Hour;
+            //  _command.Parameters.Add(":time", OracleDbType.Int32).Value = DateTime.Now.Hour;
 
             _dataReader = _command.ExecuteReader();
 
@@ -223,6 +225,6 @@ namespace DAO
             return appointmentsList;
         }
 
-        
+
     }
 }

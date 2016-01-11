@@ -21,22 +21,22 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                schedulesList = new List<Schedule>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    schedulesList = new List<Schedule>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Schedule s = new Schedule();
+                    Schedule s = new Schedule();
 
-                        s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
-                        s.Day = Convert.ToInt32(_dataReader["day"]);
-                        s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
-                        s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
-                        s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                        schedulesList.Add(s);
-                    }
+                    s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
+                    s.Day = Convert.ToInt32(_dataReader["day"]);
+                    s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
+                    s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
+                    s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    schedulesList.Add(s);
                 }
+            }
 
             return schedulesList;
         }
@@ -54,22 +54,22 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                schedulesList = new List<Schedule>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    schedulesList = new List<Schedule>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Schedule s = new Schedule();
+                    Schedule s = new Schedule();
 
-                        s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
-                        s.Day = Convert.ToInt32(_dataReader["day"]);
-                        s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
-                        s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
-                        s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                        schedulesList.Add(s);
-                    }
+                    s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
+                    s.Day = Convert.ToInt32(_dataReader["day"]);
+                    s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
+                    s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
+                    s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    schedulesList.Add(s);
                 }
+            }
 
             return schedulesList;
         }
@@ -85,17 +85,17 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    s = new Schedule();
-                    s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
-                    s.Day = Convert.ToInt32(_dataReader["day"]);
-                    s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
-                    s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
-                    s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                }
+            if (_dataReader.HasRows)
+            {
+                s = new Schedule();
+                s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
+                s.Day = Convert.ToInt32(_dataReader["day"]);
+                s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
+                s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
+                s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+            }
 
             return s;
         }
@@ -120,10 +120,12 @@ namespace DAO
             _command.Parameters.Add(":start_hour", OracleDbType.Int32).Value = obj.StartHour;
             _command.Parameters.Add(":end_hour", OracleDbType.Int32).Value = obj.EndHour;
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.Id_doctor;
-          
+
             _command.ExecuteNonQuery();
 
-            return FindLastInserted().Id;
+            obj.Id = FindLastInserted().Id;
+
+            return obj.Id;
         }
 
         /// <summary>

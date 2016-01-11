@@ -21,21 +21,21 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                credentialsList = new List<Credentials>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    credentialsList = new List<Credentials>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Credentials c = new Credentials();
+                    Credentials c = new Credentials();
 
-                        c.Id = Convert.ToInt32(_dataReader["id"]);
-                        c.Email = _dataReader["email"].ToString();
-                        c.Password = _dataReader["password"].ToString();
-                        c.Type = Convert.ToInt32(_dataReader["type"]);
-                        credentialsList.Add(c);
-                    }
+                    c.Id = Convert.ToInt32(_dataReader["id"]);
+                    c.Email = _dataReader["email"].ToString();
+                    c.Password = _dataReader["password"].ToString();
+                    c.Type = Convert.ToInt32(_dataReader["type"]);
+                    credentialsList.Add(c);
                 }
+            }
 
             return credentialsList;
         }
@@ -53,21 +53,21 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                credentialsList = new List<Credentials>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    credentialsList = new List<Credentials>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Credentials c = new Credentials();
+                    Credentials c = new Credentials();
 
-                        c.Id = Convert.ToInt32(_dataReader["id"]);
-                        c.Email = _dataReader["email"].ToString();
-                        c.Password = _dataReader["password"].ToString();
-                        c.Type = Convert.ToInt32(_dataReader["type"]);
-                        credentialsList.Add(c);
-                    }
+                    c.Id = Convert.ToInt32(_dataReader["id"]);
+                    c.Email = _dataReader["email"].ToString();
+                    c.Password = _dataReader["password"].ToString();
+                    c.Type = Convert.ToInt32(_dataReader["type"]);
+                    credentialsList.Add(c);
                 }
+            }
 
             return credentialsList;
         }
@@ -83,17 +83,17 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    c = new Credentials();
-                    c.Id = Convert.ToInt32(_dataReader["id"]);
-                    c.Email = _dataReader["email"].ToString();
-                    c.Password = _dataReader["password"].ToString();
-                    c.Type = Convert.ToInt32(_dataReader["type"]);
+            if (_dataReader.HasRows)
+            {
+                c = new Credentials();
+                c.Id = Convert.ToInt32(_dataReader["id"]);
+                c.Email = _dataReader["email"].ToString();
+                c.Password = _dataReader["password"].ToString();
+                c.Type = Convert.ToInt32(_dataReader["type"]);
 
-                }
+            }
             return c;
         }
 
@@ -171,13 +171,13 @@ namespace DAO
         }
 
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
-        public Credentials validateCredentials(String email,String password)
+        public Credentials validateCredentials(String email, String password)
         {
             Credentials credentials = null;
             _command.CommandType = CommandType.StoredProcedure;
             _command.CommandText = "check_user";
             _command.Parameters.Clear();
-            _command.Parameters.Add("v_email", OracleDbType.Varchar2,ParameterDirection.Input).Value=email;
+            _command.Parameters.Add("v_email", OracleDbType.Varchar2, ParameterDirection.Input).Value = email;
             _command.Parameters.Add("v_password", OracleDbType.Varchar2, ParameterDirection.Input).Value = password;
             _command.Parameters.Add("v_id", OracleDbType.Int32, ParameterDirection.Output);
             _command.Parameters.Add("v_type", OracleDbType.Int32, ParameterDirection.Output);
@@ -188,7 +188,7 @@ namespace DAO
 
             if (v_id != 0)
             {
-                credentials = new Credentials(email,password,v_type);
+                credentials = new Credentials(email, password, v_type);
                 credentials.Id = v_id;
             }
 
@@ -199,7 +199,7 @@ namespace DAO
         public void delete(int id)
         {
             _command.CommandType = CommandType.Text;
-            _command.CommandText = "delete from credentials where id="+id;
+            _command.CommandText = "delete from credentials where id=" + id;
             _command.ExecuteNonQuery();
         }
     }

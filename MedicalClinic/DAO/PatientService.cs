@@ -8,7 +8,6 @@ namespace DAO
 {
     public class PatientService : DAO<Patient>
     {
-
         public PatientService() : base()
         {
 
@@ -24,7 +23,7 @@ namespace DAO
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into patient values ( " +
-                            ":id_patient, "+
+                            ":id_patient, " +
                              ":first_name, " +
                               ":last_name, " +
                               ":address, " +
@@ -42,7 +41,7 @@ namespace DAO
             _command.Parameters.Add(":phone_number", OracleDbType.Varchar2).Value = obj.PhoneNumber;
             _command.Parameters.Add(":genetic_disorder", OracleDbType.Varchar2).Value = obj.GeneticDiseases;
             _command.Parameters.Add(":insurance_number", OracleDbType.Varchar2).Value = obj.InsuranceNumber;
-            
+
             _command.ExecuteNonQuery();
 
             return obj.Id;
@@ -90,21 +89,21 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    p = new Patient();
-                    p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                    p.FirstName = _dataReader["first_name"].ToString();
-                    p.LastName = _dataReader["last_name"].ToString();
-                    p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                    p.Address = _dataReader["address"].ToString();
-                    p.BirthDate = (DateTime)_dataReader["birthdate"];
-                    p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                    p.PhoneNumber = _dataReader["phone_number"].ToString();
+            if (_dataReader.HasRows)
+            {
+                p = new Patient();
+                p.Id = Convert.ToInt32(_dataReader["id_patient"]);
+                p.FirstName = _dataReader["first_name"].ToString();
+                p.LastName = _dataReader["last_name"].ToString();
+                p.InsuranceNumber = _dataReader["insurance_number"].ToString();
+                p.Address = _dataReader["address"].ToString();
+                p.BirthDate = (DateTime)_dataReader["birthdate"];
+                p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
+                p.PhoneNumber = _dataReader["phone_number"].ToString();
 
-                }
+            }
 
             return p;
         }
@@ -122,26 +121,26 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                patientsList = new List<Patient>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    patientsList = new List<Patient>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Patient p = new Patient();
+                    Patient p = new Patient();
 
-                        p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                        p.FirstName = _dataReader["first_name"].ToString();
-                        p.LastName = _dataReader["last_name"].ToString();
-                        p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                        p.Address = _dataReader["address"].ToString();
-                        p.BirthDate = (DateTime)_dataReader["birthdate"];
-                        p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                        p.PhoneNumber = _dataReader["phone_number"].ToString();
+                    p.Id = Convert.ToInt32(_dataReader["id_patient"]);
+                    p.FirstName = _dataReader["first_name"].ToString();
+                    p.LastName = _dataReader["last_name"].ToString();
+                    p.InsuranceNumber = _dataReader["insurance_number"].ToString();
+                    p.Address = _dataReader["address"].ToString();
+                    p.BirthDate = (DateTime)_dataReader["birthdate"];
+                    p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
+                    p.PhoneNumber = _dataReader["phone_number"].ToString();
 
-                        patientsList.Add(p);
-                    }
+                    patientsList.Add(p);
                 }
+            }
 
             return patientsList;
         }
@@ -159,26 +158,26 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                patientsList = new List<Patient>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    patientsList = new List<Patient>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Patient p = new Patient();
+                    Patient p = new Patient();
 
-                        p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                        p.FirstName = _dataReader["first_name"].ToString();
-                        p.LastName = _dataReader["last_name"].ToString();
-                        p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                        p.Address = _dataReader["address"].ToString();
-                        p.BirthDate = (DateTime)_dataReader["birthdate"];
-                        p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                        p.PhoneNumber = _dataReader["phone_number"].ToString();
+                    p.Id = Convert.ToInt32(_dataReader["id_patient"]);
+                    p.FirstName = _dataReader["first_name"].ToString();
+                    p.LastName = _dataReader["last_name"].ToString();
+                    p.InsuranceNumber = _dataReader["insurance_number"].ToString();
+                    p.Address = _dataReader["address"].ToString();
+                    p.BirthDate = (DateTime)_dataReader["birthdate"];
+                    p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
+                    p.PhoneNumber = _dataReader["phone_number"].ToString();
 
-                        patientsList.Add(p);
-                    }
+                    patientsList.Add(p);
                 }
+            }
 
             return patientsList;
         }

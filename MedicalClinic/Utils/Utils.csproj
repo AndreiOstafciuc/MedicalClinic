@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DoctorStatus.cs" />
     <Compile Include="Encrypter.cs" />
+    <Compile Include="TablesProperties.cs" />
     <Compile Include="UserTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿/*
-* Author : Bordeian Marius
+* Author : 
 * Decription : Unit Test Cases for the DBConnection Class that handles the connection between the application and the database
 */
 

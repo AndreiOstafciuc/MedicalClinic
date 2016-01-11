@@ -105,6 +105,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\helps\AdminHelp.chm" />
+    <None Include="Resources\helps\DoctorHelp.chm" />
+    <None Include="Resources\helps\GenericHelp.chm" />
+    <None Include="Resources\helps\PatientHelp.chm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

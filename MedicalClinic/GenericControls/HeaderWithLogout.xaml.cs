@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAO;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace GenericControls
     /// </summary>
     public partial class HeaderWithLogout : CustomUserControl
     {
+        CredentialsService _credentialsService;
         public HeaderWithLogout()
         {
             InitializeComponent();
+            _credentialsService = new CredentialsService();
             SetHelpImage();
         }
         private void SetHelpImage()
@@ -36,6 +40,24 @@ namespace GenericControls
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(5);
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            int id = SessionData.UserSessionData.CurrentUserId;
+
+            _credentialsService = new CredentialsService();
+            Credentials c = _credentialsService.FindById(id);
+            if (c != null)
+            {
+                switch (c.Type)
+                {
+                    case Utils.UserTypes.ADMIN: System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\AdminHelp.chm"); break;
+                    case Utils.UserTypes.PATIENT: System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\PatientHelp.chm"); break;
+                    case Utils.UserTypes.DOCTOR: System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\DoctorHelp.chm"); break;
+                }
+            }
+
         }
     }
 }

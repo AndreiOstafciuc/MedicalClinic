@@ -1,16 +1,21 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
     public class Credentials
     {
-        int _id;   
-        String _email;     
+        int _id;
+        String _email;
         String _password;
         int _type;
 
         public Credentials() { }
-        public Credentials(String email,String password,int type)
+        public Credentials(String email, String password, int type)
         {
             this._email = email;
             this._password = password;

@@ -1,4 +1,9 @@
-﻿using DBConnNamespace;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DBConnNamespace;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -10,13 +15,13 @@ namespace DAO
         protected OracleCommand _command;
         protected OracleDataReader _dataReader;
         protected OracleTransaction _tr;
-        
+
 
         public DAO()
         {
             _command = new OracleCommand();
             _command.Connection = DBConnection.Connection;
-           
+
         }
 
         abstract public int Save(Object obj);

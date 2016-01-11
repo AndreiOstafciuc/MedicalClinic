@@ -1,16 +1,15 @@
-﻿
+﻿/*
+* Author : 
+* Decription : 
+*/
+
 using GenericControls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace UIViews
 {
-    public abstract class GenericUI: Grid
+    public abstract class GenericUI : Grid
     {
         private CustomUserControl _header, _footer, _content;
         public delegate void ChangeMainWindowLayoutHandler(object sender, WindowLayoutEventArgs e);
@@ -31,11 +30,11 @@ namespace UIViews
 
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
             _content.OnWindowLayoutChange += new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
-            _header.OnWindowLayoutChange+= new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
+            _header.OnWindowLayoutChange += new CustomUserControl.ChangeWindowLayoutHandler(ChangeWindowLayout);
             this.RowDefinitions.Add(new RowDefinition());
             this.RowDefinitions.Add(new RowDefinition());
             this.RowDefinitions.Add(new RowDefinition());
-            
+
             this.RowDefinitions[0].Height = new GridLength(50);
             this.RowDefinitions[1].Height = new GridLength(1, GridUnitType.Star);
             this.RowDefinitions[2].Height = new GridLength(30);
@@ -61,7 +60,7 @@ namespace UIViews
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
             Grid.SetRow(_content, 1);
             this.Children.Add(_content);
-           
+
         }
         private void ChangeWindowLayout(object sender, WindowLayoutEventArgs e)
         {

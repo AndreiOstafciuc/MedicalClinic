@@ -1,8 +1,14 @@
-﻿using Entity;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using Entity;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Utils;
 
 namespace DAO
 {
@@ -29,11 +35,11 @@ namespace DAO
 
                     Schedule s = new Schedule();
 
-                    s.Id = Convert.ToInt32(_dataReader["id_schedule"]);
-                    s.Day = Convert.ToInt32(_dataReader["day"]);
-                    s.StartHour = Convert.ToInt32(_dataReader["start_hour"]);
-                    s.EndHour = Convert.ToInt32(_dataReader["end_hour"]);
-                    s.Id_doctor = Convert.ToInt32(_dataReader["id_doctor"]);
+                    s.Id = Convert.ToInt32(_dataReader[ScheduleTableProperties.IdSchedule]);
+                    s.Day = Convert.ToInt32(_dataReader[ScheduleTableProperties.Day]);
+                    s.StartHour = Convert.ToInt32(_dataReader[ScheduleTableProperties.StartHour]);
+                    s.EndHour = Convert.ToInt32(_dataReader[ScheduleTableProperties.EndHour]);
+                    s.Id_doctor = Convert.ToInt32(_dataReader[ScheduleTableProperties.IdDoctor]);
                     schedulesList.Add(s);
                 }
             }

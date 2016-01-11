@@ -1,18 +1,31 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
     public class Results
     {
         int _id;
-        int _idAppointment;       
-        DateTime _resultDate;    
+        int _idAppointment;
+        DateTime _resultDate;
         String _symptoms;
         String _diagnosis;
         String _medication;
 
         public Results() { }
-        public Results(int idAppointment, DateTime resultDate,String symptoms,String diagnosis,String medication)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idAppointment">a valid appointmentID from the database</param>
+        /// <param name="resultDate"></param>
+        /// <param name="symptoms"></param>
+        /// <param name="diagnosis"></param>
+        /// <param name="medication"></param>
+        public Results(int idAppointment, DateTime resultDate, String symptoms, String diagnosis, String medication)
         {
             this._idAppointment = idAppointment;
             this._resultDate = resultDate;

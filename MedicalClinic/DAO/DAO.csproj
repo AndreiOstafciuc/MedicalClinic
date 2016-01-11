@@ -62,6 +62,10 @@
       <Project>{20ac0fc7-d569-4aae-a2ea-cf852dafb016}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{c3877cf1-dde0-44e2-a610-3016384e92c1}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="DAOClassDiagram.cd" />

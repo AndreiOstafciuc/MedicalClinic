@@ -1,4 +1,9 @@
-﻿using Entity;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using Entity;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;

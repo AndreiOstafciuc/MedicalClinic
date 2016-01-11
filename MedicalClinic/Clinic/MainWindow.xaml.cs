@@ -1,5 +1,9 @@
-﻿using System.Windows;
-using System.Collections.Generic;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System.Windows;
 using UIViews;
 using System;
 using DBConnNamespace;
@@ -11,7 +15,7 @@ namespace Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         GenericUI mainUI;
         public MainWindow()
         {
@@ -22,20 +26,28 @@ namespace Clinic
             }
             catch (Exception)
             {
-                DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                try
+                {
+                    DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Environment.Exit(1);
+                }
             }
             mainUI = new MainUI();
-            mainUI.OnMainWindowLayoutChange+= new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
+            mainUI.OnMainWindowLayoutChange += new GenericUI.ChangeMainWindowLayoutHandler(ChangeWindowLayout);
             mainUI.VerticalAlignment = VerticalAlignment.Stretch;
             pageContainer.Children.Add(mainUI);
         }
-        private void ChangeWindowLayout(object sender,GenericControls.WindowLayoutEventArgs e)
+        private void ChangeWindowLayout(object sender, GenericControls.WindowLayoutEventArgs e)
         {
-            switch(e.ArgWindowLayout)
+            switch (e.ArgWindowLayout)
             {
                 case -1:
                     mainUI = new DebugUI();
-                    break; 
+                    break;
                 case Utils.UserTypes.DOCTOR:
                     mainUI = new DoctorUI();
                     break;

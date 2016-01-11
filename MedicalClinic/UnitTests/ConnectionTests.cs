@@ -1,4 +1,9 @@
-﻿using DBConnNamespace;
+﻿/*
+* Author : Bordeian Marius
+* Decription : Unit Test Cases for the DBConnection Class that handles the connection between the application and the database
+*/
+
+using DBConnNamespace;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -83,7 +88,7 @@ namespace ConnectionTests
 
             DBConnection.CloseConnection();
 
-            Assert.IsNull(DBConnection.Connection);            
+            Assert.IsNull(DBConnection.Connection);
         }
     }
 }

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
@@ -12,7 +17,17 @@ namespace Entity
         int _status;
 
         public Doctor() { }
-        public Doctor( int id,String lastName,String firstName,int idDept,String phoneNumber,int status) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">same ID as the credentials stored in the database for the doctor</param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="idDept">a valid ID of an department from the database</param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="status">from Utils.DoctorStatus as ACTIVE or INACTIVE</param>
+        public Doctor(int id, String lastName, String firstName, int idDept, String phoneNumber, int status)
+        {
             this._id = id;
             this._lastName = lastName;
             this._firstName = firstName;

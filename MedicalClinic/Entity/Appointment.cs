@@ -1,12 +1,17 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
     public class Appointment
     {
-        int _id;   
-        int _idPacient;      
-        int _idDoctor; 
+        int _id;
+        int _idPacient;
+        int _idDoctor;
         int _time;
         DateTime _appointmentDate;
         String _symptoms;
@@ -16,16 +21,17 @@ namespace Entity
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="idPacient"></param>
-        /// <param name="idDoctor"></param>
+        /// <param name="idPacient">an ID for a patient from the database</param>
+        /// <param name="idDoctor">an ID for a doctor from the database</param>
         /// <param name="time">hour at what appointment starts</param>
         /// <param name="appointmentDate"></param>
         /// <param name="symtoms"></param>
-        public Appointment(int idPacient,int idDoctor,int time, DateTime appointmentDate,String symtoms){
+        public Appointment(int idPacient, int idDoctor, int time, DateTime appointmentDate, String symtoms)
+        {
             this._idPacient = idPacient;
-            this._idDoctor=idDoctor;
+            this._idDoctor = idDoctor;
             this._time = time;
-            this._appointmentDate=appointmentDate;
+            this._appointmentDate = appointmentDate;
             this._symptoms = symtoms;
         }
 
@@ -34,7 +40,7 @@ namespace Entity
             get { return _appointmentDate; }
             set { _appointmentDate = value; }
         }
-        
+
         public int Id
         {
             get { return _id; }

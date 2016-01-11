@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
@@ -6,16 +11,26 @@ namespace Entity
     {
         int _id;
         String _lastName;
-        String _firstName;  
-        String _insuranceNumber; 
+        String _firstName;
+        String _insuranceNumber;
         String _address;
-        DateTime _birthDate;     
-        String _geneticDiseases;      
+        DateTime _birthDate;
+        String _geneticDiseases;
         String _phoneNumber;
 
-        public Patient(){}
-
-        public Patient( int id,String lastName,String firstName,String insuranceNumber,String address,DateTime birthDate,String geneticDiseases,String phoneNumber)
+        public Patient() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">same ID as the credentials for the patient</param>
+        /// <param name="lastName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="insuranceNumber"></param>
+        /// <param name="address"></param>
+        /// <param name="birthDate"></param>
+        /// <param name="geneticDiseases"></param>
+        /// <param name="phoneNumber"></param>
+        public Patient(int id, String lastName, String firstName, String insuranceNumber, String address, DateTime birthDate, String geneticDiseases, String phoneNumber)
         {
             this._id = id;
             this._lastName = lastName;
@@ -26,7 +41,7 @@ namespace Entity
             this._geneticDiseases = geneticDiseases;
             this._phoneNumber = phoneNumber;
         }
-   
+
         public int Id
         {
             get { return _id; }

@@ -1,4 +1,9 @@
-﻿using DAO;
+﻿/*
+* Author : Bordeian Marius
+* Decription : Unit Test Cases for database services handeling each table's operations
+*/
+
+using DAO;
 using DBConnNamespace;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entity;
@@ -10,7 +15,7 @@ namespace DAOTests
     [TestClass()]
     public class ServicesTests
     {
-        Random r = new Random(new Random().Next(1024, 2048000));
+        Random _r = new Random(new Random().Next(1024, 2048000));
 
         CredentialsService credentialsService;
         AdministratorService administratorService;
@@ -21,17 +26,25 @@ namespace DAOTests
         ResultsService resultService;
         ScheduleService scheduleService;
 
+        /// <summary>
+        /// generating a random string, first letter capital
+        /// </summary>
+        /// <param name="len">the length of the final string</param>
+        /// <returns></returns>
         private string genString(int len = 9)
         {
             List<char> chars = new List<char>();
-            chars.Add((char)r.Next(65, 90));
+            chars.Add((char)_r.Next(65, 90));
             for (int i = 0; i < len; i++)
             {
-                chars.Add((char)r.Next(97, 122));
+                chars.Add((char)_r.Next(97, 122));
             }
             return new string(chars.ToArray());
         }
 
+        /// <summary>
+        /// opens a connection to the database and initializes necessary services
+        /// </summary>
         private void OpenConnection()
         {
             try
@@ -72,8 +85,8 @@ namespace DAOTests
         [TestMethod()]
         public void AdminSaveTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
@@ -92,15 +105,15 @@ namespace DAOTests
         [TestMethod()]
         public void AdminUpdateTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
             Credentials c = new Credentials(lastName + firstName + "@testAdmin.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.ADMIN);
             Administrator a = new Administrator(credentialsService.Save(c), firstName, lastName);
             administratorService.Save(a);
-            a.LastName = "Newman fon "+lastName;
+            a.LastName = "Newman fon " + lastName;
             administratorService.Update(a);
 
             Assert.IsNotNull(administratorService.FindAllByProperty(Utils.AdminTableProperties.LastName, a.LastName));
@@ -115,8 +128,8 @@ namespace DAOTests
         [TestMethod()]
         public void PatientSaveTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
@@ -135,8 +148,8 @@ namespace DAOTests
         [TestMethod()]
         public void PatientUpdateTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
@@ -145,7 +158,7 @@ namespace DAOTests
             patientService.Save(p);
             p.GeneticDiseases = "new genetics";
             patientService.Update(p);
-            
+
             Assert.IsNotNull(patientService.FindAllByProperty(Utils.PatientTableProperties.GeneticDisorder, p.GeneticDiseases));
 
             CloseConnection();
@@ -158,8 +171,8 @@ namespace DAOTests
         [TestMethod()]
         public void DoctorSaveTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
@@ -178,8 +191,8 @@ namespace DAOTests
         [TestMethod()]
         public void DoctorUpdateTest()
         {
-            string lastName = genString(r.Next(4, 9));
-            string firstName = genString(r.Next(4, 9));
+            string lastName = genString(_r.Next(4, 9));
+            string firstName = genString(_r.Next(4, 9));
 
             OpenConnection();
 
@@ -200,12 +213,12 @@ namespace DAOTests
         [TestMethod()]
         public void DepartmentSaveTest()
         {
-            string name = genString(r.Next(4, 9));
-            string description = genString(r.Next(15, 20));
+            string name = genString(_r.Next(4, 9));
+            string description = genString(_r.Next(15, 20));
 
             OpenConnection();
 
-            Department d = new Department(name, "This is a Unit Test Created" + description, r.Next(0,9));
+            Department d = new Department(name, "This is a Unit Test Created" + description, _r.Next(0, 9));
 
             Assert.IsInstanceOfType(departmentService.Save(d), typeof(int));
 
@@ -218,14 +231,14 @@ namespace DAOTests
         [TestMethod()]
         public void DepartmentUpdateTest()
         {
-            string name = genString(r.Next(4, 9));
-            string description = genString(r.Next(15, 20));
+            string name = genString(_r.Next(4, 9));
+            string description = genString(_r.Next(15, 20));
 
             OpenConnection();
 
-            Department d = new Department(name, "This is a Unit Test Created" + description, r.Next(0, 9));
+            Department d = new Department(name, "This is a Unit Test Created" + description, _r.Next(0, 9));
             departmentService.Save(d);
-            d.Name = "New " + genString(r.Next(4, 9));
+            d.Name = "New " + genString(_r.Next(4, 9));
             departmentService.Update(d);
 
             Assert.IsNotNull(departmentService.FindAllByProperty(Utils.DepartmentTableProperties.Name, d.Name));
@@ -240,12 +253,12 @@ namespace DAOTests
         [TestMethod()]
         public void AppointmentSaveTest()
         {
-            string description = genString(r.Next(15, 20));
+            string description = genString(_r.Next(15, 20));
 
             OpenConnection();
 
-            Appointment a = new Appointment(patientService.FindAll()[0].Id, doctorService.FindAll()[0].Id, r.Next(8, 18), DateTime.Now, description);
-            
+            Appointment a = new Appointment(patientService.FindAll()[0].Id, doctorService.FindAll()[0].Id, _r.Next(8, 18), DateTime.Now, description);
+
             Assert.IsInstanceOfType(appointmentService.Save(a), typeof(int));
 
             CloseConnection();
@@ -260,7 +273,7 @@ namespace DAOTests
         {
             OpenConnection();
 
-            Schedule s = new Schedule(doctorService.FindAll()[0].Id, r.Next(0,6), r.Next(8,11), r.Next(14,18));
+            Schedule s = new Schedule(doctorService.FindAll()[0].Id, _r.Next(0, 6), _r.Next(8, 11), _r.Next(14, 18));
 
             Assert.IsInstanceOfType(scheduleService.Save(s), typeof(int));
 
@@ -274,9 +287,9 @@ namespace DAOTests
         [TestMethod()]
         public void ResultSaveTest()
         {
-            string symptoms = genString(r.Next(9, 15));
-            string diagnosis = genString(r.Next(9, 15));
-            string medication = genString(r.Next(9, 15));
+            string symptoms = genString(_r.Next(9, 15));
+            string diagnosis = genString(_r.Next(9, 15));
+            string medication = genString(_r.Next(9, 15));
 
             OpenConnection();
 
@@ -296,10 +309,10 @@ namespace DAOTests
             OpenConnection();
 
             Assert.IsNotNull(credentialsService.FindAllByProperty(Utils.CredentialTableProperties.Email, "admin"));
-            
+
             CloseConnection();
         }
-        
+
         [TestMethod()]
         public void AdminsFindAllTest()
         {

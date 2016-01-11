@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using System;
 
 namespace Entity
 {
@@ -8,6 +13,12 @@ namespace Entity
         String _firstName;
         String _lastName;
         public Administrator() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">the ID of the stored credentials in the database</param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
         public Administrator(int id, String firstName, String lastName)
         {
             this._id_admin = id;

@@ -8,7 +8,6 @@ namespace DAO
 {
     public class DoctorService : DAO<Doctor>
     {
-
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Doctor> FindAll()
         {
@@ -20,23 +19,23 @@ namespace DAO
             _command.CommandType = CommandType.Text;
 
             _dataReader = _command.ExecuteReader();
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                doctorsList = new List<Doctor>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    doctorsList = new List<Doctor>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Doctor d = new Doctor();
+                    Doctor d = new Doctor();
 
-                        d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                        d.FirstName = _dataReader["first_name"].ToString();
-                        d.LastName = _dataReader["last_name"].ToString();
-                        d.PhoneNumber = _dataReader["phone_number"].ToString();
-                        d.Status = Convert.ToInt32(_dataReader["status"]);
-                        d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
-                        doctorsList.Add(d);
-                    }
+                    d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
+                    d.FirstName = _dataReader["first_name"].ToString();
+                    d.LastName = _dataReader["last_name"].ToString();
+                    d.PhoneNumber = _dataReader["phone_number"].ToString();
+                    d.Status = Convert.ToInt32(_dataReader["status"]);
+                    d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                    doctorsList.Add(d);
                 }
+            }
 
             return doctorsList;
         }
@@ -52,23 +51,23 @@ namespace DAO
             _command.CommandType = CommandType.Text;
 
             _dataReader = _command.ExecuteReader();
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                doctorsList = new List<Doctor>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    doctorsList = new List<Doctor>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Doctor d = new Doctor();
+                    Doctor d = new Doctor();
 
-                        d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                        d.FirstName = _dataReader["first_name"].ToString();
-                        d.LastName = _dataReader["last_name"].ToString();
-                        d.PhoneNumber = _dataReader["phone_number"].ToString();
-                        d.Status = Convert.ToInt32(_dataReader["status"]);
-                        d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
-                        doctorsList.Add(d);
-                    }
+                    d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
+                    d.FirstName = _dataReader["first_name"].ToString();
+                    d.LastName = _dataReader["last_name"].ToString();
+                    d.PhoneNumber = _dataReader["phone_number"].ToString();
+                    d.Status = Convert.ToInt32(_dataReader["status"]);
+                    d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                    doctorsList.Add(d);
                 }
+            }
 
             return doctorsList;
         }
@@ -84,18 +83,18 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    d = new Doctor();
-                    d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                    d.FirstName = _dataReader["first_name"].ToString();
-                    d.LastName = _dataReader["last_name"].ToString();
-                    d.PhoneNumber = _dataReader["phone_number"].ToString();
-                    d.Status = Convert.ToInt32(_dataReader["status"]);
-                    d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
-                }
+            if (_dataReader.HasRows)
+            {
+                d = new Doctor();
+                d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
+                d.FirstName = _dataReader["first_name"].ToString();
+                d.LastName = _dataReader["last_name"].ToString();
+                d.PhoneNumber = _dataReader["phone_number"].ToString();
+                d.Status = Convert.ToInt32(_dataReader["status"]);
+                d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+            }
 
             return d;
         }
@@ -126,7 +125,7 @@ namespace DAO
             _command.Parameters.Add(":status", OracleDbType.Decimal).Value = obj.Status;
 
             _command.ExecuteNonQuery();
-                        
+
             return obj.Id;
         }
 
@@ -158,7 +157,7 @@ namespace DAO
         }
 
 
-        public bool checkDoctorAvailability(int idDoctor,int day, int time, DateTime date)
+        public bool checkDoctorAvailability(int idDoctor, int day, int time, DateTime date)
         {
             _command.CommandType = CommandType.StoredProcedure;
             _command.CommandText = "check_doctor_availability";
@@ -171,7 +170,7 @@ namespace DAO
             _command.ExecuteNonQuery();
 
             int v_availability = Convert.ToInt32(_command.Parameters["v_availability"].Value.ToString());
-            if(v_availability==1)
+            if (v_availability == 1)
             {
                 return true;
             }

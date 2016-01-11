@@ -3,9 +3,13 @@ using System;
 
 namespace DBConnNamespace
 {
-    public class DBConnection
+    /// <summary>
+    /// static class that handle the connection to the database. 
+    /// Connection.Open() and Connection.Close() shall be called once per app lifecycle
+    /// </summary>
+    public static class DBConnection
     {
-        private static OracleConnection _conn;
+        private static OracleConnection _conn = null;
 
         public static OracleConnection Connection
         {
@@ -21,6 +25,7 @@ namespace DBConnNamespace
         public static void CloseConnection()
         {
             _conn.Close();
+            _conn = null;
         }
     }
 }

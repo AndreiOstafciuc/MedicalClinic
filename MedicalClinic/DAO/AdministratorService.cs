@@ -50,20 +50,20 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                administratorsList = new List<Administrator>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    administratorsList = new List<Administrator>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Administrator a = new Administrator();
+                    Administrator a = new Administrator();
 
-                        a.Id = Convert.ToInt32(_dataReader["id_admin"]);
-                        a.FirstName = _dataReader["first_name"].ToString();
-                        a.LastName = _dataReader["last_name"].ToString();
-                        administratorsList.Add(a);
-                    }
+                    a.Id = Convert.ToInt32(_dataReader["id_admin"]);
+                    a.FirstName = _dataReader["first_name"].ToString();
+                    a.LastName = _dataReader["last_name"].ToString();
+                    administratorsList.Add(a);
                 }
+            }
 
             return administratorsList;
         }
@@ -79,15 +79,15 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    a = new Administrator();
-                    a.Id = Convert.ToInt32(_dataReader["id_admin"]);
-                    a.FirstName = _dataReader["first_name"].ToString();
-                    a.LastName = _dataReader["last_name"].ToString();
-                }
+            if (_dataReader.HasRows)
+            {
+                a = new Administrator();
+                a.Id = Convert.ToInt32(_dataReader["id_admin"]);
+                a.FirstName = _dataReader["first_name"].ToString();
+                a.LastName = _dataReader["last_name"].ToString();
+            }
 
             return a;
         }
@@ -102,7 +102,7 @@ namespace DAO
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into admin values (" +
-                              ":id, "+
+                              ":id, " +
                               ":first_name, " +
                               ":last_name )";
 

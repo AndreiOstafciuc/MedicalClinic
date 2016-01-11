@@ -8,7 +8,6 @@ namespace DAO
 {
     public class DepartmentService : DAO<Department>
     {
-
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
         public override List<Department> FindAll()
         {
@@ -22,21 +21,21 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                deptsList = new List<Department>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    deptsList = new List<Department>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Department d = new Department();
+                    Department d = new Department();
 
-                        d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                        d.Name = _dataReader["name"].ToString();
-                        d.Description = _dataReader["description"].ToString();
-                        d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
-                        deptsList.Add(d);
-                    }
+                    d.Id = Convert.ToInt32(_dataReader["id_dept"]);
+                    d.Name = _dataReader["name"].ToString();
+                    d.Description = _dataReader["description"].ToString();
+                    d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                    deptsList.Add(d);
                 }
+            }
 
             return deptsList;
         }
@@ -54,21 +53,21 @@ namespace DAO
             _dataReader = _command.ExecuteReader();
 
 
-                if (_dataReader.HasRows)
+            if (_dataReader.HasRows)
+            {
+                deptsList = new List<Department>();
+                while (_dataReader.Read() && _dataReader.HasRows)
                 {
-                    deptsList = new List<Department>();
-                    while (_dataReader.Read() && _dataReader.HasRows)
-                    {
 
-                        Department d = new Department();
+                    Department d = new Department();
 
-                        d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                        d.Name = _dataReader["name"].ToString();
-                        d.Description = _dataReader["description"].ToString();
-                        d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
-                        deptsList.Add(d);
-                    }
+                    d.Id = Convert.ToInt32(_dataReader["id_dept"]);
+                    d.Name = _dataReader["name"].ToString();
+                    d.Description = _dataReader["description"].ToString();
+                    d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                    deptsList.Add(d);
                 }
+            }
 
             return deptsList;
         }
@@ -84,16 +83,16 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-                _dataReader.Read();
+            _dataReader.Read();
 
-                if (_dataReader.HasRows)
-                {
-                    d = new Department();
-                    d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                    d.Name = _dataReader["name"].ToString();
-                    d.Description = _dataReader["description"].ToString();
-                    d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
-                }
+            if (_dataReader.HasRows)
+            {
+                d = new Department();
+                d.Id = Convert.ToInt32(_dataReader["id_dept"]);
+                d.Name = _dataReader["name"].ToString();
+                d.Description = _dataReader["description"].ToString();
+                d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+            }
             return d;
         }
 
@@ -115,10 +114,12 @@ namespace DAO
             _command.Parameters.Add(":name", OracleDbType.Varchar2).Value = obj.Name;
             _command.Parameters.Add(":description", OracleDbType.Varchar2).Value = obj.Description;
             _command.Parameters.Add(":floor", OracleDbType.Int32).Value = obj.Floor;
-           
-             _command.ExecuteNonQuery();
 
-            return FindLastInserted().Id ;
+            _command.ExecuteNonQuery();
+
+            obj.Id = FindLastInserted().Id;
+
+            return obj.Id;
         }
 
         /// <summary>

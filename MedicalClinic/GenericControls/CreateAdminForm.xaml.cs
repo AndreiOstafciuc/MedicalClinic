@@ -24,7 +24,7 @@ namespace GenericControls
     {
         CredentialsService credentialsService;
         AdministratorService administratorService;
-
+        private String _errorMessage;
         public CreateAdminForm()
         {
             InitializeComponent();
@@ -37,6 +37,25 @@ namespace GenericControls
             RaiseChangePageContentEvent(new AdminPageContent());
         }
 
+        private bool ValidateInput(String email, String password, String firstName, String lastName)
+        {
+            if(email.Equals("") || passwordBox.Password.Equals("") || firstName.Equals("") || lastName.Equals(""))
+            {
+                _errorMessage = "Fields cannot be empty.";
+                return false;
+            }
+            if(Utils.Validator.ValidateEmail(email)==false)
+            {
+                _errorMessage = "Email is invalid. Ex: example@example.com";
+                return false;
+            }
+            if (Utils.Validator.ValidatePassword(password) == false)
+            {
+                _errorMessage = "Password must have at least 6 characters.";
+                return false;
+            }
+            return true;
+        }
         private void button_Click(object sender, RoutedEventArgs e)
         {
             String email = emailTB.Text;
@@ -44,9 +63,9 @@ namespace GenericControls
             String firstName = firstnameTB.Text;
             String lastName = lastnameTB.Text;
             int adminId = 0;
-            if (email.Equals("") || passwordBox.Password.Equals("") || firstName.Equals("") || lastName.Equals(""))
+            if (ValidateInput(email,password,firstName,lastName)== false)
             {
-                MessageBox.Show("Invalid inputs !");
+                MessageBox.Show(_errorMessage);
             }
             else
             {

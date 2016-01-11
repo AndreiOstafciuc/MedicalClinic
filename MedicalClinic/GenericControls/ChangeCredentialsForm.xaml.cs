@@ -45,6 +45,11 @@ namespace GenericControls
                 _errorMessage = "Email cannot be empty.";
                 return false;
             }
+            if(Utils.Validator.ValidateEmail(email)==false)
+            {
+                _errorMessage = "Invalid email. Ex: example@example.com";
+                return false;
+            }
             if(oldPassword=="")
             {
                 _errorMessage = "Old Password cannot be empty.";
@@ -58,9 +63,9 @@ namespace GenericControls
                     return false;
                 }
             }
-            if(newPassword=="")
+            if(Utils.Validator.ValidatePassword(newPassword)== false)
             {
-                _errorMessage = "New Password cannot be empty.";
+                _errorMessage = "New Password must have at least 6 characters.";
                 return false;
             }
             return true;

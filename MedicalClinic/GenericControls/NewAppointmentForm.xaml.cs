@@ -105,12 +105,12 @@ namespace GenericControls
                 _errorMessage = "Please select a valid date";
                 return false;
             }
-            if (time == "")
+            if (Utils.Validator.ValidateAppointmentHour(time) == false)
             {
-                _errorMessage = "Please select a valid time";
+                _errorMessage = "Please select a valid time.";
                 return false;
             }
-            if (date < DateTime.Now)
+            if (Utils.Validator.ValidateAppointmentDate(date)== false)
             {
                 _errorMessage = "Please select a valid date. You cannot choose a date in the past";
                 return false;
@@ -121,6 +121,7 @@ namespace GenericControls
                 _errorMessage = "Doctor is not available, please select another date or time";
                 return false;
             }
+
             return true;
 
         }

@@ -26,6 +26,7 @@ namespace GenericControls
         private PatientService _patientService;
         private DateTime _defaultDate;
         private Patient _patient;
+        private String _errorMessage;
         public EditPatientForm()
         {
             InitializeComponent();
@@ -111,7 +112,7 @@ namespace GenericControls
             else
             {
                 labelError.Visibility = Visibility.Visible;
-                labelError.Content = "Invalid input. Please fill in mandatory fields.";
+                labelError.Content = _errorMessage;
 
             }
 
@@ -121,7 +122,20 @@ namespace GenericControls
                     String patientPhone, DateTime patientBirthdate)
         {
             if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientBirthdate == _defaultDate)
+            {
+                _errorMessage = "Invalid input. Please fill in mandatory fields.";
                 return false;
+            }
+            if (Utils.Validator.ValidatePhoneNumber(patientPhone) == false)
+            {
+                _errorMessage = "Invalid phone. Format: only numeric and 10 characters long.";
+                return false;
+            }
+            if (Utils.Validator.ValidateBithdate(patientBirthdate) == false)
+            {
+                _errorMessage = " Invalid birthdate. Birthdate cannot be in the future.";
+                return false;
+            }
             return true;
         }
     }

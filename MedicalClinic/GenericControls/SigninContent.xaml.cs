@@ -26,6 +26,7 @@ namespace GenericControls
         private CredentialsService _credentialsService;
         private PatientService _patientService;
         private DateTime _defaultDate;
+        private String _errorMessage;
         public SigninContent()
         {
             InitializeComponent();
@@ -35,7 +36,31 @@ namespace GenericControls
                      String patientPhone,String patientEmail, String patientPassword ,DateTime patientBirthdate)
         {
             if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == _defaultDate)
+            {
+                _errorMessage = "Invalid input. Please fill in mandatory fields.";
                 return false;
+            }
+            if(Utils.Validator.ValidateEmail(patientEmail)==false)
+            {
+                _errorMessage = "Invalid email. Ex: example@example.com";
+                return false;
+            }
+            if (Utils.Validator.ValidatePassword(patientPassword) == false)
+            {
+                _errorMessage = "Password must have at least 6 characters.";
+                return false;
+            }
+            if (Utils.Validator.ValidatePhoneNumber(patientPhone) == false)
+            {
+                _errorMessage = "Invalid phone. Format: only numeric and 10 characters long.";
+                return false;
+            }
+            if(Utils.Validator.ValidateBithdate(patientBirthdate)==false)
+            {
+                _errorMessage = " Invalid birthdate. Birthdate cannot be in the future.";
+                return false;
+            }
+            
             return true;
         }
         private void buttonSignin_Click(object sender, RoutedEventArgs e)
@@ -97,7 +122,7 @@ namespace GenericControls
             else
             {
                 labelError.Visibility = Visibility.Visible;
-                labelError.Content= "Invalid input. Please fill in mandatory fields.";
+                labelError.Content = _errorMessage;
                 
             }
 

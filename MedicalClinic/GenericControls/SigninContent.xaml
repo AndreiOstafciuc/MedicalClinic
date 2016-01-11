@@ -41,7 +41,7 @@
             <TextBox x:Name="textBoxUserFirstName" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserLastName" Grid.Column="1" Grid.Row="2" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserAddress" Grid.Column="1" Grid.Row="3" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
-        <DatePicker x:Name="datePickerUserBirthdate" Grid.Column="1" Grid.Row="4" Margin="3" MinHeight="30" GotFocus="datePickerUserBirthdate_GotFocus" />
+            <DatePicker x:Name="datePickerUserBirthdate"  DisplayDateStart="1960/01/01" SelectedDate="1970/01/01" Grid.Column="1" Grid.Row="4" Margin="3" MinHeight="30" GotFocus="datePickerUserBirthdate_GotFocus" />
             <TextBox x:Name="textBoxUserPhone" Grid.Column="1" Grid.Row="5" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserGeneticDisorder" Grid.Column="1" Grid.Row="6" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserInsuranceNr" Grid.Column="1" Grid.Row="7" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
@@ -59,7 +59,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-            <Label Foreground="Red" x:Name="labelError" Grid.Row="11" Grid.Column="1" Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
+            <Label Foreground="Red" x:Name="labelError" Grid.Row="11"  Content="Error" FontSize="10.667" FontWeight="Bold" Visibility="Hidden" Grid.ColumnSpan="2"/>
             <Button x:Name="buttonBack" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" 
             	MinWidth="80" Margin="0,6,117,0" Content="Back" Click="buttonBack_Click">
                 <Button.Background>

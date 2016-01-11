@@ -48,7 +48,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Foreground="Red" x:Name="labelError" Grid.Row="7" Grid.Column="1" Content="" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
+        <Label Foreground="Red" x:Name="labelError" Grid.Row="7" Grid.ColumnSpan="2" Content="" FontSize="10.667" FontWeight="Bold" Visibility="Hidden"/>
         <Label x:Name="scheduleTitle" Content="Schedule : " Grid.Column="2" HorizontalAlignment="Left" Margin="73,10,0,0" Grid.Row="5" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="label1" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Height="72" Margin="110,26,0,0" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Top" Width="1"/>
         <Label x:Name="scheduleContent" Content="ss" Grid.Column="2" HorizontalAlignment="Left" Margin="73,55,0,0" Grid.Row="5" VerticalAlignment="Top" FontWeight="Bold"/>

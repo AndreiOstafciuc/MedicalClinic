@@ -15,7 +15,35 @@ namespace Utils
         }
         public static bool ValidatePhoneNumber(String phoneNumber)
         {
-            return Regex.IsMatch(phoneNumber, "^[0-9]+$", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(phoneNumber, "^[0-9]+$", RegexOptions.IgnoreCase) && (phoneNumber.Length == 10);
+        }
+        public static bool ValidateBithdate(DateTime birthdate)
+        {
+            if(DateTime.Compare(birthdate,DateTime.Now)>=0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool ValidateAppointmentDate(DateTime appointmentDate)
+        {
+            if (DateTime.Compare(appointmentDate, DateTime.Now) <0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool ValidateAppointmentHour(String hour)
+        {
+            return Regex.IsMatch(hour, "0[0-9]|1[0-9]|2[0-4]") && (hour.Length == 2);
+        }
+        public static bool ValidatePassword(String pass)
+        {
+            if(pass.Length<6)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

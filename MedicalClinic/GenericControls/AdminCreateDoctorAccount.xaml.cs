@@ -24,6 +24,7 @@ namespace GenericControls
 
         List<Department> _deptsList;
         List<String> _statusList;
+        private String _errorMessage;
         public AdminCreateDoctorAccount()
         {
             InitializeComponent();
@@ -57,18 +58,37 @@ namespace GenericControls
             }
 
         }
+        private bool ValidateInput(String email, String password, String firstName, String lastName)
+        {
+            if (email.Equals("") || password.Equals("") || firstName.Equals("") || lastName.Equals(""))
+            {
+                _errorMessage = "Fields cannot be empty.";
+                return false;
+            }
+            if (Utils.Validator.ValidateEmail(email) == false)
+            {
+                _errorMessage = "Email is invalid. Ex: example@example.com";
+                return false;
+            }
+            if (Utils.Validator.ValidatePassword(password) == false)
+            {
+                _errorMessage = "Password must have at least 6 characters.";
+                return false;
+            }
+            return true;
+        }
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
             String docEmail = emailTextBox.Text;
             String docPass = Encrypter.getMD5(passwordBox.Password);
             String docFName = firstnameTextBox.Text;
-            String docLNaame = lastnameTextBox.Text;
+            String docLName = lastnameTextBox.Text;
             String docPhoneNumber = phonenumberTextBox.Text;
 
-            if (docEmail.Equals("") || passwordBox.Password.Equals("") || docFName.Equals("") || docLNaame.Equals("") || docPhoneNumber.Equals(""))
+            if (ValidateInput(docEmail,passwordBox.Password,docFName,docLName)== false)
             {
-                MessageBox.Show("Wrong inputs !");
+                MessageBox.Show(_errorMessage);
             }
             else {
 
@@ -88,7 +108,7 @@ namespace GenericControls
                 {
                     try
                     {
-                        _doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+                        _doctorService.Save(new Doctor(docId, docLName, docFName, docDeptId, docPhoneNumber, status));
                         MessageBox.Show("Account created !");
                         RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
                     }

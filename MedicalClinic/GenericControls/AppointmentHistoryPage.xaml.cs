@@ -1,8 +1,8 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : The page contains all the appointments of the user
-                Get all appointments from database using AppointmentService and the populate dataGridAppointments with the list returned
-                If there are no appointments for this user, display a corresponding message
+// Author : Cosmanescu Roxana
+// Description : The page contains all the appointments of the user
+//                Get all appointments from database using AppointmentService and the populate dataGridAppointments with the list returned
+//              If there are no appointments for this user, display a corresponding message
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.
 // </copyright>

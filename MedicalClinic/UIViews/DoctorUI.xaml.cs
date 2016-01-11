@@ -1,7 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : DoctorUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods
-*              in order to return elements specific for the doctor UI
+// Author : Cosmanescu Roxana
+// Description : DoctorUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods//              in order to return elements specific for the doctor UI
 // ***********************************************************************
 // <copyright file="DoctorStatus.cs" company="">
 //     . All rights reserved.

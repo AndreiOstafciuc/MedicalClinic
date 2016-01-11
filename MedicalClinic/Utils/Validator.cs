@@ -1,7 +1,5 @@
-﻿/*
-* Author : Cosmanescu Roxana
-* Description : Contains various methods for validating emails, appointment date, appointment time, birthdates, password
-*/
+﻿// Author : Cosmanescu Roxana
+// Description : Contains various methods for validating emails, appointment date, appointment time, birthdates, password///
 // ***********************************************************************
 // <copyright file="Validator.cs" company="">
 //     . All rights reserved.

@@ -1,9 +1,7 @@
-﻿/*
-* Author : Cosmanescu Roxana
-* Description : The page contains all the results of the user
-                Get all results from database using AppointmentService and ResultsService and the populate dataGridResults with the list returned
-                If there are no results for this user, display a corresponding message
-*/
+﻿// Author : Cosmanescu Roxana
+// Description : The page contains all the results of the user
+//                Get all results from database using AppointmentService and ResultsService and the populate dataGridResults with the list returned
+//                If there are no results for this user, display a corresponding message///
 //     . All rights reserved.
 // </copyright>
 // <summary></summary>

@@ -107,9 +107,6 @@
     <Compile Include="ResultsHistoryPage.xaml.cs">
       <DependentUpon>ResultsHistoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestContent.xaml.cs">
-      <DependentUpon>TestContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PageContentEventArgs.cs" />
     <Compile Include="PatientPageContent.xaml.cs">
       <DependentUpon>PatientPageContent.xaml</DependentUpon>
@@ -194,10 +191,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ResultsHistoryPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TestContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,11 +1,11 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : This page contains a menu, 
-*               from this menu user can go to home page,
-*               can edit his personal data and credentials
-*               can view his personal data
-*               can make a new appointment
-*               can view appointments and results history
+// Author : Cosmanescu Roxana
+// Description : This page contains a menu, 
+//               from this menu user can go to home page,
+//               can edit his personal data and credentials
+//               can view his personal data
+//               can make a new appointment
+//               can view appointments and results history
 // <summary></summary>
 // ***********************************************************************
 

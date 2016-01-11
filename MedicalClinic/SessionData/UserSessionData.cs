@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : used for storing data (user id) of the current logged user
+// Author : Cosmanescu Roxana
+// Description : used for storing data (user id) of the current logged user
 //
 // ***********************************************************************
 // <copyright file="AppointmentService.cs" company="">

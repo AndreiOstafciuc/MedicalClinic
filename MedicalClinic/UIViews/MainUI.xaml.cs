@@ -1,7 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : MainUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods
-*              in order to return elements specific for the main UI that contains the home page of the app
+// Author : Cosmanescu Roxana
+// Description : MainUI is derived from GenericUI and overrides GetHeader, GetFooter and GetMainContent methods//              in order to return elements specific for the main UI that contains the home page of the app
 // ***********************************************************************
 // <copyright file="DoctorStatus.cs" company="">
 //     . All rights reserved.

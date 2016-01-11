@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana, Ostafciuc Andrei
-* Description : The header of the page containing application logo , the help button and the logout button
+// Author : Cosmanescu Roxana, Ostafciuc Andrei
+// Description : The header of the page containing application logo , the help button and the logout button
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">

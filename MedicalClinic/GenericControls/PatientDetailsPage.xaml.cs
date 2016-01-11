@@ -1,7 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : Get user (identified by SessionData.UserSessionData.CurrentUserId) data from database using CredentialsService and PatientService 
-*               and display data on the page ( suggestive images located in resource are used for this information)
+// Author : Cosmanescu Roxana
+// Description : Get user (identified by SessionData.UserSessionData.CurrentUserId) data from database using CredentialsService and PatientService //               and display data on the page ( suggestive images located in resource are used for this information)
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.

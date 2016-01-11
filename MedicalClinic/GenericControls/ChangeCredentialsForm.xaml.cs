@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : Get user input from the form and validates, if input is valid then update user data, otherwise show the corresponding error message
+// Author : Cosmanescu Roxana
+// Description : Get user input from the form and validates, if input is valid then update user data, otherwise show the corresponding error message
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">

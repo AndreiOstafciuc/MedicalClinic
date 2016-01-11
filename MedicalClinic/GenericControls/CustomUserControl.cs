@@ -1,8 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : A class derived form System.Windows.Controls.UserControl that has two custom events
-*       ChangePageContentHandler -for changing the body of the current window
-*       ChangeWindowLayoutHandler -for changing the window layout         
+// Author : Cosmanescu Roxana
+// Description : A class derived form System.Windows.Controls.UserControl that has two custom events//       ChangePageContentHandler -for changing the body of the current window//       ChangeWindowLayoutHandler -for changing the window layout         
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.
 // </copyright>

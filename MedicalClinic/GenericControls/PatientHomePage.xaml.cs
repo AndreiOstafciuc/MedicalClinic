@@ -1,8 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana, Ostafciuc Andrei
-* Description : This page contains three sections: a section where all the departments and info about them are displayed, 
-*               a section where all doctors and info about them are displayed, 
-*               a section where generalInfo about the clinic is displayed
+// Author : Cosmanescu Roxana, Ostafciuc Andrei
+// Description : This page contains three sections: a section where all the departments and info about them are displayed, //               a section where all doctors and info about them are displayed, //               a section where generalInfo about the clinic is displayed
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.
 // </copyright>

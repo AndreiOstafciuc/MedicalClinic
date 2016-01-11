@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : Get user input from the displayed form and validates them,  if input is valid then update user data using an instance of PatientService, otherwise show the corresponding error message
+// Author : Cosmanescu Roxana
+// Description : Get user input from the displayed form and validates them,  if input is valid then update user data using an instance of PatientService, otherwise show the corresponding error message
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">

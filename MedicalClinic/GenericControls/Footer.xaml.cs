@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana
-* Description : The footer of the page containing copyrights
+// Author : Cosmanescu Roxana
+// Description : The footer of the page containing copyrights
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">

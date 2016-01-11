@@ -1,8 +1,7 @@
 ﻿// ***********************************************************************
-* Author : Cosmanescu Roxana, Bordeian Marius, Ostafciuc Andrei
-* Description : Contains the new appointment form, get input , validate input, 
-*              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
-               otherwise corresponding error message are displayed
+// Author : Cosmanescu Roxana, Bordeian Marius, Ostafciuc Andrei
+// Description : Contains the new appointment form, get input , validate input, //              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
+//               otherwise corresponding error message are displayed
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.
 // </copyright>

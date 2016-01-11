@@ -34,10 +34,10 @@ namespace DAO
 
                     Credentials c = new Credentials();
 
-                    c.Id = Convert.ToInt32(_dataReader["id"]);
-                    c.Email = _dataReader["email"].ToString();
-                    c.Password = _dataReader["password"].ToString();
-                    c.Type = Convert.ToInt32(_dataReader["type"]);
+                    c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
+                    c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
+                    c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
+                    c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
                     credentialsList.Add(c);
                 }
             }
@@ -66,10 +66,10 @@ namespace DAO
 
                     Credentials c = new Credentials();
 
-                    c.Id = Convert.ToInt32(_dataReader["id"]);
-                    c.Email = _dataReader["email"].ToString();
-                    c.Password = _dataReader["password"].ToString();
-                    c.Type = Convert.ToInt32(_dataReader["type"]);
+                    c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
+                    c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
+                    c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
+                    c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
                     credentialsList.Add(c);
                 }
             }
@@ -93,10 +93,10 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 c = new Credentials();
-                c.Id = Convert.ToInt32(_dataReader["id"]);
-                c.Email = _dataReader["email"].ToString();
-                c.Password = _dataReader["password"].ToString();
-                c.Type = Convert.ToInt32(_dataReader["type"]);
+                c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
+                c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
+                c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
+                c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
 
             }
             return c;
@@ -166,10 +166,10 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 c = new Credentials();
-                c.Id = Convert.ToInt32(_dataReader["id"]);
-                c.Email = _dataReader["email"].ToString();
-                c.Password = _dataReader["password"].ToString();
-                c.Type = Convert.ToInt32(_dataReader["type"]);
+                c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
+                c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
+                c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
+                c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
 
             }
             return c;

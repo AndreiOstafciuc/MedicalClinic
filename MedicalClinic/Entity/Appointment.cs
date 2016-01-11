@@ -35,7 +35,7 @@ namespace Entity
             this._symptoms = symtoms;
         }
 
-        public DateTime AppointmentDate
+        public DateTime ScheduledDate
         {
             get { return _appointmentDate; }
             set { _appointmentDate = value; }

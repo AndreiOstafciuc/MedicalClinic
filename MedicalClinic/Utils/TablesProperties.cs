@@ -42,7 +42,7 @@
         public const string IdDepartment = "ID_DEPT";
         public const string Name = "NAME";
         public const string Description = "DESCRIPTION";
-        public const string Floot = "FLOOR";
+        public const string Floor = "FLOOR";
     }
 
     /// <summary>

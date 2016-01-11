@@ -34,12 +34,12 @@ namespace DAO
 
                     Appointment a = new Appointment();
 
-                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                    a.Time = Convert.ToInt32(_dataReader["time"]);
-                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdDoctor]);
+                    a.IdPacient = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdPatient]);
+                    a.Time = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Time]);
+                    a.ScheduledDate = Convert.ToDateTime(_dataReader[Utils.AppointmentTableProperties.ScheduleDate]);
+                    a.Symptoms = _dataReader[Utils.AppointmentTableProperties.Symptoms].ToString();
                     appointmentsList.Add(a);
                 }
             }
@@ -68,12 +68,12 @@ namespace DAO
 
                     Appointment a = new Appointment();
 
-                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                    a.Time = Convert.ToInt32(_dataReader["time"]);
-                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdDoctor]);
+                    a.IdPacient = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdPatient]);
+                    a.Time = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Time]);
+                    a.ScheduledDate = Convert.ToDateTime(_dataReader[Utils.AppointmentTableProperties.ScheduleDate]);
+                    a.Symptoms = _dataReader[Utils.AppointmentTableProperties.Symptoms].ToString();
                     appointmentsList.Add(a);
                 }
             }
@@ -97,12 +97,12 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 a = new Appointment();
-                a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                a.Time = Convert.ToInt32(_dataReader["time"]);
-                a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                a.Symptoms = _dataReader["symptoms"].ToString();
+                a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
+                a.IdDoctor = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdDoctor]);
+                a.IdPacient = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdPatient]);
+                a.Time = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Time]);
+                a.ScheduledDate = Convert.ToDateTime(_dataReader[Utils.AppointmentTableProperties.ScheduleDate]);
+                a.Symptoms = _dataReader[Utils.AppointmentTableProperties.Symptoms].ToString();
             }
 
             return a;
@@ -116,7 +116,7 @@ namespace DAO
         /// <returns>id of the saved entity</returns>
         public override int Save(Appointment obj)
         {
-            string sql = "insert into appointment values (" + obj.Id + ",'" + obj.IdDoctor + "','" + obj.IdPacient + "','" + obj.Time + "','" + obj.AppointmentDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "')";
+            string sql = "insert into appointment values (" + obj.Id + ",'" + obj.IdDoctor + "','" + obj.IdPacient + "','" + obj.Time + "','" + obj.ScheduledDate.ToString("dd-MMM-yy") + "','" + obj.Symptoms + "')";
 
             _command.CommandType = CommandType.Text;
             _command.CommandText = "insert into appointment(id_doctor,id_patient,time,scheduled_date,symptoms) values ( " +
@@ -130,7 +130,7 @@ namespace DAO
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.IdDoctor;
             _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = obj.IdPacient;
             _command.Parameters.Add(":time", OracleDbType.Int32).Value = obj.Time;
-            _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.AppointmentDate;
+            _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.ScheduledDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
 
             _command.ExecuteNonQuery();
@@ -160,7 +160,7 @@ namespace DAO
             _command.Parameters.Add(":id_doctor", OracleDbType.Int32).Value = obj.IdDoctor;
             _command.Parameters.Add(":id_patient", OracleDbType.Int32).Value = obj.IdPacient;
             _command.Parameters.Add(":time", OracleDbType.Int32).Value = obj.Time;
-            _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.AppointmentDate;
+            _command.Parameters.Add(":scheduled_date", OracleDbType.Date).Value = obj.ScheduledDate;
             _command.Parameters.Add(":symptoms", OracleDbType.Varchar2).Value = obj.Symptoms;
             _command.Parameters.Add(":id_appointment", OracleDbType.Int32).Value = obj.Id;
 
@@ -183,12 +183,12 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 a = new Appointment();
-                a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                a.Time = Convert.ToInt32(_dataReader["time"]);
-                a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                a.Symptoms = _dataReader["symptoms"].ToString();
+                a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
+                a.IdDoctor = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdDoctor]);
+                a.IdPacient = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdPatient]);
+                a.Time = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Time]);
+                a.ScheduledDate = Convert.ToDateTime(_dataReader[Utils.AppointmentTableProperties.ScheduleDate]);
+                a.Symptoms = _dataReader[Utils.AppointmentTableProperties.Symptoms].ToString();
             }
 
             return a;
@@ -217,12 +217,12 @@ namespace DAO
 
                     Appointment a = new Appointment();
 
-                    a.Id = Convert.ToInt32(_dataReader["id_appointment"]);
-                    a.IdDoctor = Convert.ToInt32(_dataReader["id_doctor"]);
-                    a.IdPacient = Convert.ToInt32(_dataReader["id_patient"]);
-                    a.Time = Convert.ToInt32(_dataReader["time"]);
-                    a.AppointmentDate = Convert.ToDateTime(_dataReader["scheduled_date"]);
-                    a.Symptoms = _dataReader["symptoms"].ToString();
+                    a.Id = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Id]);
+                    a.IdDoctor = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdDoctor]);
+                    a.IdPacient = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.IdPatient]);
+                    a.Time = Convert.ToInt32(_dataReader[Utils.AppointmentTableProperties.Time]);
+                    a.ScheduledDate = Convert.ToDateTime(_dataReader[Utils.AppointmentTableProperties.ScheduleDate]);
+                    a.Symptoms = _dataReader[Utils.AppointmentTableProperties.Symptoms].ToString();
                     appointmentsList.Add(a);
                 }
             }

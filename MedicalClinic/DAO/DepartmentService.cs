@@ -34,10 +34,10 @@ namespace DAO
 
                     Department d = new Department();
 
-                    d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                    d.Name = _dataReader["name"].ToString();
-                    d.Description = _dataReader["description"].ToString();
-                    d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                    d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);
+                    d.Name = _dataReader[Utils.DepartmentTableProperties.Name].ToString();
+                    d.Description = _dataReader[Utils.DepartmentTableProperties.Description].ToString();
+                    d.Floor = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.Floor].ToString());
                     deptsList.Add(d);
                 }
             }
@@ -66,10 +66,10 @@ namespace DAO
 
                     Department d = new Department();
 
-                    d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                    d.Name = _dataReader["name"].ToString();
-                    d.Description = _dataReader["description"].ToString();
-                    d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                    d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);
+                    d.Name = _dataReader[Utils.DepartmentTableProperties.Name].ToString();
+                    d.Description = _dataReader[Utils.DepartmentTableProperties.Description].ToString();
+                    d.Floor = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.Floor].ToString());
                     deptsList.Add(d);
                 }
             }
@@ -93,10 +93,10 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 d = new Department();
-                d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                d.Name = _dataReader["name"].ToString();
-                d.Description = _dataReader["description"].ToString();
-                d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);
+                d.Name = _dataReader[Utils.DepartmentTableProperties.Name].ToString();
+                d.Description = _dataReader[Utils.DepartmentTableProperties.Description].ToString();
+                d.Floor = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.Floor].ToString());
             }
             return d;
         }
@@ -166,10 +166,10 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 d = new Department();
-                d.Id = Convert.ToInt32(_dataReader["id_dept"]);
-                d.Name = _dataReader["name"].ToString();
-                d.Description = _dataReader["description"].ToString();
-                d.Floor = Convert.ToInt32(_dataReader["floor"].ToString());
+                d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);
+                d.Name = _dataReader[Utils.DepartmentTableProperties.Name].ToString();
+                d.Description = _dataReader[Utils.DepartmentTableProperties.Description].ToString();
+                d.Floor = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.Floor].ToString());
             }
             return d;
         }

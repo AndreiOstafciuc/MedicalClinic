@@ -34,12 +34,12 @@ namespace DAO
 
                     Results r = new Results();
 
-                    r.Id = Convert.ToInt32(_dataReader["id_result"]);
-                    r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
-                    r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
-                    r.Symptoms = _dataReader["symptoms"].ToString();
-                    r.Diagnosis = _dataReader["diagnosis"].ToString();
-                    r.Medication = _dataReader["medication"].ToString();
+                    r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
+                    r.IdAppointment = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdAppointment]);
+                    r.ResultDate = Convert.ToDateTime(_dataReader[Utils.ResultsTableProperties.ResultDate]);
+                    r.Symptoms = _dataReader[Utils.ResultsTableProperties.Symptoms].ToString();
+                    r.Diagnosis = _dataReader[Utils.ResultsTableProperties.Diagnosis].ToString();
+                    r.Medication = _dataReader[Utils.ResultsTableProperties.Mediaction].ToString();
                     resultsList.Add(r);
                 }
             }
@@ -68,12 +68,12 @@ namespace DAO
 
                     Results r = new Results();
 
-                    r.Id = Convert.ToInt32(_dataReader["id_result"]);
-                    r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
-                    r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
-                    r.Symptoms = _dataReader["symptoms"].ToString();
-                    r.Diagnosis = _dataReader["diagnosis"].ToString();
-                    r.Medication = _dataReader["medication"].ToString();
+                    r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
+                    r.IdAppointment = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdAppointment]);
+                    r.ResultDate = Convert.ToDateTime(_dataReader[Utils.ResultsTableProperties.ResultDate]);
+                    r.Symptoms = _dataReader[Utils.ResultsTableProperties.Symptoms].ToString();
+                    r.Diagnosis = _dataReader[Utils.ResultsTableProperties.Diagnosis].ToString();
+                    r.Medication = _dataReader[Utils.ResultsTableProperties.Mediaction].ToString();
                     resultsList.Add(r);
                 }
             }
@@ -97,12 +97,12 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 r = new Results();
-                r.Id = Convert.ToInt32(_dataReader["id_result"]);
-                r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
-                r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
-                r.Symptoms = _dataReader["symptoms"].ToString();
-                r.Diagnosis = _dataReader["diagnosis"].ToString();
-                r.Medication = _dataReader["medication"].ToString();
+                r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
+                r.IdAppointment = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdAppointment]);
+                r.ResultDate = Convert.ToDateTime(_dataReader[Utils.ResultsTableProperties.ResultDate]);
+                r.Symptoms = _dataReader[Utils.ResultsTableProperties.Symptoms].ToString();
+                r.Diagnosis = _dataReader[Utils.ResultsTableProperties.Diagnosis].ToString();
+                r.Medication = _dataReader[Utils.ResultsTableProperties.Mediaction].ToString();
             }
 
             return r;
@@ -181,12 +181,12 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 r = new Results();
-                r.Id = Convert.ToInt32(_dataReader["id_result"]);
-                r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
-                r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
-                r.Symptoms = _dataReader["symptoms"].ToString();
-                r.Diagnosis = _dataReader["diagnosis"].ToString();
-                r.Medication = _dataReader["medication"].ToString();
+                r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
+                r.IdAppointment = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdAppointment]);
+                r.ResultDate = Convert.ToDateTime(_dataReader[Utils.ResultsTableProperties.ResultDate]);
+                r.Symptoms = _dataReader[Utils.ResultsTableProperties.Symptoms].ToString();
+                r.Diagnosis = _dataReader[Utils.ResultsTableProperties.Diagnosis].ToString();
+                r.Medication = _dataReader[Utils.ResultsTableProperties.Mediaction].ToString();
             }
 
             return r;
@@ -213,12 +213,12 @@ namespace DAO
 
                     Results r = new Results();
 
-                    r.Id = Convert.ToInt32(_dataReader["id_result"]);
-                    r.IdAppointment = Convert.ToInt32(_dataReader["id_appointment"]);
-                    r.ResultDate = Convert.ToDateTime(_dataReader["result_date"]);
-                    r.Symptoms = _dataReader["symptoms"].ToString();
-                    r.Diagnosis = _dataReader["diagnosis"].ToString();
-                    r.Medication = _dataReader["medication"].ToString();
+                    r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
+                    r.IdAppointment = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdAppointment]);
+                    r.ResultDate = Convert.ToDateTime(_dataReader[Utils.ResultsTableProperties.ResultDate]);
+                    r.Symptoms = _dataReader[Utils.ResultsTableProperties.Symptoms].ToString();
+                    r.Diagnosis = _dataReader[Utils.ResultsTableProperties.Diagnosis].ToString();
+                    r.Medication = _dataReader[Utils.ResultsTableProperties.Mediaction].ToString();
                     resultsList.Add(r);
                 }
             }

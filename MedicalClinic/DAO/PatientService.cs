@@ -99,14 +99,14 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 p = new Patient();
-                p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                p.FirstName = _dataReader["first_name"].ToString();
-                p.LastName = _dataReader["last_name"].ToString();
-                p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                p.Address = _dataReader["address"].ToString();
-                p.BirthDate = (DateTime)_dataReader["birthdate"];
-                p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                p.PhoneNumber = _dataReader["phone_number"].ToString();
+                p.Id = Convert.ToInt32(_dataReader[Utils.PatientTableProperties.IdPatient]);
+                p.FirstName = _dataReader[Utils.PatientTableProperties.FirstName].ToString();
+                p.LastName = _dataReader[Utils.PatientTableProperties.LastName].ToString();
+                p.InsuranceNumber = _dataReader[Utils.PatientTableProperties.InsuranceNumber].ToString();
+                p.Address = _dataReader[Utils.PatientTableProperties.Address].ToString();
+                p.BirthDate = (DateTime)_dataReader[Utils.PatientTableProperties.Birthdate];
+                p.GeneticDiseases = _dataReader[Utils.PatientTableProperties.GeneticDisorder].ToString();
+                p.PhoneNumber = _dataReader[Utils.PatientTableProperties.PhoneNumber].ToString();
 
             }
 
@@ -134,14 +134,14 @@ namespace DAO
 
                     Patient p = new Patient();
 
-                    p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                    p.FirstName = _dataReader["first_name"].ToString();
-                    p.LastName = _dataReader["last_name"].ToString();
-                    p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                    p.Address = _dataReader["address"].ToString();
-                    p.BirthDate = (DateTime)_dataReader["birthdate"];
-                    p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                    p.PhoneNumber = _dataReader["phone_number"].ToString();
+                    p.Id = Convert.ToInt32(_dataReader[Utils.PatientTableProperties.IdPatient]);
+                    p.FirstName = _dataReader[Utils.PatientTableProperties.FirstName].ToString();
+                    p.LastName = _dataReader[Utils.PatientTableProperties.LastName].ToString();
+                    p.InsuranceNumber = _dataReader[Utils.PatientTableProperties.InsuranceNumber].ToString();
+                    p.Address = _dataReader[Utils.PatientTableProperties.Address].ToString();
+                    p.BirthDate = (DateTime)_dataReader[Utils.PatientTableProperties.Birthdate];
+                    p.GeneticDiseases = _dataReader[Utils.PatientTableProperties.GeneticDisorder].ToString();
+                    p.PhoneNumber = _dataReader[Utils.PatientTableProperties.PhoneNumber].ToString();
 
                     patientsList.Add(p);
                 }
@@ -171,14 +171,14 @@ namespace DAO
 
                     Patient p = new Patient();
 
-                    p.Id = Convert.ToInt32(_dataReader["id_patient"]);
-                    p.FirstName = _dataReader["first_name"].ToString();
-                    p.LastName = _dataReader["last_name"].ToString();
-                    p.InsuranceNumber = _dataReader["insurance_number"].ToString();
-                    p.Address = _dataReader["address"].ToString();
-                    p.BirthDate = (DateTime)_dataReader["birthdate"];
-                    p.GeneticDiseases = _dataReader["genetic_disorder"].ToString();
-                    p.PhoneNumber = _dataReader["phone_number"].ToString();
+                    p.Id = Convert.ToInt32(_dataReader[Utils.PatientTableProperties.IdPatient]);
+                    p.FirstName = _dataReader[Utils.PatientTableProperties.FirstName].ToString();
+                    p.LastName = _dataReader[Utils.PatientTableProperties.LastName].ToString();
+                    p.InsuranceNumber = _dataReader[Utils.PatientTableProperties.InsuranceNumber].ToString();
+                    p.Address = _dataReader[Utils.PatientTableProperties.Address].ToString();
+                    p.BirthDate = (DateTime)_dataReader[Utils.PatientTableProperties.Birthdate];
+                    p.GeneticDiseases = _dataReader[Utils.PatientTableProperties.GeneticDisorder].ToString();
+                    p.PhoneNumber = _dataReader[Utils.PatientTableProperties.PhoneNumber].ToString();
 
                     patientsList.Add(p);
                 }

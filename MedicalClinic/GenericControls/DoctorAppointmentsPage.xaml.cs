@@ -38,7 +38,7 @@ namespace GenericControls
                 foreach (Appointment app in list)
                 {
                     Patient p = patientList[app.IdPacient];
-                    dataSet.Add(new { AppointmentId = app.Id, Patient = p.FirstName + " " + p.LastName, Date = app.AppointmentDate.ToString(), Time = app.Time.ToString(), Symtoms = app.Symptoms.ToString() });
+                    dataSet.Add(new { AppointmentId = app.Id, Patient = p.FirstName + " " + p.LastName, Date = app.ScheduledDate.ToString(), Time = app.Time.ToString(), Symtoms = app.Symptoms.ToString() });
                 }
 
 

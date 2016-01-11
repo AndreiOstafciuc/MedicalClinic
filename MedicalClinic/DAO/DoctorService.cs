@@ -1,4 +1,9 @@
-﻿using Entity;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using Entity;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -27,12 +32,12 @@ namespace DAO
 
                     Doctor d = new Doctor();
 
-                    d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                    d.FirstName = _dataReader["first_name"].ToString();
-                    d.LastName = _dataReader["last_name"].ToString();
-                    d.PhoneNumber = _dataReader["phone_number"].ToString();
-                    d.Status = Convert.ToInt32(_dataReader["status"]);
-                    d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                    d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
+                    d.FirstName = _dataReader[Utils.DoctorTableProperties.FirstName].ToString();
+                    d.LastName = _dataReader[Utils.DoctorTableProperties.LastName].ToString();
+                    d.PhoneNumber = _dataReader[Utils.DoctorTableProperties.PhoneNumber].ToString();
+                    d.Status = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.Status]);
+                    d.IdDept = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDepartment]);
                     doctorsList.Add(d);
                 }
             }
@@ -59,12 +64,12 @@ namespace DAO
 
                     Doctor d = new Doctor();
 
-                    d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                    d.FirstName = _dataReader["first_name"].ToString();
-                    d.LastName = _dataReader["last_name"].ToString();
-                    d.PhoneNumber = _dataReader["phone_number"].ToString();
-                    d.Status = Convert.ToInt32(_dataReader["status"]);
-                    d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                    d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
+                    d.FirstName = _dataReader[Utils.DoctorTableProperties.FirstName].ToString();
+                    d.LastName = _dataReader[Utils.DoctorTableProperties.LastName].ToString();
+                    d.PhoneNumber = _dataReader[Utils.DoctorTableProperties.PhoneNumber].ToString();
+                    d.Status = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.Status]);
+                    d.IdDept = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDepartment]);
                     doctorsList.Add(d);
                 }
             }
@@ -88,12 +93,12 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 d = new Doctor();
-                d.Id = Convert.ToInt32(_dataReader["id_doctor"]);
-                d.FirstName = _dataReader["first_name"].ToString();
-                d.LastName = _dataReader["last_name"].ToString();
-                d.PhoneNumber = _dataReader["phone_number"].ToString();
-                d.Status = Convert.ToInt32(_dataReader["status"]);
-                d.IdDept = Convert.ToInt32(_dataReader["id_dept"]);
+                d.Id = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDoctor]);
+                    d.FirstName = _dataReader[Utils.DoctorTableProperties.FirstName].ToString();
+                    d.LastName = _dataReader[Utils.DoctorTableProperties.LastName].ToString();
+                    d.PhoneNumber = _dataReader[Utils.DoctorTableProperties.PhoneNumber].ToString();
+                    d.Status = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.Status]);
+                    d.IdDept = Convert.ToInt32(_dataReader[Utils.DoctorTableProperties.IdDepartment]);
             }
 
             return d;

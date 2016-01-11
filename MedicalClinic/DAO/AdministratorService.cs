@@ -1,4 +1,9 @@
-﻿using Entity;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using Entity;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -28,9 +33,9 @@ namespace DAO
 
                     Administrator a = new Administrator();
 
-                    a.Id = Convert.ToInt32(_dataReader["id_admin"]);
-                    a.FirstName = _dataReader["first_name"].ToString();
-                    a.LastName = _dataReader["last_name"].ToString();
+                    a.Id = Convert.ToInt32(_dataReader[Utils.AdminTableProperties.Id]);
+                    a.FirstName = _dataReader[Utils.AdminTableProperties.FirstName].ToString();
+                    a.LastName = _dataReader[Utils.AdminTableProperties.LastName].ToString();
                     administratorsList.Add(a);
                 }
             }
@@ -58,9 +63,9 @@ namespace DAO
 
                     Administrator a = new Administrator();
 
-                    a.Id = Convert.ToInt32(_dataReader["id_admin"]);
-                    a.FirstName = _dataReader["first_name"].ToString();
-                    a.LastName = _dataReader["last_name"].ToString();
+                    a.Id = Convert.ToInt32(_dataReader[Utils.AdminTableProperties.Id]);
+                    a.FirstName = _dataReader[Utils.AdminTableProperties.FirstName].ToString();
+                    a.LastName = _dataReader[Utils.AdminTableProperties.LastName].ToString();
                     administratorsList.Add(a);
                 }
             }
@@ -84,9 +89,9 @@ namespace DAO
             if (_dataReader.HasRows)
             {
                 a = new Administrator();
-                a.Id = Convert.ToInt32(_dataReader["id_admin"]);
-                a.FirstName = _dataReader["first_name"].ToString();
-                a.LastName = _dataReader["last_name"].ToString();
+                a.Id = Convert.ToInt32(_dataReader[Utils.AdminTableProperties.Id]);
+                a.FirstName = _dataReader[Utils.AdminTableProperties.FirstName].ToString();
+                a.LastName = _dataReader[Utils.AdminTableProperties.LastName].ToString();
             }
 
             return a;

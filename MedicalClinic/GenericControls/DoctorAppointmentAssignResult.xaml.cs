@@ -1,19 +1,14 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -22,12 +17,12 @@ namespace GenericControls
     /// </summary>
     public partial class DoctorAppointmentAssignResult : CustomUserControl
     {
-        AppointmentService appointmentService;
-        PatientService patientService;
-        ResultsService resultsService;
+        AppointmentService _appointmentService;
+        PatientService _patientService;
+        ResultsService _resultsService;
 
-        Appointment selectedAppointment;
-        Patient selectedPatient;
+        Appointment _selectedAppointment;
+        Patient _selectedPatient;
 
         public DoctorAppointmentAssignResult(int appoitnmentId)
         {
@@ -38,16 +33,16 @@ namespace GenericControls
             h_medication.Visibility = Visibility.Hidden;
             h_symptoms.Visibility = Visibility.Hidden;
             h_results.Visibility = Visibility.Hidden;
-            appointmentService = new AppointmentService();
-            patientService = new PatientService();
-            resultsService = new ResultsService();
-            
-            selectedAppointment = appointmentService.FindById(appoitnmentId);
-            selectedPatient = patientService.FindById(selectedAppointment.IdPacient);
+            _appointmentService = new AppointmentService();
+            _patientService = new PatientService();
+            _resultsService = new ResultsService();
 
-            nameLabel.Content = selectedPatient.FirstName + " " + selectedPatient.LastName;
-            insuranceNumberLabel.Content = selectedPatient.InsuranceNumber;
-            geneticDisorderLabel.Content = selectedPatient.GeneticDiseases;
+            _selectedAppointment = _appointmentService.FindById(appoitnmentId);
+            _selectedPatient = _patientService.FindById(_selectedAppointment.IdPacient);
+
+            nameLabel.Content = _selectedPatient.FirstName + " " + _selectedPatient.LastName;
+            insuranceNumberLabel.Content = _selectedPatient.InsuranceNumber;
+            geneticDisorderLabel.Content = _selectedPatient.GeneticDiseases;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -56,7 +51,7 @@ namespace GenericControls
             String medication = textBox_Copy1.Text;
             String diagnosis = textBox_Copy.Text;
 
-            if(symptoms.Equals("") || medication.Equals("") || diagnosis.Equals(""))
+            if (symptoms.Equals("") || medication.Equals("") || diagnosis.Equals(""))
             {
                 MessageBox.Show("Inputs not valid !");
             }
@@ -64,14 +59,14 @@ namespace GenericControls
             {
                 try
                 {
-                resultsService.Save(new Results(selectedAppointment.Id,DateTime.Now,symptoms,diagnosis,medication));
-                MessageBox.Show("Result successfully asigned !");
-                RaiseChangePageContentEvent(new DoctorAppointmentsPage());
+                    _resultsService.Save(new Results(_selectedAppointment.Id, DateTime.Now, symptoms, diagnosis, medication));
+                    MessageBox.Show("Result successfully asigned !");
+                    RaiseChangePageContentEvent(new DoctorAppointmentsPage());
 
                 }
                 catch (Exception ee)
                 {
-                    MessageBox.Show("Something went wrong !\n"+ee.Data.ToString());
+                    MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());
                 }
             }
         }
@@ -83,7 +78,7 @@ namespace GenericControls
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            List<Results> resultsHistory = resultsService.findAllResultsOfPatient(selectedPatient.Id);
+            List<Results> resultsHistory = _resultsService.findAllResultsOfPatient(_selectedPatient.Id);
 
 
             if (resultsHistory != null)
@@ -93,7 +88,7 @@ namespace GenericControls
                 foreach (Results r in resultsHistory)
                 {
                     cbm = new ComboBoxItem();
-                    cbm.Content ="Result for appointment "+r.IdAppointment;
+                    cbm.Content = "Result for appointment " + r.IdAppointment;
                     cbm.Tag = r.Id;
                     comboBox.Items.Add(cbm);
                 }
@@ -121,7 +116,7 @@ namespace GenericControls
             int selectedResultId = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag.ToString());
             try
             {
-                Results selectedResult = resultsService.FindById(selectedResultId);
+                Results selectedResult = _resultsService.FindById(selectedResultId);
                 dateHistoryLabel.Content = selectedResult.ResultDate;
                 symptomsHistoryLabel.Content = selectedResult.Symptoms;
                 diagnosisHistoryabel.Content = selectedResult.Diagnosis;
@@ -129,7 +124,7 @@ namespace GenericControls
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Something went wrong !\n"+ee.Data.ToString());
+                MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());
             }
         }
     }

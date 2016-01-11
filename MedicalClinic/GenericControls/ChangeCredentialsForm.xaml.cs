@@ -1,19 +1,14 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -22,8 +17,8 @@ namespace GenericControls
     /// </summary>
     public partial class ChangeCredentialsForm : UserControl
     {
-       private CredentialsService _credentialsService;
-       private Credentials _credentials;
+        private CredentialsService _credentialsService;
+        private Credentials _credentials;
         private String _errorMessage;
         public ChangeCredentialsForm()
         {
@@ -40,7 +35,7 @@ namespace GenericControls
 
         private bool ValidateUserInput(String email, String oldPassword, String newPassword)
         {
-            if(email=="")
+            if (email == "")
             {
                 _errorMessage = "Email cannot be empty.";
                 return false;
@@ -50,14 +45,14 @@ namespace GenericControls
                 _errorMessage = "Invalid email. Ex: example@example.com";
                 return false;
             }
-            if(oldPassword=="")
+            if (oldPassword == "")
             {
                 _errorMessage = "Old Password cannot be empty.";
                 return false;
             }
             else
             {
-                if(Utils.Encrypter.getMD5(oldPassword)!=_credentials.Password)
+                if (Utils.Encrypter.getMD5(oldPassword) != _credentials.Password)
                 {
                     _errorMessage = "Old Password is incorrect.";
                     return false;

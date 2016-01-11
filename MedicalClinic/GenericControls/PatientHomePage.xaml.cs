@@ -1,19 +1,13 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -56,7 +50,7 @@ namespace GenericControls
 
         private string getDeptName(int id, List<Department> departments)
         {
-            foreach(Department d in departments)
+            foreach (Department d in departments)
             {
                 if (d.Id == id)
                 {
@@ -83,7 +77,7 @@ namespace GenericControls
                     expander.Header = doctor.FirstName + " " + doctor.LastName;
                     StackPanel stackPanel = new StackPanel();
                     TextBlock txt = new TextBlock();
-                    txt.Text = getDeptName(doctor.IdDept,departments);//doctorDept.Name + ", " + doctorDept.Floor;
+                    txt.Text = getDeptName(doctor.IdDept, departments);//doctorDept.Name + ", " + doctorDept.Floor;
                     stackPanel.Children.Add(txt);
                     expander.Content = stackPanel;
                     gridDoctors.RowDefinitions.Add(new RowDefinition());

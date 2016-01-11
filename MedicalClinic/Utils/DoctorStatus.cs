@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Utils
 {
+    /// <summary>
+    /// the doctor has two "states", either ACTIVE (as working for the MedicalClinic), either INACTIVE (left Clinic, vacation or any other)
+    /// </summary>
     public class DoctorStatus
     {
         public const int INACTIVE = 0;

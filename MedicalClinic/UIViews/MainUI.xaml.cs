@@ -1,4 +1,9 @@
-﻿using GenericControls;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using GenericControls;
 
 namespace UIViews
 {
@@ -7,7 +12,7 @@ namespace UIViews
     /// </summary>
     public partial class MainUI : GenericUI
     {
-       
+
         public MainUI() : base()
         {
             InitializeComponent();
@@ -26,6 +31,6 @@ namespace UIViews
         {
             return new GenericControls.HomePageContent();
         }
-        
+
     }
 }

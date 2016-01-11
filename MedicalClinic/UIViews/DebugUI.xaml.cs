@@ -1,9 +1,14 @@
-﻿using GenericControls;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using GenericControls;
 
 namespace UIViews
 {
     /// <summary>
-    /// Interaction logic for LoginUi.xaml
+    /// Interaction logic for DebugUI.xaml
     /// </summary>
     public partial class DebugUI : GenericUI
     {

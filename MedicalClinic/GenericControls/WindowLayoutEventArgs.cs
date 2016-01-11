@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+* Author : 
+* Decription : 
+*/
 
+using System;
 
 namespace GenericControls
 {
-    public class WindowLayoutEventArgs:EventArgs
+    public class WindowLayoutEventArgs : EventArgs
     {
         private int _argWindowLayout;
         public int ArgWindowLayout

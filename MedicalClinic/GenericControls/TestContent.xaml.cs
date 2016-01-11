@@ -1,5 +1,9 @@
-﻿using DAO;
-using DBConnNamespace;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +12,7 @@ using System.Windows;
 namespace GenericControls
 {
     /// <summary>
-    /// Interaction logic for MainContent.xaml
+    /// Debug purpose UI
     /// </summary>
     public partial class TestContent : CustomUserControl
     {
@@ -24,7 +28,7 @@ namespace GenericControls
         public TestContent()
         {
             InitializeComponent();
-            
+
             administratorService = new AdministratorService();
             appointmentService = new AppointmentService();
             departmentService = new DepartmentService();
@@ -142,7 +146,7 @@ namespace GenericControls
                 //*
                 for (int shcnt = 40; shcnt < 240; shcnt++)
                 {
-                    scheduleService.Save(new Schedule(shcnt, r.Next(0,6), r.Next(9,11), r.Next(14, 18)));
+                    scheduleService.Save(new Schedule(shcnt, r.Next(0, 6), r.Next(9, 11), r.Next(14, 18)));
                 }
                 //*/
                 /*

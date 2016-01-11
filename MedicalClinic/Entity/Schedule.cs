@@ -1,10 +1,15 @@
-﻿namespace Entity
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+namespace Entity
 {
     public class Schedule
     {
-        int _id;  
-        int _idDoctor;  
-        int _day; 
+        int _id;
+        int _idDoctor;
+        int _day;
         int _startHour;
         int _endHour;
 
@@ -12,11 +17,11 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id_doctor"></param>
+        /// <param name="id_doctor">the id got from the Save() method on credentialsService</param>
         /// <param name="day">day of week [0-6] where 0 == "sunday"</param>
         /// <param name="startHour"></param>
         /// <param name="endHour"></param>
-        public Schedule(int id_doctor,int day,int startHour, int endHour)
+        public Schedule(int id_doctor, int day, int startHour, int endHour)
         {
             this._idDoctor = id_doctor;
             this._day = day;

@@ -1,19 +1,14 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -38,9 +33,9 @@ namespace GenericControls
         /// </summary>
         private void PopulateUserForm()
         {
-            _patientService =new PatientService();
-             _patient= _patientService.FindById(SessionData.UserSessionData.CurrentUserId);
-            if(_patient != null)
+            _patientService = new PatientService();
+            _patient = _patientService.FindById(SessionData.UserSessionData.CurrentUserId);
+            if (_patient != null)
             {
                 textBoxUserFirstName.Text = _patient.FirstName;
                 textBoxUserLastName.Text = _patient.LastName;
@@ -88,8 +83,8 @@ namespace GenericControls
             {
                 patientBirthdate = _defaultDate;
             }
-            
-            if (ValidateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone,patientBirthdate))
+
+            if (ValidateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientBirthdate))
             {
                 try
                 {

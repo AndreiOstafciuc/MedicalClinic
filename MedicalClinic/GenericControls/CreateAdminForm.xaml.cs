@@ -1,18 +1,11 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Utils;
 
 namespace GenericControls
@@ -22,14 +15,14 @@ namespace GenericControls
     /// </summary>
     public partial class CreateAdminForm : CustomUserControl
     {
-        CredentialsService credentialsService;
-        AdministratorService administratorService;
+        CredentialsService _credentialsService;
+        AdministratorService _administratorService;
 
         public CreateAdminForm()
         {
             InitializeComponent();
-            credentialsService = new CredentialsService();
-            administratorService = new AdministratorService();
+            _credentialsService = new CredentialsService();
+            _administratorService = new AdministratorService();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -52,9 +45,9 @@ namespace GenericControls
             {
                 try
                 {
-                    adminId= credentialsService.Save(new Entity.Credentials(email,password,Utils.UserTypes.ADMIN));
+                    adminId = _credentialsService.Save(new Entity.Credentials(email, password, Utils.UserTypes.ADMIN));
                 }
-                catch(Exception ee)
+                catch (Exception ee)
                 {
                     MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());
                 }
@@ -63,14 +56,14 @@ namespace GenericControls
                 {
                     try
                     {
-                        adminId = administratorService.Save(new Entity.Administrator(adminId, firstName, lastName));
+                        adminId = _administratorService.Save(new Entity.Administrator(adminId, firstName, lastName));
                         MessageBox.Show("Account created !");
                         RaiseChangePageContentEvent(new AdminPageContent());
                     }
                     catch (Exception ee)
                     {
                         MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());
-                        credentialsService.Delete(adminId);
+                        _credentialsService.Delete(adminId);
                     }
                 }
             }

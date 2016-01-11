@@ -1,21 +1,16 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GenericControls
 {
@@ -25,18 +20,18 @@ namespace GenericControls
     public partial class DoctorAppointmentsPage : CustomUserControl
     {
         private readonly PagingCollectionView _cview;
-        PatientService patientService;
-        AppointmentService appoitmentService;
+        PatientService _patientService;
+        AppointmentService _appoitmentService;
 
         public DoctorAppointmentsPage()
         {
             InitializeComponent();
-            patientService = new PatientService();
-            appoitmentService = new AppointmentService();
-            List<Appointment> list = appoitmentService.GetNextAppointmentsByDoctorId(SessionData.UserSessionData.CurrentUserId);
+            _patientService = new PatientService();
+            _appoitmentService = new AppointmentService();
+            List<Appointment> list = _appoitmentService.GetNextAppointmentsByDoctorId(SessionData.UserSessionData.CurrentUserId);
 
-            Dictionary<int, Patient> patientList = getDictionary(patientService.FindAll());
-            List<object> dataSet=null;
+            Dictionary<int, Patient> patientList = getDictionary(_patientService.FindAll());
+            List<object> dataSet = null;
             if (list != null)
             {
                 dataSet = new List<object>();
@@ -45,10 +40,10 @@ namespace GenericControls
                     Patient p = patientList[app.IdPacient];
                     dataSet.Add(new { AppointmentId = app.Id, Patient = p.FirstName + " " + p.LastName, Date = app.AppointmentDate.ToString(), Time = app.Time.ToString(), Symtoms = app.Symptoms.ToString() });
                 }
-            
 
-            this._cview = new PagingCollectionView(dataSet, 20);
-            this.DataContext = this._cview;
+
+                this._cview = new PagingCollectionView(dataSet, 20);
+                this.DataContext = this._cview;
             }
             else
             {
@@ -72,7 +67,7 @@ namespace GenericControls
         {
             this._cview.MoveToPreviousPage();
         }
-        
+
         public Dictionary<int, Patient> getDictionary(List<Patient> list)
         {
             Dictionary<int, Patient> dictionary = new Dictionary<int, Patient>();

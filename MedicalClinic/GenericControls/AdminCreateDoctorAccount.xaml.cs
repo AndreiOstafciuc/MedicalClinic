@@ -1,19 +1,14 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Utils;
 
 namespace GenericControls
@@ -23,12 +18,12 @@ namespace GenericControls
     /// </summary>
     public partial class AdminCreateDoctorAccount : CustomUserControl
     {
-        DepartmentService departmentService;
-        CredentialsService credentialsService;
-        DoctorService doctorService;
+        DepartmentService _departmentService;
+        CredentialsService _credentialsService;
+        DoctorService _doctorService;
 
-        List<Department> deptsList;
-        List<String> statusList;
+        List<Department> _deptsList;
+        List<String> _statusList;
         public AdminCreateDoctorAccount()
         {
             InitializeComponent();
@@ -36,16 +31,16 @@ namespace GenericControls
         }
         public void initializeComboBoxes()
         {
-            departmentService = new DepartmentService();
-            credentialsService = new CredentialsService();
-            doctorService = new DoctorService();
+            _departmentService = new DepartmentService();
+            _credentialsService = new CredentialsService();
+            _doctorService = new DoctorService();
 
-            deptsList = departmentService.FindAll();
-            statusList = new List<string>() { "active", "inactive" };
+            _deptsList = _departmentService.FindAll();
+            _statusList = new List<string>() { "active", "inactive" };
             ComboBoxItem cbm;
-            if (deptsList != null)
+            if (_deptsList != null)
             {
-                foreach (Department d in deptsList)
+                foreach (Department d in _deptsList)
                 {
                     cbm = new ComboBoxItem();
                     cbm.Content = d.Name;
@@ -82,7 +77,7 @@ namespace GenericControls
                 int docId = 0;
                 try
                 {
-                    docId = credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
+                    docId = _credentialsService.Save(new Credentials(docEmail, docPass, Utils.UserTypes.DOCTOR));
                 }
                 catch (Exception ee)
                 {
@@ -93,7 +88,7 @@ namespace GenericControls
                 {
                     try
                     {
-                        doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
+                        _doctorService.Save(new Doctor(docId, docLNaame, docFName, docDeptId, docPhoneNumber, status));
                         MessageBox.Show("Account created !");
                         RaiseChangeWindowLayoutEvent(Utils.UserTypes.ADMIN);
                     }
@@ -102,7 +97,7 @@ namespace GenericControls
                         MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                         try
                         {
-                            credentialsService.Delete(docId);
+                            _credentialsService.Delete(docId);
                         }
                         catch (Exception eee)
                         {

@@ -1,9 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
 using System.Windows.Controls;
 
 namespace GenericControls
@@ -13,7 +12,7 @@ namespace GenericControls
     /// ChangePageContentHandler -for changing the body of the current window
     /// ChangeWindowLayoutHandler -for changing the window layout
     /// </summary>
-    public class CustomUserControl: UserControl
+    public class CustomUserControl : UserControl
     {
         public delegate void ChangePageContentHandler(object sender, PageContentEventArgs e);
         public event ChangePageContentHandler OnPageContentChange;

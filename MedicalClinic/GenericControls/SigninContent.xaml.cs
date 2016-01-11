@@ -1,19 +1,13 @@
-﻿using DAO;
+﻿/*
+* Author : 
+* Decription : 
+*/
+
+using DAO;
 using Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Utils;
 
 namespace GenericControls
@@ -32,7 +26,7 @@ namespace GenericControls
         }
 
         private bool ValidateUserInput(String patientFirstName, String patientLastName, String patientAddress,
-                     String patientPhone,String patientEmail, String patientPassword ,DateTime patientBirthdate)
+                     String patientPhone, String patientEmail, String patientPassword, DateTime patientBirthdate)
         {
             if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == _defaultDate)
                 return false;
@@ -51,7 +45,7 @@ namespace GenericControls
             String patientGeneticDisorder = textBoxUserGeneticDisorder.Text;
             String patientInsuranceNumber = textBoxUserInsuranceNr.Text;
             String patientEmail = textBoxUserEmail.Text;
-            String patientPassword = (passwordBoxUserPassword.Password!="")?Encrypter.getMD5(passwordBoxUserPassword.Password):"";
+            String patientPassword = (passwordBoxUserPassword.Password != "") ? Encrypter.getMD5(passwordBoxUserPassword.Password) : "";
             DateTime patientBirthdate;
             if (datePickerUserBirthdate.SelectedDate != null)
             {
@@ -62,17 +56,18 @@ namespace GenericControls
                 patientBirthdate = _defaultDate;
             }
             int patientId = 0;
-            if(ValidateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientEmail, patientPassword
-                ,patientBirthdate))
+            if (ValidateUserInput(patientFirstName, patientLastName, patientAddress, patientPhone, patientEmail, patientPassword
+                , patientBirthdate))
             {
                 try
                 {
-                    patientId=_credentialsService.Save(new Credentials(patientEmail, patientPassword, Utils.UserTypes.PATIENT));
-                }catch (Exception ee)
+                    patientId = _credentialsService.Save(new Credentials(patientEmail, patientPassword, Utils.UserTypes.PATIENT));
+                }
+                catch (Exception ee)
                 {
                     MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                 }
-                if(patientId!=0)
+                if (patientId != 0)
                 {
                     try
                     {
@@ -97,11 +92,11 @@ namespace GenericControls
             else
             {
                 labelError.Visibility = Visibility.Visible;
-                labelError.Content= "Invalid input. Please fill in mandatory fields.";
-                
+                labelError.Content = "Invalid input. Please fill in mandatory fields.";
+
             }
 
-            
+
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
@@ -109,8 +104,8 @@ namespace GenericControls
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
 
-         
-       
+
+
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;

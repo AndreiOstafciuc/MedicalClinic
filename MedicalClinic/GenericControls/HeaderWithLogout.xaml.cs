@@ -22,6 +22,7 @@ namespace GenericControls
     /// </summary>
     public partial class HeaderWithLogout : CustomUserControl
     {
+        private CredentialsService _credentialsService = new CredentialsService();
         /// <summary>
         /// Initialize component and call SetHelpImage to set image for helpButton
         /// </summary>
@@ -48,8 +49,9 @@ namespace GenericControls
         /// </summary>
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
+        }
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {

@@ -20,11 +20,17 @@ namespace GenericControls
     /// </summary>
     public partial class HeaderWithLogout : CustomUserControl
     {
+        /// <summary>
+        /// Initialize component and call SetHelpImage to set image for helpButton
+        /// </summary>
         public HeaderWithLogout()
         {
             InitializeComponent();
             SetHelpImage();
         }
+        /// <summary>
+        /// Get image for help button from resources and set the source
+        /// </summary>
         private void SetHelpImage()
         {
             BitmapImage bmpHelp = new BitmapImage();
@@ -33,9 +39,14 @@ namespace GenericControls
             bmpHelp.EndInit();
             imageBtnHelp.Source = bmpHelp;
         }
+        /// <summary>
+        /// handler for click event for logoutButton
+        /// raise a new event ChangeWindowLayoutEvent for returning to the home page of the application
+        /// </summary>
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            RaiseChangeWindowLayoutEvent(5);
+            
+            RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
     }
 }

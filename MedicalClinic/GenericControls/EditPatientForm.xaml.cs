@@ -18,7 +18,8 @@ using System.Windows.Shapes;
 namespace GenericControls
 {
     /// <summary>
-    /// Interaction logic for EditPatientForm.xaml
+    /// Interaction logic for EditPatientForm.xaml,
+    /// gets user input, validate input and update patient data if input is valid
     /// </summary>
     public partial class EditPatientForm : UserControl
     {
@@ -31,6 +32,10 @@ namespace GenericControls
             PopulateUserForm();
         }
 
+        /// <summary>
+        /// using SessionData.UserSessionData finds which user is currently logged in,
+        /// using PatientService retrieve data from database about the current user, in order to fill the fields of the edit form
+        /// </summary>
         private void PopulateUserForm()
         {
             _patientService =new PatientService();
@@ -47,11 +52,19 @@ namespace GenericControls
             }
         }
 
+
+        /// <summary>
+        /// handler method for KeyboardFocusChanged 
+        /// that hides error message when user begins to edit form fiedls
+        /// </summary>
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// handler method for DateTimePicker GotFocus
+        /// that hides error message when user selects a new date
+        /// </summary>
         private void datePickerUserBirthdate_GotFocus(object sender, RoutedEventArgs e)
         {
             labelError.Visibility = Visibility.Hidden;

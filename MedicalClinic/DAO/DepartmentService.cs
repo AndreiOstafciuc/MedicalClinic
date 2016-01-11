@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -25,13 +31,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 deptsList = new List<Department>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Department d = new Department();
 
                     d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);
@@ -57,13 +61,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 deptsList = new List<Department>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Department d = new Department();
 
                     d.Id = Convert.ToInt32(_dataReader[Utils.DepartmentTableProperties.IdDepartment]);

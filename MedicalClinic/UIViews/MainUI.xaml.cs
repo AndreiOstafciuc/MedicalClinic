@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : UIViews
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorStatus.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using GenericControls;
 
@@ -12,11 +18,11 @@ namespace UIViews
     /// </summary>
     public partial class MainUI : GenericUI
     {
-
         public MainUI() : base()
         {
             InitializeComponent();
         }
+
         public override CustomUserControl GetFooter()
         {
             return new Footer();
@@ -31,6 +37,5 @@ namespace UIViews
         {
             return new GenericControls.HomePageContent();
         }
-
     }
 }

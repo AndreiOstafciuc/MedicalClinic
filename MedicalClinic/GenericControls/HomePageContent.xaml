@@ -1,53 +1,52 @@
 ﻿<base:CustomUserControl x:Class="GenericControls.HomePageContent"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GenericControls"
              xmlns:base="clr-namespace:GenericControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="400">
     <Grid Background="Beige" VerticalAlignment="Center" HorizontalAlignment="Center" Height="331" Margin="0,8,-64,-39" Width="464">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="200" />
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" x:Name="labelDescriptionHeader" Grid.Column="0" Content="Total Health Care Services in one location" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21.333" FontStyle="Italic" FontWeight="Bold" Height="38" Margin="0,6"/>
-        <Label Grid.Row="1" x:Name="labelDescription" Grid.Column="0" Content="MedicalClinic is the primary Romania's health care&#xD;&#xA;outpatient clinic.&#xD;&#xA;Designed to provide total health care service &#xD;&#xA;within one location, more than 400 physicians and&#xD;&#xA;dentists in more than two dozen specialties are&#xD;&#xA;available, offering a wide range of primary and&#xD;&#xA;specialty care.&#xD;&#xA;&#xD;&#xA;Find more&#xD;&#xA;" HorizontalAlignment="Center" Margin="34,15,34,0" VerticalAlignment="Center" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="14.667" FontStyle="Italic" Height="185" Width="332"/>
+        <Label Grid.Row="0" x:Name="labelDescriptionHeader" Grid.Column="0" Content="Total Health Care Services in one location" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="21.333" FontStyle="Italic" FontWeight="Bold" Height="38" Margin="0,6" />
+        <Label Grid.Row="1" x:Name="labelDescription" Grid.Column="0" Content="MedicalClinic is the primary Romania's health care&#xD;&#xA;outpatient clinic.&#xD;&#xA;Designed to provide total health care service &#xD;&#xA;within one location, more than 400 physicians and&#xD;&#xA;dentists in more than two dozen specialties are&#xD;&#xA;available, offering a wide range of primary and&#xD;&#xA;specialty care.&#xD;&#xA;&#xD;&#xA;Find more&#xD;&#xA;" HorizontalAlignment="Center" Margin="34,15,34,0" VerticalAlignment="Center" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="14.667" FontStyle="Italic" Height="185" Width="332" />
         <Button Grid.Row="2" x:Name="buttonLogin" Grid.Column="0" Content="Log in" HorizontalAlignment="Center" Margin="78,10,336,5" VerticalAlignment="Center" Click="buttonLogin_Click" Height="25" Width="50" Padding="1,1,10,1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                    <GradientStop Color="#FFC79292" Offset="1"/>
-                    <GradientStop Color="#FFC79292" Offset="0.981"/>
+                    <GradientStop Color="#FFC7BCBC" Offset="0.026" />
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                    <GradientStop Color="#FFDDDDDD" Offset="0.723" />
+                    <GradientStop Color="#FFC79292" Offset="1" />
+                    <GradientStop Color="#FFC79292" Offset="0.981" />
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
         <Button x:Name="buttonSignin" Grid.Row="2"  Grid.Column="0" Content="Sign up" Margin="330,10,74,5" VerticalAlignment="Center" Click="buttonSignin_Click" HorizontalAlignment="Center" Width="60" Height="25">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                    <GradientStop Color="#FFC79292" Offset="1"/>
-                    <GradientStop Color="#FFC79292" Offset="0.981"/>
+                    <GradientStop Color="#FFC7BCBC" Offset="0.026" />
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                    <GradientStop Color="#FFDDDDDD" Offset="0.723" />
+                    <GradientStop Color="#FFC79292" Offset="1" />
+                    <GradientStop Color="#FFC79292" Offset="0.981" />
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
         <Button Visibility="Hidden" Grid.Row="2" x:Name="buttonTest" Grid.Column="0" Content="Debug" HorizontalAlignment="Center" Margin="160,10,165,5" VerticalAlignment="Center" Click="buttonTestStuff_Click" Height="25">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFC7BCBC" Offset="0.026"/>
-                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
-                    <GradientStop Color="#FFDDDDDD" Offset="0.723"/>
-                    <GradientStop Color="#FFC79292" Offset="1"/>
-                    <GradientStop Color="#FFC79292" Offset="0.981"/>
+                    <GradientStop Color="#FFC7BCBC" Offset="0.026" />
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                    <GradientStop Color="#FFDDDDDD" Offset="0.723" />
+                    <GradientStop Color="#FFC79292" Offset="1" />
+                    <GradientStop Color="#FFC79292" Offset="0.981" />
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-
     </Grid>
 </base:CustomUserControl>

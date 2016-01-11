@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -21,6 +27,7 @@ namespace GenericControls
         private PatientService _patientService;
         private DateTime _defaultDate;
         private String _errorMessage;
+
         public SigninContent()
         {
             InitializeComponent();
@@ -29,12 +36,12 @@ namespace GenericControls
         private bool ValidateUserInput(String patientFirstName, String patientLastName, String patientAddress,
                      String patientPhone, String patientEmail, String patientPassword, DateTime patientBirthdate)
         {
-            if (patientFirstName == "" || patientLastName == "" || patientAddress == "" || patientPhone == "" || patientEmail == "" || patientPassword == "" || patientBirthdate == _defaultDate)
+            if ((patientFirstName != null && String.IsNullOrEmpty(patientFirstName)) || (patientLastName != null && String.IsNullOrEmpty(patientLastName)) || (patientAddress != null && String.IsNullOrEmpty(patientAddress)) || (patientPhone != null && String.IsNullOrEmpty(patientPhone)) || (patientEmail != null && String.IsNullOrEmpty(patientEmail)) || (patientPassword != null && String.IsNullOrEmpty(patientPassword)) || patientBirthdate == _defaultDate)
             {
                 _errorMessage = "Invalid input. Please fill in mandatory fields.";
                 return false;
             }
-            if(Utils.Validator.ValidateEmail(patientEmail)==false)
+            if (Utils.Validator.ValidateEmail(patientEmail) == false)
             {
                 _errorMessage = "Invalid email. Ex: example@example.com";
                 return false;
@@ -49,14 +56,15 @@ namespace GenericControls
                 _errorMessage = "Invalid phone. Format: only numeric and 10 characters long.";
                 return false;
             }
-            if(Utils.Validator.ValidateBithdate(patientBirthdate)==false)
+            if (Utils.Validator.ValidateBithdate(patientBirthdate) == false)
             {
                 _errorMessage = " Invalid birthdate. Birthdate cannot be in the future.";
                 return false;
             }
-            
+
             return true;
         }
+
         private void buttonSignin_Click(object sender, RoutedEventArgs e)
         {
             //create new user, if success redirect to login view
@@ -70,7 +78,7 @@ namespace GenericControls
             String patientGeneticDisorder = textBoxUserGeneticDisorder.Text;
             String patientInsuranceNumber = textBoxUserInsuranceNr.Text;
             String patientEmail = textBoxUserEmail.Text;
-            String patientPassword = (passwordBoxUserPassword.Password != "") ? Encrypter.getMD5(passwordBoxUserPassword.Password) : "";
+            String patientPassword = (!(passwordBoxUserPassword.Password != null && String.IsNullOrEmpty(passwordBoxUserPassword.Password))) ? Encrypter.GetMD5(passwordBoxUserPassword.Password) : "";
             DateTime patientBirthdate;
             if (datePickerUserBirthdate.SelectedDate != null)
             {
@@ -118,18 +126,13 @@ namespace GenericControls
             {
                 labelError.Visibility = Visibility.Visible;
                 labelError.Content = _errorMessage;
-
             }
-
-
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
-
-
 
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {

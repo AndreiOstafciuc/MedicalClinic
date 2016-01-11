@@ -1,37 +1,43 @@
-﻿/*
-* Author : 
-* Decription : Unit Test Cases for database services handeling each table's operations
-*/
+﻿// ***********************************************************************
+// Assembly         : UnitTests
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary>Unit Test Cases for database services handeling each table's operations</summary>
+// ***********************************************************************
 
 using DAO;
 using DBConnNamespace;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entity;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace DAOTests
+namespace DaoTests
 {
     [TestClass()]
     public class ServicesTests
     {
-        Random _r = new Random(new Random().Next(1024, 2048000));
+        private Random _r = new Random(new Random().Next(1024, 2048000));
 
-        CredentialsService credentialsService;
-        AdministratorService administratorService;
-        PatientService patientService;
-        DoctorService doctorService;
-        DepartmentService departmentService;
-        AppointmentService appointmentService;
-        ResultsService resultService;
-        ScheduleService scheduleService;
+        private CredentialsService credentialsService;
+        private AdministratorService administratorService;
+        private PatientService patientService;
+        private DoctorService doctorService;
+        private DepartmentService departmentService;
+        private AppointmentService appointmentService;
+        private ResultsService resultService;
+        private ScheduleService scheduleService;
 
         /// <summary>
         /// generating a random string, first letter capital
         /// </summary>
         /// <param name="len">the length of the final string</param>
         /// <returns></returns>
-        private string genString(int len = 9)
+        private string GenString(int len = 9)
         {
             List<char> chars = new List<char>();
             chars.Add((char)_r.Next(65, 90));
@@ -85,12 +91,12 @@ namespace DAOTests
         [TestMethod()]
         public void AdminSaveTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testAdmin.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.ADMIN);
+            Credentials c = new Credentials(lastName + firstName + "@testAdmin.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.ADMIN);
             Administrator a = new Administrator(credentialsService.Save(c), firstName, lastName);
             administratorService.Save(a);
 
@@ -105,12 +111,12 @@ namespace DAOTests
         [TestMethod()]
         public void AdminUpdateTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testAdmin.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.ADMIN);
+            Credentials c = new Credentials(lastName + firstName + "@testAdmin.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.ADMIN);
             Administrator a = new Administrator(credentialsService.Save(c), firstName, lastName);
             administratorService.Save(a);
             a.LastName = "Newman fon " + lastName;
@@ -128,12 +134,12 @@ namespace DAOTests
         [TestMethod()]
         public void PatientSaveTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testPatient.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.PATIENT);
+            Credentials c = new Credentials(lastName + firstName + "@testPatient.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.PATIENT);
             Patient p = new Patient(credentialsService.Save(c), lastName, firstName, "instsav363", "address", System.DateTime.Now, "geneticsDis", "54468413");
             patientService.Save(p);
 
@@ -148,12 +154,12 @@ namespace DAOTests
         [TestMethod()]
         public void PatientUpdateTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testPatient.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.PATIENT);
+            Credentials c = new Credentials(lastName + firstName + "@testPatient.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.PATIENT);
             Patient p = new Patient(credentialsService.Save(c), lastName, firstName, "instsav363", "address", System.DateTime.Now, "geneticsDis", "54468413");
             patientService.Save(p);
             p.GeneticDiseases = "new genetics";
@@ -171,12 +177,12 @@ namespace DAOTests
         [TestMethod()]
         public void DoctorSaveTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testDoc.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.DOCTOR);
+            Credentials c = new Credentials(lastName + firstName + "@testDoc.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.DOCTOR);
             Doctor d = new Doctor(credentialsService.Save(c), lastName, firstName, departmentService.FindAll()[0].Id, "85643213", Utils.DoctorStatus.ACTIVE);
             doctorService.Save(d);
 
@@ -191,12 +197,12 @@ namespace DAOTests
         [TestMethod()]
         public void DoctorUpdateTest()
         {
-            string lastName = genString(_r.Next(4, 9));
-            string firstName = genString(_r.Next(4, 9));
+            string lastName = GenString(_r.Next(4, 9));
+            string firstName = GenString(_r.Next(4, 9));
 
             OpenConnection();
 
-            Credentials c = new Credentials(lastName + firstName + "@testDoc.com", Utils.Encrypter.getMD5("0000"), Utils.UserTypes.DOCTOR);
+            Credentials c = new Credentials(lastName + firstName + "@testDoc.com", Utils.Encrypter.GetMD5("0000"), Utils.UserTypes.DOCTOR);
             Doctor d = new Doctor(credentialsService.Save(c), lastName, firstName, departmentService.FindAll()[0].Id, "85643213", Utils.DoctorStatus.ACTIVE);
             doctorService.Save(d);
             d.LastName = "Newman fon " + lastName;
@@ -213,8 +219,8 @@ namespace DAOTests
         [TestMethod()]
         public void DepartmentSaveTest()
         {
-            string name = genString(_r.Next(4, 9));
-            string description = genString(_r.Next(15, 20));
+            string name = GenString(_r.Next(4, 9));
+            string description = GenString(_r.Next(15, 20));
 
             OpenConnection();
 
@@ -231,14 +237,14 @@ namespace DAOTests
         [TestMethod()]
         public void DepartmentUpdateTest()
         {
-            string name = genString(_r.Next(4, 9));
-            string description = genString(_r.Next(15, 20));
+            string name = GenString(_r.Next(4, 9));
+            string description = GenString(_r.Next(15, 20));
 
             OpenConnection();
 
             Department d = new Department(name, "This is a Unit Test Created" + description, _r.Next(0, 9));
             departmentService.Save(d);
-            d.Name = "New " + genString(_r.Next(4, 9));
+            d.Name = "New " + GenString(_r.Next(4, 9));
             departmentService.Update(d);
 
             Assert.IsNotNull(departmentService.FindAllByProperty(Utils.DepartmentTableProperties.Name, d.Name));
@@ -253,7 +259,7 @@ namespace DAOTests
         [TestMethod()]
         public void AppointmentSaveTest()
         {
-            string description = genString(_r.Next(15, 20));
+            string description = GenString(_r.Next(15, 20));
 
             OpenConnection();
 
@@ -287,9 +293,9 @@ namespace DAOTests
         [TestMethod()]
         public void ResultSaveTest()
         {
-            string symptoms = genString(_r.Next(9, 15));
-            string diagnosis = genString(_r.Next(9, 15));
-            string medication = genString(_r.Next(9, 15));
+            string symptoms = GenString(_r.Next(9, 15));
+            string diagnosis = GenString(_r.Next(9, 15));
+            string medication = GenString(_r.Next(9, 15));
 
             OpenConnection();
 

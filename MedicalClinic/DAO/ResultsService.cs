@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           : mbord
+//
+// ***********************************************************************
+// <copyright file="ResultsService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -25,13 +31,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 resultsList = new List<Results>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Results r = new Results();
 
                     r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
@@ -59,13 +63,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 resultsList = new List<Results>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Results r = new Results();
 
                     r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
@@ -193,24 +195,22 @@ namespace DAO
         }
 
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
-        public List<Results> findAllResultsOfPatient(int patient_id)
+        public List<Results> FindAllResultsOfPatient(int patientId)
         {
             List<Results> resultsList = null;
 
-            string sql = "select * from result where id_appointment in (select id_appointment from appointment where id_patient = " + patient_id + ")";
+            string sql = "select * from result where id_appointment in (select id_appointment from appointment where id_patient = " + patientId + ")";
 
             _command.CommandText = sql;
             _command.CommandType = CommandType.Text;
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 resultsList = new List<Results>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Results r = new Results();
 
                     r.Id = Convert.ToInt32(_dataReader[Utils.ResultsTableProperties.IdResult]);
@@ -225,7 +225,5 @@ namespace DAO
 
             return resultsList;
         }
-
-
     }
 }

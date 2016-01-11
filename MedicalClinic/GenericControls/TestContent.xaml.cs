@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -16,15 +22,16 @@ namespace GenericControls
     /// </summary>
     public partial class TestContent : CustomUserControl
     {
-        AdministratorService administratorService;
-        AppointmentService appointmentService;
-        DepartmentService departmentService;
-        ResultsService resultsService;
-        ScheduleService scheduleService;
-        PatientService patientService;
-        CredentialsService credentialsService;
-        DoctorService doctorService;
-        CleanupService cleanupService;
+        private AdministratorService administratorService;
+        private AppointmentService appointmentService;
+        private DepartmentService departmentService;
+        private ResultsService resultsService;
+        private ScheduleService scheduleService;
+        private PatientService patientService;
+        private CredentialsService credentialsService;
+        private DoctorService doctorService;
+        private CleanupService cleanupService;
+
         public TestContent()
         {
             InitializeComponent();
@@ -41,11 +48,11 @@ namespace GenericControls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="len">length of the string to return</param>
         /// <returns></returns>
-        private string genString(int len = 9)
+        private string GenString(int len = 9)
         {
             List<char> chars = new List<char>();
             chars.Add((char)r.Next(65, 90));
@@ -55,7 +62,9 @@ namespace GenericControls
             }
             return new string(chars.ToArray());
         }
-        Random r = new Random(new Random().Next(1024, 2048000));
+
+        private Random r = new Random(new Random().Next(1024, 2048000));
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             // ----------- testing phase
@@ -121,12 +130,11 @@ namespace GenericControls
                     string lastName = genString(r.Next(3, 9));
                     patientService.Save(new Patient(credentialsService.Save(
                             new Credentials(firstName+"."+lastName+"@mail.com", Utils.Encrypter.getMD5("pass"), Utils.UserTypes.PATIENT)
-                        ), lastName, firstName, "RO"+r.Next(100000000, 999999999).ToString(), 
-                        "str. " + genString(r.Next(6,9)) + genString(r.Next(6, 9)) + r.Next(1,200), new DateTime(r.Next(1945, 2010), r.Next(1, 12), r.Next(1, 28)), 
+                        ), lastName, firstName, "RO"+r.Next(100000000, 999999999).ToString(),
+                        "str. " + genString(r.Next(6,9)) + genString(r.Next(6, 9)) + r.Next(1,200), new DateTime(r.Next(1945, 2010), r.Next(1, 12), r.Next(1, 28)),
                         genString(r.Next(6,13))+" Dissorder", r.Next(100000,999999).ToString()));
                 }
                 //*/
-
 
                 /*
                 for (int appcnt = 0; appcnt < 200; appcnt++)
@@ -138,7 +146,7 @@ namespace GenericControls
                 for (int resultcnt = 0; resultcnt < 100; resultcnt++)
                 {
                     int id = resultcnt + 990;
-                    resultsService.Save(new Results(id, new DateTime(2017, r.Next(1, 12), r.Next(1, 28)), 
+                    resultsService.Save(new Results(id, new DateTime(2017, r.Next(1, 12), r.Next(1, 28)),
                         genString(r.Next(5,9))+" symptopm present", genString(r.Next(5, 9))+ " disease found", "Following drugs should be taken : " + genString(r.Next(5, 9)) + " and " + genString(r.Next(5, 9))));
                 }
                 //*/
@@ -154,13 +162,11 @@ namespace GenericControls
 
                 int f = patientService.Save(new Patient(credentialsService.Save(new Credentials("patient@s.com", "password", 1)), "Patient test", "first name test", "2301230232", "address test", new System.DateTime(), "genetic diseases", "0785858585"));
 
-
                 int a = departmentService.Save(new Department("Cardiologie", "Departamentul de cardiologie", 1));
                 int b = doctorService.Save(new Doctor(credentialsService.Save(new Credentials("doctor@s.com", "password", 2)), "Doctor test", "test d", departmentService.FindAll()[0].Id, "0785858585", 1));
                 int c = appointmentService.Save(new Appointment(patientService.FindAll()[0].Id, doctorService.FindAll()[0].Id, 12, new System.DateTime(), "symptoms"));
                 int d = resultsService.Save(new Results(appointmentService.FindAll()[0].Id, new System.DateTime(), "simptome test", "diagnostic test", "medicatie test"));
                 int ee = scheduleService.Save(new Schedule(doctorService.FindAll()[0].Id, 2, 10, 18));
-
 
                 // FindAllByProperty
 
@@ -173,39 +179,30 @@ namespace GenericControls
                 List<Credentials> cl = credentialsService.FindAllByProperty("id", "5");
                 List<Doctor> ddl = doctorService.FindAllByProperty("id_doctor", "5");
 
-
-
-
                 Administrator admin = administratorService.FindById(administratorService.FindAll()[0].Id);
                 admin.LastName = "Changed Name";
                 administratorService.Update(admin);
-
 
                 Appointment appointment = appointmentService.FindById(appointmentService.FindAll()[0].Id);
                 appointment.Symptoms = "Changed Symptoms";
                 appointment.AppointmentDate = new System.DateTime(2016, 10, 10);
                 appointmentService.Update(appointment);
 
-
                 Department department = departmentService.FindById(departmentService.FindAll()[0].Id);
                 department.Floor = 6;
                 departmentService.Update(department);
-
 
                 Results result = resultsService.FindById(resultsService.FindAll()[0].Id);
                 result.Diagnosis = "Changed diagnosis";
                 resultsService.Update(result);
 
-
                 Schedule schedule = scheduleService.FindById(scheduleService.FindAll()[0].Id);
                 schedule.Day = 4;
                 scheduleService.Update(schedule);
 
-
                 Patient patient = patientService.FindById(patientService.FindAll()[0].Id);
                 patient.BirthDate = new System.DateTime(2016, 10, 10);
                 patientService.Update(patient);
-
 
                 Credentials credential = credentialsService.FindById(credentialsService.FindAll()[0].Id);
                 credential.Password = "Changed pass";
@@ -216,7 +213,6 @@ namespace GenericControls
                 doctorService.Update(doctor);
                 */
             }
-
             catch (System.Exception ee)
             {
                 MessageBox.Show(ee.Message);

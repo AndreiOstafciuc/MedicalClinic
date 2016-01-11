@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AdministratorService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -24,13 +30,11 @@ namespace DAO
             _command.CommandType = CommandType.Text;
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 administratorsList = new List<Administrator>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Administrator a = new Administrator();
 
                     a.Id = Convert.ToInt32(_dataReader[Utils.AdminTableProperties.Id]);
@@ -54,13 +58,11 @@ namespace DAO
             _command.CommandType = CommandType.Text;
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 administratorsList = new List<Administrator>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Administrator a = new Administrator();
 
                     a.Id = Convert.ToInt32(_dataReader[Utils.AdminTableProperties.Id]);

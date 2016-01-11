@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -18,11 +24,13 @@ namespace GenericControls
     {
         private PatientService _patientService;
         private CredentialsService _credentialsService;
+
         public PatientDetailsPage()
         {
             InitializeComponent();
             DisplayPatientInfo();
         }
+
         private void DisplayPatientInfo()
         {
             _credentialsService = new CredentialsService();
@@ -38,6 +46,7 @@ namespace GenericControls
                 labelPatientAddress.Content = patient.Address;
             }
         }
+
         private void SetImages()
         {
             BitmapImage bmpUser = new BitmapImage();
@@ -63,7 +72,6 @@ namespace GenericControls
             bmpAddress.UriSource = new Uri("pack://application:,,,/Clinic;component/Resources/address.png");
             bmpAddress.EndInit();
             imgAddress.Source = bmpAddress;
-
         }
     }
 }

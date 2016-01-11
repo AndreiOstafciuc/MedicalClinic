@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -17,12 +23,12 @@ namespace GenericControls
     /// </summary>
     public partial class DoctorAppointmentAssignResult : CustomUserControl
     {
-        AppointmentService _appointmentService;
-        PatientService _patientService;
-        ResultsService _resultsService;
+        private AppointmentService _appointmentService;
+        private PatientService _patientService;
+        private ResultsService _resultsService;
 
-        Appointment _selectedAppointment;
-        Patient _selectedPatient;
+        private Appointment _selectedAppointment;
+        private Patient _selectedPatient;
 
         public DoctorAppointmentAssignResult(int appoitnmentId)
         {
@@ -51,7 +57,7 @@ namespace GenericControls
             String medication = textBox_Copy1.Text;
             String diagnosis = textBox_Copy.Text;
 
-            if (symptoms.Equals("") || medication.Equals("") || diagnosis.Equals(""))
+            if (String.IsNullOrEmpty(symptoms) || String.IsNullOrEmpty(medication) || String.IsNullOrEmpty(diagnosis))
             {
                 MessageBox.Show("Inputs not valid !");
             }
@@ -62,7 +68,6 @@ namespace GenericControls
                     _resultsService.Save(new Results(_selectedAppointment.Id, DateTime.Now, symptoms, diagnosis, medication));
                     MessageBox.Show("Result successfully asigned !");
                     RaiseChangePageContentEvent(new DoctorAppointmentsPage());
-
                 }
                 catch (Exception ee)
                 {
@@ -78,8 +83,7 @@ namespace GenericControls
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            List<Results> resultsHistory = _resultsService.findAllResultsOfPatient(_selectedPatient.Id);
-
+            List<Results> resultsHistory = _resultsService.FindAllResultsOfPatient(_selectedPatient.Id);
 
             if (resultsHistory != null)
             {
@@ -108,7 +112,6 @@ namespace GenericControls
             {
                 MessageBox.Show("No results history for this patient !");
             }
-
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

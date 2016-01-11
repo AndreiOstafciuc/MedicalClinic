@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : Unit Test Cases for the DBConnection Class that handles the connection between the application and the database
-*/
+﻿// ***********************************************************************
+// Assembly         : UnitTests
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary>Unit Test Cases for the DBConnection Class that handles the connection between the application and the database</summary>
+// ***********************************************************************
 
 using DBConnNamespace;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -39,9 +45,9 @@ namespace ConnectionTests
                 {
                     DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw e;
+                    throw;
                 }
             }
 
@@ -75,9 +81,9 @@ namespace ConnectionTests
                 {
                     DBConnection.CreateConnection("localhost", "ORCL", "hr", "roxana");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw e;
+                    throw;
                 }
             }
 

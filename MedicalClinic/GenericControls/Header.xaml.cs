@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using System;
 using System.Windows;
@@ -19,6 +25,7 @@ namespace GenericControls
             InitializeComponent();
             SetHelpImage();
         }
+
         private void SetHelpImage()
         {
             BitmapImage bmpHelp = new BitmapImage();

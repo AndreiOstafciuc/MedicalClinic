@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -17,6 +23,7 @@ namespace GenericControls
     public partial class HeaderWithLogout : CustomUserControl
     {
         private CredentialsService _credentialsService = new CredentialsService();
+
         /// <summary>
         /// Initialize component and call SetHelpImage to set image for helpButton
         /// </summary>
@@ -26,6 +33,7 @@ namespace GenericControls
             _credentialsService = new CredentialsService();
             SetHelpImage();
         }
+
         /// <summary>
         /// Get image for help button from resources and set the source
         /// </summary>
@@ -37,13 +45,13 @@ namespace GenericControls
             bmpHelp.EndInit();
             imageBtnHelp.Source = bmpHelp;
         }
+
         /// <summary>
         /// handler for click event for logoutButton
         /// raise a new event ChangeWindowLayoutEvent for returning to the home page of the application
         /// </summary>
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);
         }
 
@@ -62,7 +70,6 @@ namespace GenericControls
                     case Utils.UserTypes.DOCTOR: System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())) + "\\Resources\\helps\\DoctorHelp.chm"); break;
                 }
             }
-
         }
     }
 }

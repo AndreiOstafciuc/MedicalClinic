@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -17,15 +23,17 @@ namespace GenericControls
     public partial class AppointmentHistoryPage : UserControl
     {
         private AppointmentService _appointmentService;
+
         public AppointmentHistoryPage()
         {
             InitializeComponent();
             PopulateAppointmentsDataGrid();
         }
+
         private void PopulateAppointmentsDataGrid()
         {
             _appointmentService = new AppointmentService();
-            List<Appointment> appointmens = _appointmentService.FindAllByProperty("id_patient", SessionData.UserSessionData.CurrentUserId.ToString());
+            List<Appointment> appointmens = _appointmentService.FindAllByProperty(Utils.AppointmentTableProperties.IdPatient, SessionData.UserSessionData.CurrentUserId.ToString());
             if (appointmens != null)
             {
                 dataGridAppointments.Visibility = Visibility.Visible;
@@ -36,7 +44,6 @@ namespace GenericControls
             {
                 labelAppointmentsMsg.Visibility = Visibility;
             }
-
         }
     }
 }

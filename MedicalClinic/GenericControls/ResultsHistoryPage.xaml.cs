@@ -1,4 +1,15 @@
-﻿using DAO;
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="ResultsHistoryPage.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using DAO;
 using Entity;
 using System.Collections.Generic;
 using System.Windows;
@@ -19,6 +30,7 @@ namespace GenericControls
             InitializeComponent();
             RetrieveResults();
         }
+
         private void RetrieveResults()
         {
             _resultService = new ResultsService();

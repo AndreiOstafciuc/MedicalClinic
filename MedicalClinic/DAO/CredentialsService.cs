@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : DAO
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using Entity;
 using Oracle.ManagedDataAccess.Client;
@@ -25,13 +31,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 credentialsList = new List<Credentials>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Credentials c = new Credentials();
 
                     c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
@@ -57,13 +61,11 @@ namespace DAO
 
             _dataReader = _command.ExecuteReader();
 
-
             if (_dataReader.HasRows)
             {
                 credentialsList = new List<Credentials>();
                 while (_dataReader.Read() && _dataReader.HasRows)
                 {
-
                     Credentials c = new Credentials();
 
                     c.Id = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Id]);
@@ -97,7 +99,6 @@ namespace DAO
                 c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
                 c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
                 c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
-
             }
             return c;
         }
@@ -133,7 +134,6 @@ namespace DAO
         /// <exception cref="OracleException">ExecuteNonQuery()</exception>
         public override void Update(Credentials obj)
         {
-
             _command.CommandType = CommandType.Text;
             _command.CommandText = "UPDATE credentials " +
                               "SET email = :email, " +
@@ -170,7 +170,6 @@ namespace DAO
                 c.Email = _dataReader[Utils.CredentialTableProperties.Email].ToString();
                 c.Password = _dataReader[Utils.CredentialTableProperties.Password].ToString();
                 c.Type = Convert.ToInt32(_dataReader[Utils.CredentialTableProperties.Type]);
-
             }
             return c;
         }

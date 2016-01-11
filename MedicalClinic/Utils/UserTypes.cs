@@ -1,4 +1,15 @@
-﻿namespace Utils
+﻿// ***********************************************************************
+// Assembly         : Utils
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="UserTypes.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Utils
 {
     /// <summary>
     /// static class storing a match type for user types between database and aplication

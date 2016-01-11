@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using System.Windows;
 using System.Windows.Controls;
@@ -14,11 +20,13 @@ namespace GenericControls
     public partial class PatientPageContent : CustomUserControl
     {
         private UserControl _patientCurrentPage;
+
         public PatientPageContent()
         {
             InitializeComponent();
             InitializeHomePage();
         }
+
         private void InitializeHomePage()
         {
             _patientCurrentPage = new PatientHomePage();
@@ -76,7 +84,6 @@ namespace GenericControls
 
         private void menuItemChangeCredentials_Click(object sender, RoutedEventArgs e)
         {
-
             gridPacientPage.Children.Remove(_patientCurrentPage);
             _patientCurrentPage = new ChangeCredentialsForm();
             Grid.SetRow(_patientCurrentPage, 1);

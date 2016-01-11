@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : Entity
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="AppointmentService.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using System;
 
@@ -9,17 +15,19 @@ namespace Entity
 {
     public class Appointment
     {
-        int _id;
-        int _idPacient;
-        int _idDoctor;
-        int _time;
-        DateTime _appointmentDate;
-        String _symptoms;
+        private int _id;
+        private int _idPacient;
+        private int _idDoctor;
+        private int _time;
+        private DateTime _appointmentDate;
+        private String _symptoms;
 
-        public Appointment() { }
+        public Appointment()
+        {
+        }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="idPacient">an ID for a patient from the database</param>
         /// <param name="idDoctor">an ID for a doctor from the database</param>
@@ -46,26 +54,29 @@ namespace Entity
             get { return _id; }
             set { _id = value; }
         }
+
         public int IdPacient
         {
             get { return _idPacient; }
             set { _idPacient = value; }
         }
+
         public int IdDoctor
         {
             get { return _idDoctor; }
             set { _idDoctor = value; }
         }
+
         public int Time
         {
             get { return _time; }
             set { _time = value; }
         }
+
         public String Symptoms
         {
             get { return _symptoms; }
             set { _symptoms = value; }
         }
-
     }
 }

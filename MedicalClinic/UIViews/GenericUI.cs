@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : UIViews
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorStatus.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using GenericControls;
 using System.Windows;
@@ -12,13 +18,17 @@ namespace UIViews
     public abstract class GenericUI : Grid
     {
         private CustomUserControl _header, _footer, _content;
+
         public delegate void ChangeMainWindowLayoutHandler(object sender, WindowLayoutEventArgs e);
+
         public event ChangeMainWindowLayoutHandler OnMainWindowLayoutChange;
 
-
         public abstract CustomUserControl GetHeader();
+
         public abstract CustomUserControl GetFooter();
+
         public abstract CustomUserControl GetMainContent();
+
         public GenericUI() : base()
         {
             this.VerticalAlignment = System.Windows.VerticalAlignment.Top;
@@ -49,6 +59,7 @@ namespace UIViews
             this.Children.Add(_content);
             this.Children.Add(_footer);
         }
+
         private void ChangePageContent(object sender, PageContentEventArgs e)
         {
             this.Children.Remove(_content);
@@ -60,17 +71,17 @@ namespace UIViews
             _content.OnPageContentChange += new CustomUserControl.ChangePageContentHandler(ChangePageContent);
             Grid.SetRow(_content, 1);
             this.Children.Add(_content);
-
         }
+
         private void ChangeWindowLayout(object sender, WindowLayoutEventArgs e)
         {
             RaiseChangeMainWindowLayoutEvent(e.ArgWindowLayout);
         }
+
         public void RaiseChangeMainWindowLayoutEvent(int type)
         {
             if (OnMainWindowLayoutChange == null) return;
             OnMainWindowLayoutChange(this, new WindowLayoutEventArgs(type));
         }
-
     }
 }

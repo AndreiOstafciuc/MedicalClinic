@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -24,6 +30,7 @@ namespace GenericControls
         private AppointmentService _appointmentService;
         private String _errorMessage = "";
         private DateTime _defaultDate;
+
         public NewAppointmentForm()
         {
             _defaultDate = new DateTime(1, 1, 1);
@@ -48,9 +55,9 @@ namespace GenericControls
                     cbm.Tag = d.Id;
                     comboBoxDepartments.Items.Add(cbm);
                 }
-
             }
         }
+
         private void HideErrorMessage(object sender, KeyboardFocusChangedEventArgs e)
         {
             labelError.Visibility = Visibility.Visible;
@@ -72,6 +79,7 @@ namespace GenericControls
                 PopulateDoctorsList(selectedDeptId);
             }
         }
+
         private void PopulateDoctorsList(int departmentId)
         {
             _doctorService = new DoctorService();
@@ -89,6 +97,7 @@ namespace GenericControls
                 comboBoxDoctors.IsEnabled = true;
             }
         }
+
         private bool ValidateUserInput(int idDept, int idDoctor, DateTime date, String time, String symptoms)
         {
             if (idDept == 0 || idDoctor == 0)
@@ -106,7 +115,7 @@ namespace GenericControls
                 _errorMessage = "Please select a valid time.";
                 return false;
             }
-            if (Utils.Validator.ValidateAppointmentDate(date)== false)
+            if (Utils.Validator.ValidateAppointmentDate(date) == false)
             {
                 _errorMessage = "Please select a valid date. You cannot choose a date in the past";
                 return false;
@@ -119,7 +128,6 @@ namespace GenericControls
             }
 
             return true;
-
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -176,7 +184,6 @@ namespace GenericControls
                 scheduleContent.Visibility = Visibility.Visible;
                 scheduleContent.Content = sch;
             }
-
         }
     }
 }

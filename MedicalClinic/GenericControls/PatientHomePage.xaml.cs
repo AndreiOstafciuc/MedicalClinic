@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using Entity;
@@ -18,12 +24,14 @@ namespace GenericControls
     {
         private DepartmentService _deptService;
         private DoctorService _doctorService;
+
         public PatientHomePage()
         {
             InitializeComponent();
             PopulateDepartmentGrid();
             PopulateDoctorGrid();
         }
+
         private void PopulateDepartmentGrid()
         {
             _deptService = new DepartmentService();
@@ -48,7 +56,7 @@ namespace GenericControls
             }
         }
 
-        private string getDeptName(int id, List<Department> departments)
+        private string GetDeptName(int id, List<Department> departments)
         {
             foreach (Department d in departments)
             {
@@ -77,7 +85,7 @@ namespace GenericControls
                     expander.Header = doctor.FirstName + " " + doctor.LastName;
                     StackPanel stackPanel = new StackPanel();
                     TextBlock txt = new TextBlock();
-                    txt.Text = getDeptName(doctor.IdDept, departments);//doctorDept.Name + ", " + doctorDept.Floor;
+                    txt.Text = GetDeptName(doctor.IdDept, departments);//doctorDept.Name + ", " + doctorDept.Floor;
                     stackPanel.Children.Add(txt);
                     expander.Content = stackPanel;
                     gridDoctors.RowDefinitions.Add(new RowDefinition());
@@ -87,8 +95,6 @@ namespace GenericControls
                     gridDoctors.Children.Add(expander);
                 }
             }
-
-
         }
     }
 }

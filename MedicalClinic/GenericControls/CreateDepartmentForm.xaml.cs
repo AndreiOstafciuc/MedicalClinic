@@ -1,7 +1,13 @@
-﻿/*
-* Author : 
-* Decription : 
-*/
+﻿// ***********************************************************************
+// Assembly         : GenericControls
+// Author           :
+//
+// ***********************************************************************
+// <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
+//     . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using DAO;
 using System;
@@ -14,7 +20,8 @@ namespace GenericControls
     /// </summary>
     public partial class CreateDepartmentForm : CustomUserControl
     {
-        DepartmentService _departmentService;
+        private DepartmentService _departmentService;
+
         public CreateDepartmentForm()
         {
             InitializeComponent();
@@ -32,7 +39,7 @@ namespace GenericControls
             String descr = descriptionLabel.Text;
             String sFloor = floorLabel.Text;
             int floor = 0;
-            if (dname.Equals("") || descr.Equals("") || sFloor.Equals(""))
+            if (String.IsNullOrEmpty(dname) || String.IsNullOrEmpty(descr) || String.IsNullOrEmpty(sFloor))
             {
                 MessageBox.Show("Invalid inputs !");
             }

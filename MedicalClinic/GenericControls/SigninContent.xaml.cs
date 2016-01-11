@@ -72,27 +72,26 @@ namespace GenericControls
                 {
                     MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                 }
-                try
-                {
-                    _patientService.Save(new Patient(patientId,patientLastName,patientFirstName,patientInsuranceNumber,patientAddress,patientBirthdate,patientGeneticDisorder,patientPhone));
-                    
-                }
-                catch (Exception ee)
-                {
-                    MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
-                    try
-                    {
-                        _credentialsService.delete(patientId);
-                    }
-                    catch (Exception eee)
-                    {
-                        MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
-                    }
-                }
                 if(patientId!=0)
                 {
-                    MessageBox.Show("Account created!");
-                    RaiseChangePageContentEvent(new LoginContent());
+                    try
+                    {
+                        _patientService.Save(new Patient(patientId, patientLastName, patientFirstName, patientInsuranceNumber, patientAddress, patientBirthdate, patientGeneticDisorder, patientPhone));
+                        MessageBox.Show("Account created!");
+                        RaiseChangePageContentEvent(new LoginContent());
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
+                        try
+                        {
+                            _credentialsService.delete(patientId);
+                        }
+                        catch (Exception eee)
+                        {
+                            MessageBox.Show("Something went wrong trying to fix errors ! \n" + eee.Data.ToString());
+                        }
+                    }
                 }
             }
             else

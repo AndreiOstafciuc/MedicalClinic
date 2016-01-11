@@ -23,8 +23,16 @@ namespace GenericControls
         public HeaderWithLogout()
         {
             InitializeComponent();
+            SetHelpImage();
         }
-
+        private void SetHelpImage()
+        {
+            BitmapImage bmpHelp = new BitmapImage();
+            bmpHelp.BeginInit();
+            bmpHelp.UriSource = new Uri("pack://application:,,,/Clinic;component/Resources/help.png");
+            bmpHelp.EndInit();
+            imageBtnHelp.Source = bmpHelp;
+        }
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(5);

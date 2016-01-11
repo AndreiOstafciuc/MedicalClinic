@@ -19,5 +19,10 @@
                 <DropShadowEffect BlurRadius="23" Color="#FFF0E7E7"/>
             </Label.Effect>
         </Label>
+        <Button x:Name="helpButton" Width="30" Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" >
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="imageBtnHelp"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </base:CustomUserControl>

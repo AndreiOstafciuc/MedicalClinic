@@ -34,7 +34,7 @@ namespace GenericControls
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             //verify user
-            Credentials c = credentialService.validateCredentials(textBoxUserEmail.Text, Utils.Encrypter.getMD5(passwordBoxUserPassword.Password));
+            Credentials c = credentialService.ValidateCredentials(textBoxUserEmail.Text, Utils.Encrypter.getMD5(passwordBoxUserPassword.Password));
            
             //if exists change layout according to his role: doctor, admin, user
             if (c != null)
@@ -62,7 +62,7 @@ namespace GenericControls
         {
             if (e.Key == Key.Enter)
             {
-                Credentials c = credentialService.validateCredentials(textBoxUserEmail.Text, Utils.Encrypter.getMD5(passwordBoxUserPassword.Password));
+                Credentials c = credentialService.ValidateCredentials(textBoxUserEmail.Text, Utils.Encrypter.getMD5(passwordBoxUserPassword.Password));
 
                 //if exists change layout according to his role: doctor, admin, user
                 if (c != null)

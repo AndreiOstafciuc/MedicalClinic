@@ -17,15 +17,15 @@ namespace UIViews
         public event ChangeMainWindowLayoutHandler OnMainWindowLayoutChange;
 
 
-        public abstract CustomUserControl getHeader();
-        public abstract CustomUserControl getFooter();
-        public abstract CustomUserControl getMainContent();
+        public abstract CustomUserControl GetHeader();
+        public abstract CustomUserControl GetFooter();
+        public abstract CustomUserControl GetMainContent();
         public GenericUI() : base()
         {
             this.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            _header = getHeader();
-            _footer = getFooter();
-            _content = getMainContent();
+            _header = GetHeader();
+            _footer = GetFooter();
+            _content = GetMainContent();
             _content.HorizontalAlignment = HorizontalAlignment.Stretch;
             _content.VerticalAlignment = VerticalAlignment.Stretch;
 

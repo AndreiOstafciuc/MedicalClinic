@@ -102,7 +102,7 @@ namespace GenericControls
                         MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                         try
                         {
-                            credentialsService.delete(docId);
+                            credentialsService.Delete(docId);
                         }
                         catch (Exception eee)
                         {

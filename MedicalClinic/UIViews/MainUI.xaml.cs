@@ -12,17 +12,17 @@ namespace UIViews
         {
             InitializeComponent();
         }
-        public override CustomUserControl getFooter()
+        public override CustomUserControl GetFooter()
         {
             return new Footer();
         }
 
-        public override CustomUserControl getHeader()
+        public override CustomUserControl GetHeader()
         {
             return new Header();
         }
 
-        public override CustomUserControl getMainContent()
+        public override CustomUserControl GetMainContent()
         {
             return new GenericControls.HomePageContent();
         }

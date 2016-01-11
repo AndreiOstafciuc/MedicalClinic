@@ -171,7 +171,7 @@ namespace DAO
         }
 
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
-        public Credentials validateCredentials(String email, String password)
+        public Credentials ValidateCredentials(String email, String password)
         {
             Credentials credentials = null;
             _command.CommandType = CommandType.StoredProcedure;
@@ -196,7 +196,7 @@ namespace DAO
         }
 
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
-        public void delete(int id)
+        public void Delete(int id)
         {
             _command.CommandType = CommandType.Text;
             _command.CommandText = "delete from credentials where id=" + id;

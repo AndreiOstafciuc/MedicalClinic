@@ -70,7 +70,7 @@ namespace GenericControls
                     catch (Exception ee)
                     {
                         MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());
-                        credentialsService.delete(adminId);
+                        credentialsService.Delete(adminId);
                     }
                 }
             }

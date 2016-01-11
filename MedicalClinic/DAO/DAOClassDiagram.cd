@@ -1,70 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DAO.AdministratorService" Collapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+  <Class Name="DAO.AdministratorService">
+    <Position X="2" Y="2" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABAAAQAAAAAAAAAAA=</HashCode>
       <FileName>AdministratorService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.AppointmentService" Collapsed="true">
-    <Position X="5" Y="1.75" Width="1.5" />
+  <Class Name="DAO.AppointmentService">
+    <Position X="5" Y="2.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
+      <HashCode>EAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
       <FileName>AppointmentService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.CleanupService" Collapsed="true">
-    <Position X="11.75" Y="1.75" Width="1.5" />
+  <Class Name="DAO.CleanupService">
+    <Position X="12" Y="1" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQACIAAAAAAAAAAAAAQAAAAAAABAAAQAAAAAAAAAAA=</HashCode>
       <FileName>CleanupService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.CredentialsService" Collapsed="true">
-    <Position X="16.25" Y="1.75" Width="1.5" />
+  <Class Name="DAO.CredentialsService">
+    <Position X="10.5" Y="5.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAABAAAA=</HashCode>
+      <HashCode>AEQAAIAAAAAAAAAAAAAQAAAAAAEBACAQAAAAAAAAAAA=</HashCode>
       <FileName>CredentialsService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.DAO&lt;Object&gt;" Collapsed="true">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+  <Class Name="DAO.DAO&lt;Object&gt;">
+    <Position X="8.75" Y="1.5" Width="2" />
     <TypeIdentifier>
       <HashCode>ACQAAIAAAAAAAAAAAAAQAAAAAgABAAAQAAAAABAAAAA=</HashCode>
       <FileName>DAO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.DepartmentService" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+  <Class Name="DAO.DepartmentService">
+    <Position X="4.75" Y="5.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
       <FileName>DepartmentService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.DoctorService" Collapsed="true">
-    <Position X="14" Y="1.75" Width="1.5" />
+  <Class Name="DAO.DoctorService">
+    <Position X="15.25" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABAAAQAAAAAAAAAAA=</HashCode>
+      <HashCode>ABQAAIAAAAAAAAAAAAAQAAAAAAABAAAQAAAAAAAAAAA=</HashCode>
       <FileName>DoctorService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.PatientService" Collapsed="true">
-    <Position X="18.5" Y="1.75" Width="1.5" />
+  <Class Name="DAO.PatientService">
+    <Position X="13.5" Y="5.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABAAAQAAAAAAAAAAA=</HashCode>
       <FileName>PatientService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.ResultsService" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+  <Class Name="DAO.ResultsService">
+    <Position X="1.75" Y="5.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAIAAAAAAEAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
       <FileName>ResultsService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAO.ScheduleService" Collapsed="true">
-    <Position X="9.5" Y="1.75" Width="1.5" />
+  <Class Name="DAO.ScheduleService">
+    <Position X="7.75" Y="5.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAIAAAAAAAAAAAAAQAAAAAAABACAQAAAAAAAAAAA=</HashCode>
       <FileName>ScheduleService.cs</FileName>

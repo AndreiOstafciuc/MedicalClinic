@@ -143,6 +143,9 @@
     <Resource Include="Resources\phone.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\help.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Resources\sqlScripts\db_auto_increment_sequence_and_triggers.sql" />
     <Content Include="Resources\sqlScripts\db_clean.sql" />
     <Content Include="Resources\sqlScripts\db_schema.sql" />

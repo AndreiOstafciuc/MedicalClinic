@@ -157,7 +157,7 @@ namespace DAO
         }
 
 
-        public bool checkDoctorAvailability(int idDoctor, int day, int time, DateTime date)
+        public bool CheckDoctorAvailability(int idDoctor, int day, int time, DateTime date)
         {
             _command.CommandType = CommandType.StoredProcedure;
             _command.CommandText = "check_doctor_availability";

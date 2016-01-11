@@ -23,6 +23,15 @@ namespace GenericControls
         public Header()
         {
             InitializeComponent();
+            SetHelpImage();
+        }
+        private void SetHelpImage()
+        {
+            BitmapImage bmpHelp = new BitmapImage();
+            bmpHelp.BeginInit();
+            bmpHelp.UriSource = new Uri("pack://application:,,,/Clinic;component/Resources/help.png");
+            bmpHelp.EndInit();
+            imageBtnHelp.Source = bmpHelp;
         }
     }
 }

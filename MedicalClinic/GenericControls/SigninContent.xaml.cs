@@ -85,7 +85,7 @@ namespace GenericControls
                         MessageBox.Show("Something went wrong ! \n" + ee.Data.ToString());
                         try
                         {
-                            _credentialsService.delete(patientId);
+                            _credentialsService.Delete(patientId);
                         }
                         catch (Exception eee)
                         {

@@ -190,7 +190,7 @@ namespace DAO
         }
 
         /// <exception cref="OracleException">no active connection by ExecuteReader()</exception>
-        public List<Appointment> getNextAppointmentsByDoctorId(int id)
+        public List<Appointment> GetNextAppointmentsByDoctorId(int id)
         {
             List<Appointment> appointmentsList = null;
 

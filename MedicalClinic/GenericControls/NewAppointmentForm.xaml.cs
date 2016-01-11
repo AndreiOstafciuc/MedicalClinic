@@ -116,7 +116,7 @@ namespace GenericControls
                 return false;
             }
             int day = (int)date.DayOfWeek;
-            if (_doctorService.checkDoctorAvailability(idDoctor, day, Convert.ToInt32(time), date) == false)
+            if (_doctorService.CheckDoctorAvailability(idDoctor, day, Convert.ToInt32(time), date) == false)
             {
                 _errorMessage = "Doctor is not available, please select another date or time";
                 return false;

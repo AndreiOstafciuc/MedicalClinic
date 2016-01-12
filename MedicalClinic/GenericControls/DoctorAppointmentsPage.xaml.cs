@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Andrei Ostafciuc
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -57,33 +57,51 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// Get the next page for the dataset
+        /// </summary>
         private void OnNextClicked(object sender, RoutedEventArgs e)
         {
             this._cview.MoveToNextPage();
         }
 
+        /// <summary>
+        /// Changes the view with the assign result form.
+        /// </summary>
         private void AssignResults(object sender, RoutedEventArgs e)
         {
             int appointmentId = (int)((Button)sender).Tag;
             RaiseChangePageContentEvent(new DoctorAppointmentAssignResult(appointmentId));
         }
 
+        /// <summary>
+        /// Get the previous page for the dataset
+        /// </summary>
         private void OnPreviousClicked(object sender, RoutedEventArgs e)
         {
             this._cview.MoveToPreviousPage();
         }
 
+        /// <summary>
+        /// This returns a dictionary from a list for easier access by key.
+        /// </summary>
         public Dictionary<int, Patient> GetDictionary(List<Patient> list)
         {
             Dictionary<int, Patient> dictionary = new Dictionary<int, Patient>();
-            foreach (Patient p in list)
+            if (list != null)
             {
-                dictionary.Add(p.Id, p);
+                foreach (Patient p in list)
+                {
+                    dictionary.Add(p.Id, p);
+                }
             }
             return dictionary;
         }
     }
 
+    /// <summary>
+    /// Interaction logic for dataset paginator.
+    /// </summary>
     public class PagingCollectionView : CollectionView
     {
         private readonly IList _innerList;
@@ -156,12 +174,18 @@ namespace GenericControls
             get { return (this._currentPage - 1) * this._itemsPerPage; }
         }
 
+        /// <summary>
+        /// Returns an item at given index
+        /// </summary>
         public override object GetItemAt(int index)
         {
             var offset = index % (this._itemsPerPage);
             return this._innerList[this.StartIndex + offset];
         }
 
+        /// <summary>
+        /// Gets the next page for dataset.
+        /// </summary>
         public void MoveToNextPage()
         {
             if (this._currentPage < this.PageCount)
@@ -171,6 +195,9 @@ namespace GenericControls
             this.Refresh();
         }
 
+        /// <summary>
+        /// Gets the previous page for dataset.
+        /// </summary>
         public void MoveToPreviousPage()
         {
             if (this._currentPage > 1)

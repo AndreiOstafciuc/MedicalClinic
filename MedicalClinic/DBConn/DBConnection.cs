@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : DBConnection
-// Author           :
+// Author           : Andrei Ostafciuc, Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="DBConnection.cs" company="">

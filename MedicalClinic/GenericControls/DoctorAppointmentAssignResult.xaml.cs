@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Andrei Ostafciuc
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -30,6 +30,7 @@ namespace GenericControls
         private Appointment _selectedAppointment;
         private Patient _selectedPatient;
 
+
         public DoctorAppointmentAssignResult(int appoitnmentId)
         {
             InitializeComponent();
@@ -51,6 +52,9 @@ namespace GenericControls
             geneticDisorderLabel.Content = _selectedPatient.GeneticDiseases;
         }
 
+        /// <summary>
+        /// Assigns a result to an appointment
+        /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             String symptoms = textBox.Text;
@@ -76,11 +80,17 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// Goes back to previous page
+        /// </summary>
         private void GoBack(object sender, RoutedEventArgs e)
         {
             RaiseChangePageContentEvent(new DoctorAppointmentsPage());
         }
 
+        /// <summary>
+        /// Gets the result history for the patient and makes visible, the comboboxes and label for that patient
+        /// </summary>
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             List<Results> resultsHistory = _resultsService.FindAllResultsOfPatient(_selectedPatient.Id);
@@ -114,6 +124,9 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// Changes the labels content according to the selection made
+        /// </summary>
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int selectedResultId = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag.ToString());

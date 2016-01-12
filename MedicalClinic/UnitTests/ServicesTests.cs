@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : UnitTests
-// Author           :
+// Author           : Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="AppointmentService.cs" company="">

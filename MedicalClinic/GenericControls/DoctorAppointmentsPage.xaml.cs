@@ -97,6 +97,14 @@ namespace GenericControls
             }
             return dictionary;
         }
+
+        /// <summary>
+        /// Redirects to the CreateScheduleForm
+        /// </summary>
+        private void buttonCreateSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseChangePageContentEvent(new CreateDoctorSchedule());
+        }
     }
 
     /// <summary>

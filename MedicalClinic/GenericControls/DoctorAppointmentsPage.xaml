@@ -23,7 +23,7 @@
             <Button x:Name="buttonPrevious" Content="Previous" Click="OnPreviousClicked" Margin="2" />
             <Button x:Name="buttonNext" Content="Next" Click="OnNextClicked" Margin="2" />
         </StackPanel>
-        <DataGrid IsReadOnly="true" Height="Auto" Width="Auto" Margin="0,0,0,248" ItemsSource="{Binding}" Grid.Row="1">
+        <DataGrid IsReadOnly="true" Height="Auto" Width="Auto" Margin="0,5,0,243" ItemsSource="{Binding}" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Patient" Width="*" Binding="{Binding Patient}" />
                 <DataGridTextColumn Header="Date" Width="*" Binding="{Binding Date}" />
@@ -38,5 +38,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="buttonCreateSchedule" Content="Create schedule" Width="96" Click="buttonCreateSchedule_Click" HorizontalAlignment="Right" Margin="0,4,0,0"/>
     </Grid>
 </base:CustomUserControl>

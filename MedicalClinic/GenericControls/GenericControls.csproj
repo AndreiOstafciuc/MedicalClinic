@@ -67,6 +67,9 @@
     <Compile Include="CreateDepartmentForm.xaml.cs">
       <DependentUpon>CreateDepartmentForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateDoctorSchedule.xaml.cs">
+      <DependentUpon>CreateDoctorSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomUserControl.cs" />
     <Compile Include="DoctorAppointmentAssignResult.xaml.cs">
       <DependentUpon>DoctorAppointmentAssignResult.xaml</DependentUpon>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateDepartmentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateDoctorSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

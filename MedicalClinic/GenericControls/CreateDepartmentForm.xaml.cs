@@ -41,9 +41,9 @@ namespace GenericControls
         /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            String dname = nameLabel.Text;
-            String descr = descriptionLabel.Text;
-            String sFloor = floorLabel.Text;
+            String dname = textboxName.Text;
+            String descr = textboxDescription.Text;
+            String sFloor = textboxFloor.Text;
             int floor = 0;
             if (String.IsNullOrEmpty(dname) || String.IsNullOrEmpty(descr) || String.IsNullOrEmpty(sFloor))
             {

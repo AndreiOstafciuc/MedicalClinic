@@ -26,7 +26,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="buttonSignin" Grid.Row="2"  Grid.Column="0" Content="Sign up" Margin="330,10,74,5" VerticalAlignment="Center" Click="buttonSignin_Click" HorizontalAlignment="Center" Width="60" Height="25">
+        <Button x:Name="buttonSignin" Grid.Row="2"  Grid.Column="0" Content="Sign in" Margin="330,10,74,5" VerticalAlignment="Center" Click="buttonSignin_Click" HorizontalAlignment="Center" Width="60" Height="25">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFC7BCBC" Offset="0.026" />

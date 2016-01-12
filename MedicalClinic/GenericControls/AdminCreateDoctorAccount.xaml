@@ -16,7 +16,6 @@
         <Label x:Name="labelPhoneNumber" Content="Phone number" HorizontalAlignment="Left" Margin="38,193,0,0" VerticalAlignment="Top" />
         <Label x:Name="labelDepartment" Content="Department" HorizontalAlignment="Left" Margin="38,224,0,0" VerticalAlignment="Top" />
         <Label x:Name="labelStatus" Content="Status" HorizontalAlignment="Left" Margin="38,251,0,0" VerticalAlignment="Top" />
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="136,77,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="firstnameTextBox" HorizontalAlignment="Left" Height="22" Margin="136,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="lastnameTextBox" HorizontalAlignment="Left" Height="22" Margin="136,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="phonenumberTextBox" HorizontalAlignment="Left" Height="22" Margin="136,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
@@ -25,6 +24,6 @@
         <ComboBox x:Name="statusComoBox" HorizontalAlignment="Left" Margin="136,255,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="1" />
         <Button x:Name="submitBtn" Content="Submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="180,291,0,-11" Click="submitBtn_Click" />
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="136,105,0,0" VerticalAlignment="Top" Width="120" Height="22" />
-        <Button x:Name="button" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="19" Click="button_Click" Margin="10,10,0,0" />
+        <Button x:Name="buttonBack" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" Height="19" Click="button_Click" Margin="10,10,0,0" />
     </Grid>
 </base:CustomUserControl>

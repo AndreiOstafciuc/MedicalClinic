@@ -32,6 +32,7 @@ namespace GenericControls
         public EditPatientForm()
         {
             InitializeComponent();
+            datePickerUserBirthdate.DisplayDateEnd = DateTime.Now;
             PopulateUserForm();
         }
 

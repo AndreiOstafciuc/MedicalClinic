@@ -52,8 +52,8 @@ namespace GenericControls
             }
             else
             {
-                previousBtn.IsEnabled = false;
-                nextBtn.IsEnabled = false;
+                buttonPrevious.IsEnabled = false;
+                buttonNext.IsEnabled = false;
             }
         }
 

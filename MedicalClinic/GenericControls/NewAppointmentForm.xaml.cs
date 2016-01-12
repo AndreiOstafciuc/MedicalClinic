@@ -1,6 +1,7 @@
 ﻿// ***********************************************************************
 // Author : Cosmanescu Roxana, Bordeian Marius, Ostafciuc Andrei
-// Description : Contains the new appointment form, get input , validate input, //              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
+// Description : Contains the new appointment form, get input , validate input, 
+//              if input is valid and the selected doctor is avalable a new appointment is inserted in the database using AppointmentService,
 //               otherwise corresponding error message are displayed
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
 //     . All rights reserved.
@@ -35,8 +36,8 @@ namespace GenericControls
         {
             _defaultDate = new DateTime(1, 1, 1);
             InitializeComponent();
-            scheduleTitle.Visibility = Visibility.Hidden;
-            scheduleContent.Visibility = Visibility.Hidden;
+            labelScheduleTitle.Visibility = Visibility.Hidden;
+            labelScheduleContent.Visibility = Visibility.Hidden;
             datePickerAppointmentDate.DisplayDateStart = DateTime.Now;
             PopulateDepartmentsList();
         }
@@ -78,8 +79,8 @@ namespace GenericControls
 
         private void comboBoxDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            scheduleTitle.Visibility = Visibility.Hidden;
-            scheduleContent.Visibility = Visibility.Hidden;
+            labelScheduleTitle.Visibility = Visibility.Hidden;
+            labelScheduleContent.Visibility = Visibility.Hidden;
             if (comboBoxDepartments.SelectedItem != null)
             {
                 comboBoxDoctors.Items.Clear();
@@ -205,9 +206,9 @@ namespace GenericControls
                 {
                     sch += (DayOfWeek)(s.Day) + "\t" + s.StartHour + "-" + s.EndHour + "\n";
                 }
-                scheduleTitle.Visibility = Visibility.Visible;
-                scheduleContent.Visibility = Visibility.Visible;
-                scheduleContent.Content = sch;
+                labelScheduleTitle.Visibility = Visibility.Visible;
+                labelScheduleContent.Visibility = Visibility.Visible;
+                labelScheduleContent.Content = sch;
             }
         }
     }

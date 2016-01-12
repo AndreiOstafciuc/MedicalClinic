@@ -13,7 +13,7 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Menu Grid.Row="0" x:Name="patientMenu" Height="44" VerticalAlignment="Top">
+            <Menu Grid.Row="0" x:Name="menuPatient" Height="44" VerticalAlignment="Top">
                 <Menu.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF6F6F6" Offset="0.25" />

@@ -10,9 +10,9 @@
     <Grid  Height="300" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Label HorizontalAlignment="Center" x:Name="label" Content="Administrator options" VerticalAlignment="Top" Height="40" Width="245" FontWeight="Bold" FontStyle="Italic" FontSize="20" Margin="0,20,0,0" />
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="updateBtn" Content="Create doctor account" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Click="doctorForm_Click" />
-            <Button x:Name="updateBtn_Copy1" Content="Create admin" HorizontalAlignment="Left" Margin="0,69,0,0" VerticalAlignment="Top" Width="148" Click="adminForm_Click" />
-            <Button x:Name="updateBtn_Copy" Content="Create department" HorizontalAlignment="Left" Margin="0,139,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click" />
+            <Button x:Name="buttonCreateDoctor" Content="Create doctor account" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Click="doctorForm_Click" />
+            <Button x:Name="buttonCreateAdmin" Content="Create admin" HorizontalAlignment="Left" Margin="0,69,0,0" VerticalAlignment="Top" Width="148" Click="adminForm_Click" />
+            <Button x:Name="buttonCreateDepartment" Content="Create department" HorizontalAlignment="Left" Margin="0,139,0,0" VerticalAlignment="Top" Width="148" Click="deptForm_Click" />
         </Grid>
     </Grid>
 </base:CustomUserControl>

@@ -41,7 +41,7 @@
             <TextBox x:Name="textBoxUserFirstName" Grid.Column="1" Grid.Row="1" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserLastName" Grid.Column="1" Grid.Row="2" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserAddress" Grid.Column="1" Grid.Row="3" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
-            <DatePicker x:Name="datePickerUserBirthdate"  DisplayDateStart="1960/01/01" SelectedDate="1970/01/01" Grid.Column="1" Grid.Row="4" Margin="3" MinHeight="30" GotFocus="datePickerUserBirthdate_GotFocus" />
+            <DatePicker x:Name="datePickerUserBirthdate"  DisplayDateStart="1960/01/01" Grid.Column="1" Grid.Row="4" Margin="3" MinHeight="30" GotFocus="datePickerUserBirthdate_GotFocus" FirstDayOfWeek="Monday" />
             <TextBox x:Name="textBoxUserPhone" Grid.Column="1" Grid.Row="5" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserGeneticDisorder" Grid.Column="1" Grid.Row="6" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />
             <TextBox x:Name="textBoxUserInsuranceNr" Grid.Column="1" Grid.Row="7" Margin="3" MinHeight="30" GotKeyboardFocus="HideErrorMessage" />

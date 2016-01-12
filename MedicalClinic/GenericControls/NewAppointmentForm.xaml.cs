@@ -37,6 +37,7 @@ namespace GenericControls
             InitializeComponent();
             scheduleTitle.Visibility = Visibility.Hidden;
             scheduleContent.Visibility = Visibility.Hidden;
+            datePickerAppointmentDate.DisplayDateStart = DateTime.Now;
             PopulateDepartmentsList();
         }
 

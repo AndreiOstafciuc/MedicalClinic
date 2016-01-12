@@ -31,6 +31,8 @@ namespace GenericControls
         public SigninContent()
         {
             InitializeComponent();
+            datePickerUserBirthdate.DisplayDateEnd = DateTime.Now;
+            datePickerUserBirthdate.DisplayDate = DateTime.Now;
         }
 
         /// <summary>

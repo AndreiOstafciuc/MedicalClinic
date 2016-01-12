@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Andrei Ostafciuc
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -30,6 +30,9 @@ namespace GenericControls
             credentialService = new CredentialsService();
         }
 
+        /// <summary>
+        /// Checks entered credentials and, if valid, redirects to the appropriate view.
+        /// </summary>
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             //verify user
@@ -52,11 +55,17 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// Hides the error label
+        /// </summary>
         private void hideErrorLabel(object sender, TextChangedEventArgs e)
         {
             errorLabel.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Checks entered credentials and, if valid, redirects to the appropriate view.
+        /// </summary>
         private void hideErrorLabel(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -80,9 +89,15 @@ namespace GenericControls
                     errorLabel.Visibility = Visibility.Visible;
                 }
             }
-            errorLabel.Visibility = Visibility.Hidden;
+            else
+            {
+                errorLabel.Visibility = Visibility.Hidden;
+            }
         }
 
+        /// <summary>
+        /// Changes the view to the previous page
+        /// </summary>
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangeWindowLayoutEvent(Utils.UserTypes.GUEST);

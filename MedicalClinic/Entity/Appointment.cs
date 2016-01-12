@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : Entity
-// Author           :
+// Author           : Andrei Ostafciuc
 //
 // ***********************************************************************
 // <copyright file="AppointmentService.cs" company="">

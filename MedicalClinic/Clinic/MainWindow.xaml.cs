@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : Clinic
-// Author           :
+// Author           : Andrei Ostafciuc, Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="MainWindow.xaml.cs" company="">

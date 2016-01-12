@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -28,16 +28,22 @@ namespace GenericControls
             _departmentService = new DepartmentService();
         }
 
+        /// <summary>
+        /// Changes the view to the previous page
+        /// </summary>
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangePageContentEvent(new AdminPageContent());
         }
 
+        /// <summary>
+        /// Submits form data to the database
+        /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            String dname = nameLabel.Text;
-            String descr = descriptionLabel.Text;
-            String sFloor = floorLabel.Text;
+            String dname = textboxName.Text;
+            String descr = textboxDescription.Text;
+            String sFloor = textboxFloor.Text;
             int floor = 0;
             if (String.IsNullOrEmpty(dname) || String.IsNullOrEmpty(descr) || String.IsNullOrEmpty(sFloor))
             {

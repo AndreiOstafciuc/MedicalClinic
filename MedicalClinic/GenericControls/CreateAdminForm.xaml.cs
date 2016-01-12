@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -32,11 +32,17 @@ namespace GenericControls
             _administratorService = new AdministratorService();
         }
 
+        /// <summary>
+        /// Changes the view to the previous page.
+        /// </summary>
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangePageContentEvent(new AdminPageContent());
         }
 
+        /// <summary>
+        /// Validates inputs using Utils.Validator class.
+        /// </summary>
         private bool ValidateInput(String email, String password, String firstName, String lastName)
         {
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(passwordBox.Password) || String.IsNullOrEmpty(firstName) || String.IsNullOrEmpty(lastName))
@@ -57,12 +63,15 @@ namespace GenericControls
             return true;
         }
 
+        /// <summary>
+        /// Submits the form data to the databse
+        /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            String email = emailTB.Text;
+            String email = textboxEmail.Text;
             String password = Encrypter.GetMD5(passwordBox.Password);
-            String firstName = firstnameTB.Text;
-            String lastName = lastnameTB.Text;
+            String firstName = textboxFirstName.Text;
+            String lastName = textboxLastName.Text;
             int adminId = 0;
             if (ValidateInput(email, password, firstName, lastName) == false)
             {

@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : GenericControls
-// Author           :
+// Author           : Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="DoctorAppointmentAssignResult.xaml.cs" company="">
@@ -65,6 +65,9 @@ namespace GenericControls
                 statusComoBox.Items.Add(cbm);
             }
         }
+        /// <summary>
+        /// Validates inputs using Utils.Validator class
+        /// </summary>
         private bool ValidateInput(String email, String password, String firstName, String lastName)
         {
             if (email.Equals("") || password.Equals("") || firstName.Equals("") || lastName.Equals(""))
@@ -85,6 +88,9 @@ namespace GenericControls
             return true;
         }
 
+        /// <summary>
+        /// Submits the form data to the database;
+        /// </summary>
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
             String docEmail = emailTextBox.Text;
@@ -134,6 +140,9 @@ namespace GenericControls
             }
         }
 
+        /// <summary>
+        /// Changes the view to previous page
+        /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             RaiseChangePageContentEvent(new AdminPageContent());

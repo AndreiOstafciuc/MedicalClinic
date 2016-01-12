@@ -1,6 +1,6 @@
 ﻿// ***********************************************************************
 // Assembly         : Entity
-// Author           :
+// Author           : Marius Bordeian
 //
 // ***********************************************************************
 // <copyright file="AppointmentService.cs" company="">

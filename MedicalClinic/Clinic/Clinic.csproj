@@ -150,13 +150,6 @@
     <Resource Include="Resources\help.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Resources\sqlScripts\db_auto_increment_sequence_and_triggers.sql" />
-    <Content Include="Resources\sqlScripts\db_clean.sql" />
-    <Content Include="Resources\sqlScripts\db_new_data.sql" />
-    <Content Include="Resources\sqlScripts\db_schema.sql" />
-    <Content Include="Resources\sqlScripts\db_TestData.sql" />
-    <Content Include="Resources\sqlScripts\alter_HR.sql" />
-    <Content Include="Resources\sqlScripts\procedures.sql" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

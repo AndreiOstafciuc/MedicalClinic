@@ -20,8 +20,8 @@
                     <DropShadowEffect BlurRadius="23" Color="#FFF0E7E7" />
                 </Label.Effect>
             </Label>
-            <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Click="logoutButton_Click" Height="30" Width="60" />
-            <Button x:Name="helpButton" Width="30" Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Click="helpButton_Click">
+            <Button x:Name="buttonLogout" Content="Logout" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Click="logoutButton_Click" Height="30" Width="60" />
+            <Button x:Name="buttonHelp" Width="30" Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" Click="helpButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="imageBtnHelp" />
                 </StackPanel>

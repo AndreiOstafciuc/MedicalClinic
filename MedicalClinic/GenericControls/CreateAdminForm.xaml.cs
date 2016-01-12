@@ -68,10 +68,10 @@ namespace GenericControls
         /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            String email = emailTB.Text;
+            String email = textboxEmail.Text;
             String password = Encrypter.GetMD5(passwordBox.Password);
-            String firstName = firstnameTB.Text;
-            String lastName = lastnameTB.Text;
+            String firstName = textboxFirstName.Text;
+            String lastName = textboxLastName.Text;
             int adminId = 0;
             if (ValidateInput(email, password, firstName, lastName) == false)
             {

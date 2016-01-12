@@ -57,9 +57,9 @@ namespace GenericControls
         /// </summary>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            String symptoms = textBox.Text;
-            String medication = textBox_Copy1.Text;
-            String diagnosis = textBox_Copy.Text;
+            String symptoms = textBoxSymptoms.Text;
+            String medication = textBoxMedication.Text;
+            String diagnosis = textBoxDiagnosis.Text;
 
             if (String.IsNullOrEmpty(symptoms) || String.IsNullOrEmpty(medication) || String.IsNullOrEmpty(diagnosis))
             {
@@ -98,13 +98,13 @@ namespace GenericControls
             if (resultsHistory != null)
             {
                 ComboBoxItem cbm = null;
-                comboBox.Items.Clear();
+                comboBoxResults.Items.Clear();
                 foreach (Results r in resultsHistory)
                 {
                     cbm = new ComboBoxItem();
                     cbm.Content = "Result for appointment " + r.IdAppointment;
                     cbm.Tag = r.Id;
-                    comboBox.Items.Add(cbm);
+                    comboBoxResults.Items.Add(cbm);
                 }
                 groupBox.Visibility = Visibility.Visible;
                 h_date.Visibility = Visibility.Visible;
@@ -112,7 +112,7 @@ namespace GenericControls
                 h_medication.Visibility = Visibility.Visible;
                 h_symptoms.Visibility = Visibility.Visible;
                 h_results.Visibility = Visibility.Visible;
-                comboBox.SelectedIndex = 0;
+                comboBoxResults.SelectedIndex = 0;
                 dateHistoryLabel.Content = resultsHistory[0].ResultDate;
                 symptomsHistoryLabel.Content = resultsHistory[0].Symptoms;
                 diagnosisHistoryabel.Content = resultsHistory[0].Diagnosis;
@@ -129,7 +129,7 @@ namespace GenericControls
         /// </summary>
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int selectedResultId = Convert.ToInt32(((ComboBoxItem)comboBox.SelectedItem).Tag.ToString());
+            int selectedResultId = Convert.ToInt32(((ComboBoxItem)comboBoxResults.SelectedItem).Tag.ToString());
             try
             {
                 Results selectedResult = _resultsService.FindById(selectedResultId);

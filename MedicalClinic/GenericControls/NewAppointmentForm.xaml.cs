@@ -201,13 +201,16 @@ namespace GenericControls
             {
                 List<Schedule> schedule = _scheduleService.FindAllByProperty(Utils.ScheduleTableProperties.IdDoctor, ((ComboBoxItem)comboBoxDoctors.SelectedItem).Tag.ToString());
                 String sch = "";
-                foreach (Schedule s in schedule)
+                if (schedule != null)
                 {
-                    sch += (DayOfWeek)(s.Day) + "\t" + s.StartHour + "-" + s.EndHour + "\n";
+                    foreach (Schedule s in schedule)
+                    {
+                        sch += (DayOfWeek)(s.Day) + "\t" + s.StartHour + "-" + s.EndHour + "\n";
+                    }
+                    scheduleTitle.Visibility = Visibility.Visible;
+                    scheduleContent.Visibility = Visibility.Visible;
+                    scheduleContent.Content = sch;
                 }
-                scheduleTitle.Visibility = Visibility.Visible;
-                scheduleContent.Visibility = Visibility.Visible;
-                scheduleContent.Content = sch;
             }
         }
     }

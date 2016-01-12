@@ -129,18 +129,18 @@ Insert into HR.APPOINTMENT (ID_APPOINTMENT,ID_DOCTOR,ID_PATIENT,TIME,SCHEDULED_D
 Insert into HR.APPOINTMENT (ID_APPOINTMENT,ID_DOCTOR,ID_PATIENT,TIME,SCHEDULED_DATE,SYMPTOMS) values ('68','15','66','12',to_date('15-01-2016','DD-MM-RRRR'),null);
 REM INSERTING into HR.CREDENTIALS
 SET DEFINE OFF;
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('66','roxana.cosmanescu@yahoo.com','06b28417cdf879f2dce335aac6fc87e7','2');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('12','m.tomulesei@medical.com','c302923d07f94c41141a9be331e5c396','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('1','admin@admin.com','5f4dcc3b5aa765d61d8327deb882cf99','3');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('11','r.florea@medical.com','f01c285de83fc11a6261e5a7a68a4d0b','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('13','l.luchian@medical.com','4a28fbebf61553c80de39bf7dea20c20','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('14','d.frunza@medical.com','81829c4160be3ff55833f5e66fdeb66b','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('15','g.botez@medical.com','0729fe944fd99fa72743a45b182a2e00','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('16','t.popescu@medical.com','bdfa3c2b7273c6b31ff2f111c9f2b485','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('17','d.ilaris@medical.com','2dc79ababa23db759b7d9a6c719aa4b2','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('66','roxana.cosmanescu@yahoo.com','1a1dc91c907325c69271ddf0c944bc72','2');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('12','m.tomulesei@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('1','admin@admin.com','1a1dc91c907325c69271ddf0c944bc72','3');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('11','r.florea@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('13','l.luchian@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('14','d.frunza@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('15','g.botez@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('16','t.popescu@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('17','d.ilaris@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
 Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('18','m.morar@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('19','s.vieru@medical.com','39f61568b1bcc8c6e05b7bea00d79845','1');
-Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('10','n.spanu@medical.com','84922ceae59db0c461e24fdd4976d190','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('19','s.vieru@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
+Insert into HR.CREDENTIALS (ID,EMAIL,PASSWORD,TYPE) values ('10','n.spanu@medical.com','1a1dc91c907325c69271ddf0c944bc72','1');
 REM INSERTING into HR.DEPARTMENT
 SET DEFINE OFF;
 Insert into HR.DEPARTMENT (ID_DEPT,NAME,DESCRIPTION,FLOOR) values ('2','Chirurgie','Specialitatea medicala care trateaza bolile sau ranile prin interventii instrumentale sau manuale operative.','1');

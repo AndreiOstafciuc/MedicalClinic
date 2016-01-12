@@ -12,7 +12,7 @@ begin
         v_id:=0;
         v_type:=0;
 end;
-
+/
 
 create or replace procedure cleandatabase_proc
 is
@@ -25,9 +25,10 @@ begin
     delete from ADMIN;
     delete from DEPARTMENT;
     delete from CREDENTIALS;
+
     commit;
 end;
-
+/
 create or replace procedure check_doctor_availability(
   v_id_doctor IN number,
   v_day IN number,
@@ -60,7 +61,7 @@ begin
       end loop;
     
 end;
-
+/
 create or replace procedure most_searched_doctors
 is
   v_max_patients number:=0;
@@ -86,8 +87,8 @@ begin
   end loop;
 
 end;
-
-CREATE FUNCTION IntToWeekDay (DayOfWeek number)
+/
+CREATE or replace FUNCTION IntToWeekDay (DayOfWeek number)
 RETURN varchar2
 AS
     BEGIN
@@ -101,7 +102,7 @@ AS
         RETURN '';
 END;
 
-
+/
 create or replace procedure show_doctors_schedule
 is 
 cursor orar

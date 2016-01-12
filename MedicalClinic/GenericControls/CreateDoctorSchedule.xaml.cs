@@ -58,7 +58,7 @@ namespace GenericControls
                 {
                     parsedStartHour = Convert.ToInt32(startHour);
                     parsedEndHour = Convert.ToInt32(endHour);
-                }catch(Exception ee)
+                }catch(Exception)
                 {
                     MessageBox.Show("Invalid numbers");
                 }
@@ -68,6 +68,7 @@ namespace GenericControls
                     {
                         scheduleService.Save(new Entity.Schedule(SessionData.UserSessionData.CurrentUserId, dayOfWeek, parsedStartHour,parsedEndHour));
                         MessageBox.Show("Schedule created !");
+                        RaiseChangePageContentEvent(new DoctorAppointmentsPage());
                     } catch(Exception ee)
                     {
                         MessageBox.Show("Something went wrong !\n" + ee.Data.ToString());

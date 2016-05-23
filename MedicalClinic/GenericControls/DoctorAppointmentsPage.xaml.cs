@@ -34,7 +34,7 @@ namespace GenericControls
             InitializeComponent();
             _patientService = new PatientService();
             _appoitmentService = new AppointmentService();
-            List<Appointment> list = _appoitmentService.GetNextAppointmentsByDoctorId(SessionData.UserSessionData.CurrentUserId);
+            List<Appointment> list = _appoitmentService.FindAll();//GetNextAppointmentsByDoctorId(SessionData.UserSessionData.CurrentUserId);
 
             Dictionary<int, Patient> patientList = GetDictionary(_patientService.FindAll());
             List<object> dataSet = null;

@@ -28,7 +28,7 @@ namespace Clinic
             InitializeComponent();
             try
             {
-                DBConnection.CreateConnection("localhost", "xe", "hr", "hr");
+                DBConnection.CreateConnection("localhost", "orcl", "hr", "hr");
             }
             catch (Exception)
             {
